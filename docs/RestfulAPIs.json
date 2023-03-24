@@ -10,11 +10,11 @@
 * Response shape (JSON):
     ```json
     {
-			"account": {
-				username: string,
-			},
-			"token": string
-		}
+        "account": {
+            username: string,
+        },
+        "token": string
+    }
     ```
 
 ### Log out
@@ -56,19 +56,19 @@
 	    {
 	      "events": [
 	        {
-			      "event_name": string,
-			      "event_type": string,
-			      "address": string,
-						"apt": string,
-						"city": string,
-						"state": string,
-						"country": string,
-			      "image_url": string,
-						"date_time": datetime,
-						"host": string,
-						"host_contact": string,
-			      "event_description": text,
-						"attendees": List
+                "event_name": string,
+                "event_type": string,
+                "address": string,
+                "apt": string,
+                "city": string,
+                "state": string,
+                "country": string,
+                "image_url": string,
+                "date_time": datetime,
+                "host": string,
+                "host_contact": string,
+                "event_description": text,
+                "attendees": List
 	        }
 	      ]
 	    }
@@ -91,21 +91,21 @@
 	```json
 	    {
 	      "events": [
-			     {
-				      "event_name": string,
-				      "event_type": string,
-				      "address": string,
-							"apt": string,
-							"city": string,
-							"state": string,
-							"country": string,
-				      "image_url": string,
-							"date_time": datetime,
-							"host": string,
-							"host_contact": string,
-				      "event_description": text,
-							"attendees": List
-				    }
+	        {
+                "event_name": string,
+                "event_type": string,
+                "address": string,
+                "apt": string,
+                "city": string,
+                "state": string,
+                "country": string,
+                "image_url": string,
+                "date_time": datetime,
+                "host": string,
+                "host_contact": string,
+                "event_description": text,
+                "attendees": List
+	        }
 	      ]
 	    }
 	    ```
@@ -125,22 +125,22 @@
 * Response: A list of events the user is attending
 * Response shape:
 	```json
-    {
-      "event_name": string,
-      "event_type": string,
-      "address": string,
-			"apt": string,
-			"city": string,
-			"state": string,
-			"country": string,
-      "image_url": string,
-			"date_time": datetime,
-			"host": string,
-			"host_contact": string,
-      "event_description": text,
-			"attendees": List
-	    }
-	    ```
+        {
+            "event_name": string,
+            "event_type": string,
+            "address": string,
+            "apt": string,
+            "city": string,
+            "state": string,
+            "country": string,
+            "image_url": string,
+            "date_time": datetime,
+            "host": string,
+            "host_contact": string,
+            "event_description": text,
+            "attendees": List
+        }
+    ```
 
 ### Get a Event Detail
 
@@ -153,22 +153,22 @@
 * Response: A detail view of the event
 * Response shape:
 	```json
-    {
-      "event_name": string,
-      "event_type": string,
-      "address": string,
-			"apt": string,
-			"city": string,
-			"state": string,
-			"country": string,
-      "image_url": string,
-			"date_time": datetime,
-			"host": string,
-			"host_contact": string,
-      "event_description": text,
-			"attendees": List
-	    }
-	    ```
+        {
+            "event_name": string,
+            "event_type": string,
+            "address": string,
+            "apt": string,
+            "city": string,
+            "state": string,
+            "country": string,
+            "image_url": string,
+            "date_time": datetime,
+            "host": string,
+            "host_contact": string,
+            "event_description": text,
+            "attendees": List
+        }
+    ```
 
 ### Create an Event
 
@@ -177,41 +177,42 @@
 
 * Request body (JSON):
 	```json
-    {
-      "event_name": string,
-      "event_type": string,
-      "address": string,
-			"apt": string,
-			"city": string,
-			"state": string,
-			"country": string,
-      "image_url": string,
-			"date_time": datetime,
-			"host": string,
-			"host_contact": string,
-      "event_description": text,
-			"attendees": List
-	    }
-	    ```
+        {
+            "event_name": string,
+            "event_type": string,
+            "address": string,
+            "apt": string,
+            "city": string,
+            "state": string,
+            "country": string,
+            "image_url": string,
+            "date_time": datetime,
+            "host": string,
+            "host_contact": string,
+            "event_description": text,
+            "attendees": List
+        }
+    ```
+
 * Response: Details of event
 * Response shape:
 	```json
-    {
-      "event_name": string,
-      "event_type": string,
-      "address": string,
-			"apt": string,
-			"city": string,
-			"state": string,
-			"country": string,
-      "image_url": string,
-			"date_time": datetime,
-			"host": string,
-			"host_contact": string,
-      "event_description": text,
-			"attendees": List
-	    }
-	    ```
+        {
+            "event_name": string,
+            "event_type": string,
+            "address": string,
+            "apt": string,
+            "city": string,
+            "state": string,
+            "country": string,
+            "image_url": string,
+            "date_time": datetime,
+            "host": string,
+            "host_contact": string,
+            "event_description": text,
+            "attendees": List
+        }
+    ```
 
 ### Update Event
 
@@ -220,41 +221,41 @@
 
 * Request body (JSON):
 	```json
-    {
-      "event_name": string,
-      "event_type": string,
-      "address": string,
-			"apt": string,
-			"city": string,
-			"state": string,
-			"country": string,
-      "image_url": string,
-			"date_time": datetime,
-			"host": string,
-			"host_contact": string,
-      "event_description": text,
-			"attendees": List
-	    }
-	    ```
+        {
+            "event_name": string,
+            "event_type": string,
+            "address": string,
+            "apt": string,
+            "city": string,
+            "state": string,
+            "country": string,
+            "image_url": string,
+            "date_time": datetime,
+            "host": string,
+            "host_contact": string,
+            "event_description": text,
+            "attendees": List
+        }
+    ```
 * Response: Details of event
 * Response shape:
 	```json
-    {
-      "event_name": string,
-      "event_type": string,
-      "address": string,
-			"apt": string,
-			"city": string,
-			"state": string,
-			"country": string,
-      "image_url": string,
-			"date_time": datetime,
-			"host": string,
-			"host_contact": string,
-      "event_description": text,
-			"attendees": List
-	    }
-	    ```
+        {
+            "event_name": string,
+            "event_type": string,
+            "address": string,
+            "apt": string,
+            "city": string,
+            "state": string,
+            "country": string,
+            "image_url": string,
+            "date_time": datetime,
+            "host": string,
+            "host_contact": string,
+            "event_description": text,
+            "attendees": List
+        }
+    ```
 
 ### Delete an Event
 
@@ -267,19 +268,19 @@
 * Response: Details of event
 * Response shape
 	```json
-    {
-      "event_name": string,
-      "event_type": string,
-      "address": string,
-			"apt": string,
-			"city": string,
-			"state": string,
-			"country": string,
-      "image_url": string,
-			"date_time": datetime,
-			"host": string,
-			"host_contact": string,
-      "event_description": text,
-			"attendees": List
-	    }
-	    ```
+        {
+            "event_name": string,
+            "event_type": string,
+            "address": string,
+            "apt": string,
+            "city": string,
+            "state": string,
+            "country": string,
+            "image_url": string,
+            "date_time": datetime,
+            "host": string,
+            "host_contact": string,
+            "event_description": text,
+            "attendees": List
+        }
+    ```
