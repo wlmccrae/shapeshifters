@@ -91,22 +91,22 @@
 	```json
 	    {
 	      "events": [
-			    {
-                    "event_name": string,
-                    "event_type": string,
-                    "address": string,
-                    "apt": string,
-                    "city": string,
-                    "state": string,
-                    "country": string,
-                    "image_url": string,
-                    "date_time": datetime,
-                    "host": string,
-                    "host_contact": string,
-                    "event_description": text,
-                    "attendees": List
-				}
-	        ]
+	        {
+                "event_name": string,
+                "event_type": string,
+                "address": string,
+                "apt": string,
+                "city": string,
+                "state": string,
+                "country": string,
+                "image_url": string,
+                "date_time": datetime,
+                "host": string,
+                "host_contact": string,
+                "event_description": text,
+                "attendees": List
+	        }
+	      ]
 	    }
 	    ```
 
