@@ -5,4 +5,4 @@ Worked on wire framing as a group. We started with two project ideas: a workout 
 Developed and completed API planning for our project.
 
 24 March 2023
-Discussed what database we would use and set up our Gitlab repository.
+Discussed what database we would use (PostGres) and set up our Gitlab repository. Will do coding as a group for the entire backend. Fridays we will break after the last attendance token to give our brains a rest.
