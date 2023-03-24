@@ -16,5 +16,7 @@ Day 4, 3/23/23
 Added finishing touches with wireframing and reviewed our wireframe with Candice. Discussed map apis with Candice, who thought this could be an MVP goal. Discussed choosing a database with Candice but have not yet decided on which database to use. Met with Ted and Tyler to ask questions about using Google Maps api for our project. Completed first draft of our Restful APIs.
 
 Day 5, 3/24/23
+Uploaded RestfulAPIs and ShapeShifters WireFrame into docs. Discussed the pros and cons of MongoDB versus Postgres and decided to use a Postgres. Finalized our project logo. Decided to work on our project as a team for the backend and divy up the front end into smaller groups if tight on time.
+
 
 ######################### WEEK 2 #########################
