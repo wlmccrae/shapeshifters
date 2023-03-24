@@ -10,11 +10,11 @@
 * Response shape (JSON):
     ```json
     {
-			"account": {
-				username: string,
-			},
-			"token": string
-		}
+        "account": {
+            username: string,
+        },
+        "token": string
+    }
     ```
 
 ### Log out
