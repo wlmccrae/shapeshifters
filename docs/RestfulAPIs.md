@@ -1,9 +1,9 @@
 ### Login
 
-* Endpoint path: /login
-* Endpoint method: POST
+- Endpoint path: /login
+- Endpoint method: POST
 
-* Request shape (JSON):
+- Request shape (JSON):
 
 ```json
     {
@@ -12,49 +12,52 @@
     }
 ```
 
-* Response: Account information and a token
-* Response shape (JSON):
+- Response: Account information and a token
+- Response shape (JSON):
 
-    ```json
-    {
-        "account": {
-            username: str,
-        },
-        "token": str
-    }
-    ```
+  ```json
+  {
+      "account": {
+          username: str,
+      },
+      "token": str
+  }
+  ```
 
 ### Log out
 
-* Endpoint path: /token
-* Endpoint method: DELETE
+- Endpoint path: /token
+- Endpoint method: DELETE
 
-* Headers:
-  * Authorization: Bearer token
+- Headers:
 
-* Response: Always true
-* Response shape (JSON):
+  - Authorization: Bearer token
 
-    ```json
-    true
-    ```
+- Response: Always true
+- Response shape (JSON):
+
+  ```json
+  true
+  ```
 
 ### Signup
 
-* Endpoint path: /signup
-* Endpoint method: POST
+- Endpoint path: /signup
+- Endpoint method: POST
 
 ### Get a list of Events for Homepage
 
-* Endpoint path: /api/events
-* Endpoint method: GET
-* Query parameters:
-  * q: the location or activity provided
+- Endpoint path: /api/events
+- Endpoint method: GET
+- Query parameters:
 
-* Headers:
-  * Authorization: Bearer token
+  - q: the location or activity provided
 
-* Request shape (JSON):
+- Headers:
+
+  - Authorization: Bearer token
+
+- Request shape (JSON):
 
 ```json
 {
@@ -67,8 +70,8 @@
 }
 ```
 
-* Response: A list of events near the user
-* Response shape (JSON):
+- Response: A list of events near the user
+- Response shape (JSON):
 
 ```json {
 "message": str
@@ -77,16 +80,17 @@
 
 ### Get a list of Events the User is Hosting
 
-* Endpoint path: api/events/hosting
-* Endpoint method: GET
+- Endpoint path: api/events/hosting
+- Endpoint method: GET
 
-* Headers:
-  * Authorization: Bearer token
+- Headers:
 
-* query - fix
+  - Authorization: Bearer token
 
-* Response: A list of events user is hosting
-* Response shape:
+- query - fix
+
+- Response: A list of events user is hosting
+- Response shape:
 
 ```json
     {
@@ -112,16 +116,16 @@
 
 ### Get a list of Events User is Attending
 
-* Endpoint path: api/events/attending
-* Endpoint method: GET
+- Endpoint path: api/events/attending
+- Endpoint method: GET
 
-* Headers:
-  * Authorization: Bearer token
+- Headers:
+  - Authorization: Bearer token
 
 #query= fix
 
-* Response: A list of events the user is attending
-* Response shape:
+- Response: A list of events the user is attending
+- Response shape:
 
 ```json
     {
@@ -147,17 +151,18 @@
 
 ### Get a Event Detail
 
-* Endpoint path: api/events/{event_id}
-* Endpoint method: GET
+- Endpoint path: api/events/{event_id}
+- Endpoint method: GET
 
-* Headers:
-  * Authorization: Bearer token
+- Headers:
 
-* Request shape (JSON):
-event_id: int
+  - Authorization: Bearer token
 
-* Response: A detail view of the event
-* Response shape:
+- Request shape (JSON):
+  event_id: int
+
+- Response: A detail view of the event
+- Response shape:
 
 ```json
     {
@@ -179,13 +184,14 @@ event_id: int
 
 ### Create an Event
 
-* Endpoint path: api/events
-* Endpoint method: POST
+- Endpoint path: api/events
+- Endpoint method: POST
 
-* Headers:
-  * Authorization: Bearer token
+- Headers:
 
-* Request body (JSON):
+  - Authorization: Bearer token
+
+- Request body (JSON):
 
 ```json
     {
@@ -204,8 +210,8 @@ event_id: int
     }
 ```
 
-* Response: Details of event
-* Response shape:
+- Response: Details of event
+- Response shape:
 
 ```json
     {
@@ -227,13 +233,14 @@ event_id: int
 
 ### Update Event
 
-* Endpoint path: api/events/{event_id}
-* Endpoint method: PUT
+- Endpoint path: api/events/{event_id}
+- Endpoint method: PUT
 
-* Headers:
-  * Authorization: Bearer token
+- Headers:
 
-* Request body (JSON):
+  - Authorization: Bearer token
+
+- Request body (JSON):
 
 ```json
     {
@@ -253,8 +260,8 @@ event_id: int
     }
 ```
 
-* Response: Details of event
-* Response shape:
+- Response: Details of event
+- Response shape:
 
 ```json
     {
@@ -276,17 +283,18 @@ event_id: int
 
 ### Delete an Event
 
-* Endpoint path: api/events/{event_id}
-* Endpoint method: DELETE
+- Endpoint path: api/events/{event_id}
+- Endpoint method: DELETE
 
-* Headers:
-  * Authorization: Bearer token
+- Headers:
 
-* Request body (JSON):
-No body
+  - Authorization: Bearer token
 
-* Response: Details of event
-* Response shape
+- Request body (JSON):
+  No body
+
+- Response: Details of event
+- Response shape
 
 ```json
     {
@@ -306,3 +314,103 @@ No body
     }
 ```
 
+### Add attendee to event
+
+- Endpoint path: api/events/{event_id}/attendees
+- Endpoint method: PUT
+
+- Headers:
+
+  - Authorization: Bearer token
+
+- Request body (JSON):
+  none
+
+- Response: Details of event
+- Response shape:
+
+```json
+    {
+        "event_name": str,
+        "event_type": str,
+        "address": str,
+        "apt": str,
+        "city": str,
+        "state": str,
+        "country": str,
+        "image_url": str,
+        "date_time": datetime,
+        "host_id": int,
+        "host_contact": str,
+        "event_description": text,
+        "attendees": list
+    }
+```
+
+### Delete attendee from an event
+
+- Endpoint path: api/events/{event_id}/attendees/{attendee_id}
+- Endpoint method: DELETE
+
+- Headers:
+
+  - Authorization: Bearer token
+
+- Request body (JSON):
+  No body
+
+- Response: Details of event
+- Response shape
+
+```json
+    {
+        "event_name": str,
+        "event_type": str,
+        "address": str,
+        "apt": str,
+        "city": str,
+        "state": str,
+        "country": str,
+        "image_url": str,
+        "date_time": datetime,
+        "host_id": int,
+        "host_contact": str,
+        "event_description": text,
+        "attendees": list
+    }
+```
+
+### STRETCH GOAL
+
+### Get all attendees event
+
+- Endpoint path: api/events/{event_id}/attendees
+- Endpoint method: GET
+
+- Headers:
+
+  - Authorization: Bearer token
+
+- Request body (JSON):
+  none
+
+- Response: Details of event
+- Response shape:
+
+```json
+    {
+        "event_name": str,
+        "event_type": str,
+        "address": str,
+        "apt": str,
+        "city": str,
+        "state": str,
+        "country": str,
+        "image_url": str,
+        "date_time": datetime,
+        "host_id": int,
+        "host_contact": str,
+        "event_description": text,
+        "attendees": list
+    }
+```
