@@ -70,7 +70,7 @@
 * Response: A list of events near the user
 * Response shape (JSON):
 
-```json {
+```json{
 "message": str
 }
 ```
@@ -305,4 +305,3 @@ No body
         "attendees": list
     }
 ```
-
