@@ -8,13 +8,13 @@ steps = [
             first_name VARCHAR(100) NOT NULL,
             last_name VARCHAR(100) NOT NULL,
             email VARCHAR(100) NOT NULL UNIQUE,
-            password VARCHAR(12) NOT NULL
+            hashed_password VARCHAR(100) NOT NULL
         );
         """,
         # "Down" SQL statement
         """
         DROP TABLE users;
-        """
+        """,
     ],
     ############## EVENTS ##############
     [
@@ -40,7 +40,7 @@ steps = [
         # "Down" SQL statement
         """
         DROP TABLE events;
-        """
+        """,
     ],
     ############## ATTENDEES ##############
     [
@@ -55,6 +55,6 @@ steps = [
         # "Down" SQL statement
         """
         DROP TABLE attendees;
-        """
-    ]
+        """,
+    ],
 ]

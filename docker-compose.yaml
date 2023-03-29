@@ -10,6 +10,9 @@ services:
       DATABASE_URL: postgresql://user:password@db/database
       WAIT_HOSTS: db:5432
       PORT: 8000
+      SIGNING_KEY: ${SIGNING_KEY}
+      WAIT_BEFORE: 5
+      WAIT_TIMEOUT: 60
     ports:
       - "8000:8000"
     volumes:

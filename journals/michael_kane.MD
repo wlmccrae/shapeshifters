@@ -8,6 +8,12 @@ Introduction to FastAPI and assigned teams. Met with team and figured out what a
 3/24/23:
 Finishing up API design and plan to have Candice review it. A lecture about MongoDB from Jimmy and Riley. I'm 100% planning on reviewing all videos, lectures, and modules to review PostgreSQL and FastAPI, as well as, tutorials on MongoDB - that way on Monday, our group can hit the ground running. Team decided that will be using PostgreSQL.
 
-
 ################################## WK 2 ##################################
 3/27/23:
+Went to the dentist so I got a little bit of a late start. Set up tables and did init migrations.
+
+3/28/23:
+started off te day with some SQL practice problems, some good lectures, and some career stuff. Set up tables and did init migrations.
+We got authentication working finally, and tomorrow qwe are goign to start building our main routes.
+
+3/29/23:
