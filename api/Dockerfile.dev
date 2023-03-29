@@ -7,7 +7,8 @@ RUN chmod +x /wait
 WORKDIR /deps
 COPY requirements.txt requirements.txt
 RUN python -m pip install -r requirements.txt
-RUN python -m db_script.python
+
+
 
 WORKDIR /app
 CMD /wait && python -m migrations up && uvicorn main:app --reload --host 0.0.0.0 --port $PORT

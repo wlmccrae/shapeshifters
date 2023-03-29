@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 from queries.pool import pool
-from models import AccountIn, AccountOut, AccountOutWithPassword
+from models.accounts import AccountIn, AccountOut, AccountOutWithPassword
 
 
 class AccountQueries:
