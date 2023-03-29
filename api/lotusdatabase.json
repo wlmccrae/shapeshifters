@@ -1,0 +1,97 @@
+events = [
+    {
+        "model": ""
+        "fields": {
+            "host_id":
+            "event_name": "Barton Creek Hike"
+            "event_type": "hiking"
+            "address_line1": "2207 Lou Neff Rd"
+            "address_line2":
+            "city": "Austin"
+            "state": "TX"
+            "zip_code": "78746"
+            "country": "US"
+            "image_url":
+            "start_datetime": "2023-05-27 08:30:00"
+            "end_datetime": "2023-05-27 11:30:00"
+            "event_description": "Hike along Barton Creek"
+            "attendees":
+        }
+    },
+    {
+        "model": ""
+        "fields": {
+            "host_id":
+            "event_name": "Swim Workout"
+            "event_type": "swimming"
+            "address_line1": "2201 William Barton Dr"
+            "address_line2":
+            "city": "Austin"
+            "state": "TX"
+            "zip_code": "78746"
+            "country": "US"
+            "image_url":
+            "start_datetime": "2023-05-28 08:30:00"
+            "end_datetime": "2023-05-28 11:30:00"
+            "event_description": "Swim laps with other swimming enthusiasts."
+            "attendees":
+        }
+    },
+    {
+        "model": ""
+        "fields": {
+            "host_id":
+            "event_name": "Walk Loins Municipal Golf Course"
+            "event_type": "walking"
+            "address_line1": "2901 Enfield Rd"
+            "address_line2":
+            "city": "Austin"
+            "state": "TX"
+            "zip_code": "78703"
+            "country": "US"
+            "image_url":
+            "start_datetime": "2023-05-29 08:30:00"
+            "end_datetime": "2023-05-29 11:30:00"
+            "event_description": "We'll be walking around the perimeter of the golf course. Wear comfortable shoes."
+            "attendees":
+        }
+    },
+    {
+        "model": ""
+        "fields": {
+            "host_id":
+            "event_name": "Barton Creek Greenbelt Hike"
+            "event_type": "hiking"
+            "address_line1": "3801 S Capital of Texas Hwy #250"
+            "address_line2":
+            "city": "Austin"
+            "state": "TX"
+            "zip_code": "78704"
+            "country": "US"
+            "image_url":
+            "start_datetime": "2023-05-30 12:00:00"
+            "end_datetime": "2023-05-30 3:30:00"
+            "event_description": "Starting point is FlashParking."
+            "attendees":
+        }
+    },
+    {
+        "model": ""
+        "fields": {
+            "host_id":
+            "event_name": "Cycle Veloway Park"
+            "event_type": "biking"
+            "address_line1": "4900 La Crosse Ave"
+            "address_line2":
+            "city": "Austin"
+            "state": "TX"
+            "zip_code": "78739"
+            "country": "US"
+            "image_url":
+            "start_datetime": "2023-05-31 15:00:00"
+            "end_datetime": "2023-05-31 17:30:00"
+            "event_description": "Cycling the path through Veloway Park."
+            "attendees":
+        }
+    }
+]
