@@ -23,7 +23,6 @@ steps = [
         CREATE TABLE events (
             id SERIAL PRIMARY KEY NOT NULL,
             host_id INT NOT NULL, FOREIGN KEY(host_id) REFERENCES users(id),
-            host_email VARCHAR(100) NOT NULL,
             event_name VARCHAR(250) NOT NULL,
             event_type VARCHAR(100) NOT NULL,
             image_url VARCHAR(500),
@@ -33,8 +32,9 @@ steps = [
             address_line2 VARCHAR(250),
             city VARCHAR(100) NOT NULL,
             state VARCHAR(100) NOT NULL,
-            zip VARCHAR(100) NOT NULL,
-            country VARCHAR(100) NOT NULL
+            zip_code VARCHAR(100) NOT NULL,
+            country VARCHAR(100) NOT NULL,
+            event_description TEXT NOT NULL
         );
         """,
         # "Down" SQL statement
