@@ -13,6 +13,7 @@ COPY main.py main.py
 # COPY routers routers
 
 RUN python -m pip install -r requirements.txt
+# RUN python db_script.py
 
 # !! PORT env var needs to match with exposed port in caprover dashboard
 CMD uvicorn main:app --host 0.0.0.0 --port 80
