@@ -1,8 +1,10 @@
+import traceback
 from pydantic import BaseModel
 from queries.pool import pool
 from queries.accounts import AccountQueries
 from queries.events import EventQueries
 from models.accounts import AccountIn
+from models.events import EventIn
 from database import users, events
 from authenticator import authenticator
 # create a few different users
@@ -28,3 +30,29 @@ for user in users:
     except:
         print(f"*******Error*******This user is not unique.")
 
+for event in events:
+    print(f"EVENT: {event}")
+    event_row = EventIn(
+        host_id=event["host_id"],
+        event_name=event["event_name"],
+        event_type=event["event_type"],
+        address_line1=event["address_line1"],
+        address_line2=event["address_line2"],
+        city=event["city"],
+        state=event["state"],
+        zip_code=event["zip_code"],
+        country=event["country"],
+        image_url=event["image_url"],
+        start_datetime=event["start_datetime"],
+        end_datetime=event["end_datetime"],
+        event_description=event["event_description"]
+        )
+    new_event = EventQueries()
+    print(f"New Event: {new_event}")
+    # Ask instructor for best practices using try/except.
+    try:
+        event_in = new_event.create_event(event=event_row)
+        print("**************************EVENT_IN", event_in)
+    except Exception as e:
+        print(f"*******Error*******Event not created")
+        print(e)

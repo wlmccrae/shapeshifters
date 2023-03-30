@@ -22,11 +22,10 @@ class EventQueries:
                         image_url,
                         start_datetime,
                         end_datetime,
-                        event_description,
-                        attendees
-                    ),
-                    VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
-                    RETURNING id
+                        event_description
+                    )
+                    VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+                    RETURNING id;
                     """,
                     [
                         event.host_id,
@@ -37,11 +36,11 @@ class EventQueries:
                         event.city,
                         event.state,
                         event.zip_code,
+                        event.country,
                         event.image_url,
                         event.start_datetime,
                         event.end_datetime,
-                        event.event_description,
-                        event.attendees
+                        event.event_description
                     ]
                 )
     # def get_event(self):

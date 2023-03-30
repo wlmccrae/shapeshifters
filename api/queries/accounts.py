@@ -9,12 +9,12 @@ class AccountQueries:
             with conn.cursor() as db:
                 result = db.execute(
                     """
-                INSERT INTO users
-                    (first_name, last_name, email, hashed_password)
-                VALUES
-                    (%s, %s, %s, %s)
-                RETURNING id;
-                """,
+                    INSERT INTO users
+                        (first_name, last_name, email, hashed_password)
+                    VALUES
+                        (%s, %s, %s, %s)
+                    RETURNING id;
+                    """,
                     [account.first_name, account.last_name, account.email, hashed_password],
                 )
                 id = result.fetchone()[0]
