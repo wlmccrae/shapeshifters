@@ -1,4 +1,5 @@
 from pydantic import BaseModel
+from queries.pool import pool
 from queries.accounts import AccountQueries
 from queries.events import EventQueries
 from models.accounts import AccountIn
@@ -8,11 +9,9 @@ from authenticator import authenticator
 # import AccountsQueries and use create method
 # pick off the ids for those uses
 # take those ids and plug them in when you're seeding the database for the events
-print("USERS:", users)
-print("EVENTS:", events)
+# print("USERS:", users)
+# print("EVENTS:", events)
 
-
-# Need to add if statement 
 for user in users:
     user_account = AccountIn(
         first_name=user["first_name"],
@@ -22,10 +21,10 @@ for user in users:
         )
     hashed_password = authenticator.hash_password(user_account.hashed_password)
     account = AccountQueries()
-    user_in = account.create(account=user_account, hashed_password=hashed_password)
-    print("**************************USER_IN", user_in)
+    # Ask instructor for best practices using try/except.
+    try:
+        user_in = account.create(account=user_account, hashed_password=hashed_password)
+        print("**************************USER_IN", user_in)
+    except:
+        print(f"*******Error*******This user is not unique.")
 
-# function to map users to account in and create accounts
-# def seed_users(account: AccountIn)
-# Loop through users
-    #

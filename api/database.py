@@ -356,7 +356,7 @@ events = [
         "event_name": "Walk at Mueller Lake Park",
         "event_type": "hiking",
         "address_line1": "4550 Mueller Blvd",
-        "address_line2":,
+        "address_line2": "",
         "city": "Austin",
         "state": "TX",
         "zip_code": "78723",
