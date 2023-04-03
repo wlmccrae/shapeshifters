@@ -31,7 +31,7 @@ events = [
     },
     {
         "host_id": 4,
-        "event_name": "Walk Loins Municipal Golf Course",
+        "event_name": "Walk Lions Municipal Golf Course",
         "event_type": "walking",
         "address_line1": "2901 Enfield Rd",
         "address_line2": "",
