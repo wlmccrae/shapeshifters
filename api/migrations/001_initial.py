@@ -48,7 +48,7 @@ steps = [
         """
         CREATE TABLE attendees (
             id SERIAL PRIMARY KEY NOT NULL,
-            host_id INT NOT NULL, FOREIGN KEY(host_id) REFERENCES users(id),
+            user_id INT NOT NULL, FOREIGN KEY(user_id) REFERENCES users(id),
             event_id INT NOT NULL, FOREIGN KEY(event_id) REFERENCES events(id)
         );
         """,

@@ -23,4 +23,10 @@ Day 1, 3/27/23
 Finished ResfulAPIs based on feedback from presentation. Set up database tables and ran an initial migration. Started to work on authentication with jwtdown FastAPI. Got stuck with AccountRepo(Queries) and decided to wait to finish this until after the lecture planned for the next day.
 
 Day 2, 3/28/23
-Worked on setting up authentication with jwtdown FastAPI. Debugged with Riley and made minor changes to the users table (password column => hashed_password column). Got stuck with the signup, login functionality. Debugged with Sophia and were able to get the signup, login, and logout working. 
+Worked on setting up authentication with jwtdown FastAPI. Debugged with Riley and made minor changes to the users table (password column => hashed_password column). Got stuck with the signup, login functionality. Debugged with Sophia and were able to get the signup, login, and logout working.
+
+Day 3, 3/29/23
+Started to set up event get and create routes. Realized that in order to test our logic with the route creation, we needed to seed our database to have data to work with. Started working on a new branch seed_database with logic to seed database. Talked to Candace about ways to seed database and made a database.py file with the database as well as a db_script.py file with the logic to seed the database. Completed seeding the accounts database.
+
+Day 4, 3/30/23
+Added a try catch block to the users table to handle errors related to the unique constraint on all users in the users table. Continued to work on seeding the database with the event information. Ran into issues with the fields on event tables. Imported traceback to get a better understanding of the error and were able to debug the issues. Made a merge request for the seed_database branch.

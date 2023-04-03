@@ -46,6 +46,7 @@ for event in events:
         start_datetime=event["start_datetime"],
         end_datetime=event["end_datetime"],
         event_description=event["event_description"]
+        # attendees=event["attendees"]
         )
     new_event = EventQueries()
     print(f"New Event: {new_event}")
