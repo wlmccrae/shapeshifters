@@ -16,7 +16,7 @@ class EventIn(BaseModel):
     start_datetime: datetime
     end_datetime: datetime
     event_description: str
-
+    # attendees: list
 
 class EventOut(BaseModel):
     id: int
@@ -34,3 +34,6 @@ class EventOut(BaseModel):
     end_datetime: datetime
     event_description: str
     attendees: list
+
+class EventsOut(BaseModel):
+    events: list[EventOut]

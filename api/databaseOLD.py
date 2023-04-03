@@ -12,7 +12,8 @@ events = [
         "image_url": "",
         "start_datetime": "2023-05-27 08:30:00",
         "end_datetime": "2023-05-27 11:30:00",
-        "event_description": "Hike along Barton Creek"
+        "event_description": "Hike along Barton Creek",
+        "attendees": []
     },
     {
         "host_id": 2,
@@ -27,7 +28,8 @@ events = [
         "image_url": "",
         "start_datetime": "2023-05-28 08:30:00",
         "end_datetime": "2023-05-28 11:30:00",
-        "event_description": "Swim laps with other swimming enthusiasts."
+        "event_description": "Swim laps with other swimming enthusiasts.",
+        "attendees": []
     },
     {
         "host_id": 4,
@@ -42,7 +44,8 @@ events = [
         "image_url": "",
         "start_datetime": "2023-05-29 08:30:00",
         "end_datetime": "2023-05-29 11:30:00",
-        "event_description": "We'll be walking around the perimeter of the golf course. Wear comfortable shoes."
+        "event_description": "We'll be walking around the perimeter of the golf course. Wear comfortable shoes.",
+        "attendees": []
     },
     {
         "host_id": 3,
@@ -57,7 +60,8 @@ events = [
         "image_url": "",
         "start_datetime": "2023-05-30 12:00:00",
         "end_datetime": "2023-05-30 3:30:00",
-        "event_description": "Starting point is FlashParking."
+        "event_description": "Starting point is FlashParking.",
+        "attendees": []
     },
     {
         "host_id": 2,
@@ -72,7 +76,8 @@ events = [
         "image_url": "",
         "start_datetime": "2023-05-31 15:00:00",
         "end_datetime": "2023-05-31 17:30:00",
-        "event_description": "Cycling the path through Veloway Park."
+        "event_description": "Cycling the path through Veloway Park.",
+        "attendees":[]
     },
     {
         "host_id": 1,
@@ -87,7 +92,8 @@ events = [
         "image_url": "https://example.com/greenbelt-yoga.jpg",
         "start_datetime": "2023-05-15 09:00:00",
         "end_datetime": "2023-05-15 10:00:00",
-        "event_description": "Join us for a refreshing yoga session on the greenbelt."
+        "event_description": "Join us for a refreshing yoga session on the greenbelt.",
+        "attendees": []
     },
     {
         "host_id": 2,
@@ -102,7 +108,8 @@ events = [
         "image_url": "https://example.com/zilker-park-pilates.jpg",
         "start_datetime": "2023-05-17 10:00:00",
         "end_datetime": "2023-05-17 11:00:00",
-        "event_description": "Get a great workout while enjoying the beauty of Zilker Park."
+        "event_description": "Get a great workout while enjoying the beauty of Zilker Park.",
+        "attendees": []
     },
     {
         "host_id": 3,
@@ -117,7 +124,8 @@ events = [
         "image_url": "https://example.com/lady-bird-lake-hike.jpg",
         "start_datetime": "2023-05-19 08:30:00",
         "end_datetime": "2023-05-19 11:00:00",
-        "event_description": "Explore the beautiful trails around Lady Bird Lake."
+        "event_description": "Explore the beautiful trails around Lady Bird Lake.",
+        "attendees": []
     },
     {
         "host_id": 4,
@@ -132,7 +140,8 @@ events = [
         "image_url": "https://example.com/town-lake-trail-run.jpg",
         "start_datetime": "2023-05-21 06:30:00",
         "end_datetime": "2023-05-21 08:00:00",
-        "event_description": "Join us for an invigorating run on the Town Lake trail."
+        "event_description": "Join us for an invigorating run on the Town Lake trail.",
+        "attendees": []
     },
     {
         "host_id": 5,
@@ -147,7 +156,8 @@ events = [
         "image_url": "",
         "start_datetime": "2023-06-02 10:00:00",
         "end_datetime": "2023-06-02 12:00:00",
-        "event_description": "Join us for a scenic kayak tour on Lake Travis."
+        "event_description": "Join us for a scenic kayak tour on Lake Travis.",
+        "attendees": []
     },
     {
         "host_id": 6,
@@ -162,7 +172,8 @@ events = [
         "image_url": "",
         "start_datetime": "2023-06-03 11:00:00",
         "end_datetime": "2023-06-03 13:00:00",
-        "event_description": "Take a refreshing swim in the natural spring-fed pool at Barton Springs."
+        "event_description": "Take a refreshing swim in the natural spring-fed pool at Barton Springs.",
+        "attendees": []
     },
     {
         "host_id": 1,
@@ -177,7 +188,8 @@ events = [
         "image_url": "",
         "start_datetime": "2023-05-14 09:00:00",
         "end_datetime": "2023-05-31 10:30:00",
-        "event_description": "Sunday - Runday We'll do a 8-10 mile run along the Lady Bird Lake Trail."
+        "event_description": "Sunday - Runday We'll do a 8-10 mile run along the Lady Bird Lake Trail.",
+        "attendees":[]
     },
     {
         "host_id": 1,
@@ -192,7 +204,8 @@ events = [
         "city": "Austin",
         "state": "TX",
         "zip_code": "78703",
-        "country": "USA"
+        "country": "USA",
+        "attendees": []
     },
     {
         "host_id": 2,
@@ -207,7 +220,8 @@ events = [
         "city": "Austin",
         "state": "TX",
         "zip_code": "78704",
-        "country": "USA"
+        "country": "USA",
+        "attendees": []
     },
     {
         "host_id": 3,
@@ -223,6 +237,7 @@ events = [
         "state": "TX",
         "zip_code": "78717",
         "country": "USA",
+        "attendees": []
     },
     {
         "host_id": 4,
@@ -237,7 +252,8 @@ events = [
         "city": "Round Rock",
         "state": "TX",
         "zip_code": "78665",
-        "country": "USA"
+        "country": "USA",
+        "attendees": []
     },
     {
         "host_id": 5,
@@ -252,7 +268,8 @@ events = [
         "city": "Austin",
         "state": "TX",
         "zip_code": "78730",
-        "country": "USA"
+        "country": "USA",
+        "attendees": []
     },
     {
         "host_id": 4,
@@ -267,7 +284,8 @@ events = [
         "city": "Austin",
         "state": "TX",
         "zip_code": "78746",
-        "country": "USA"
+        "country": "USA",
+        "attendees": []
     },
     {
         "host_id": 1,
@@ -282,7 +300,8 @@ events = [
         "city": "Austin",
         "state": "TX",
         "zip_code": "78750",
-        "country": "USA"
+        "country": "USA",
+        "attendees": []
     },
     {
         "host_id": 3,
@@ -297,7 +316,8 @@ events = [
         "image_url": "",
         "start_datetime": "2023-06-05 10:00:00",
         "end_datetime": "2023-06-05 12:30:00",
-        "event_description": "Bring binoculars so you can look out for birds while we walk."
+        "event_description": "Bring binoculars so you can look out for birds while we walk.",
+        "attendees": []
     },
     {
         "host_id": 1,
@@ -312,7 +332,8 @@ events = [
         "image_url": "",
         "start_datetime": "2023-06-17 10:00:00",
         "end_datetime": "2023-06-17 11:00:00",
-        "event_description": "Free yoga class at Jacob Fontaine Plaza Park."
+        "event_description": "Free yoga class at Jacob Fontaine Plaza Park.",
+        "attendees": []
     },
     {
         "host_id": 2,
@@ -327,7 +348,8 @@ events = [
         "image_url": "",
         "start_datetime": "2023-06-16 14:00:00",
         "end_datetime": "2023-06-16 15:00:00",
-        "event_description": "$30 yoga class at Inner Diva Studios, all proceeds benefit Austin Pets Alive."
+        "event_description": "$30 yoga class at Inner Diva Studios, all proceeds benefit Austin Pets Alive.",
+        "attendees": []
     },
     {
         "host_id": 3,
@@ -342,7 +364,8 @@ events = [
         "image_url": "",
         "start_datetime": "2023-06-17 09:00:00",
         "end_datetime": "2023-06-17 10:00:00",
-        "event_description": "Lets walk around Mueller Lake Park! Wear breathable clothing, and please remember to bring water and sunscreen."
+        "event_description": "Lets walk around Mueller Lake Park! Wear breathable clothing, and please remember to bring water and sunscreen.",
+        "attendees": []
     },
     {
         "host_id": 4,
@@ -357,7 +380,8 @@ events = [
         "image_url": "",
         "start_datetime": "2023-06-24 08:00:00",
         "end_datetime": "2023-06-24 08:45:00",
-        "event_description": "I'll be running 5 miles, feel free to join me!"
+        "event_description": "I'll be running 5 miles, feel free to join me!",
+        "attendees": []
     },
     {
         "host_id": 5,
@@ -372,7 +396,8 @@ events = [
         "image_url": "",
         "start_datetime": "2023-06-25 10:00:00",
         "end_datetime": "2023-06-25 11:30:00",
-        "event_description": "We will be riding the Ann and Roy Butler Hike and Bike Trail."
+        "event_description": "We will be riding the Ann and Roy Butler Hike and Bike Trail.",
+        "attendees": []
     }
 ]
 
