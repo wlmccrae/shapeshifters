@@ -1,24 +1,16 @@
 # Development Journal - Victoria Pratt
 
-## Monday, 3/20/2023
+## Week 1
 
-We decided we wanted to design a fitness website called ShapeShifters,
-that allows its users to find and join fitness events, create their
-own events, and find other users (called ShapeMates) to work out with.
-At first, we also wanted to generate workout plans for users based on
-their individual needs, but the scope of the project was getting too
-big, so we tabled that feature and may implement it as a stretch goal
-later on.
+### Monday, 3/20/2023
 
-## Tuesday, 3/21/2023
+We decided we wanted to design a fitness website called ShapeShifters, that allows its users to find and join fitness events, create their own events, and find other users (called ShapeMates) to work out with. At first, we also wanted to generate workout plans for users based on their individual needs, but the scope of the project was getting too big, so we tabled that feature and may implement it as a stretch goal later on.
 
-We worked on our project wireframe, designing how we wanted our pages
-and modals to look.
-We want to use a map API to show users events near them, and to show
-points on a map where these events are located. We looked around at
-different map APIs, but could not find one that met our needs that is free to use. We may choose to make this a stretch goal.
+### Tuesday, 3/21/2023
 
-## Wednesday, 3/21/2023
+We worked on our project wireframe, designing how we wanted our pages and modals to look. We want to use a map API to show users events near them, and to show points on a map where these events are located. We looked around at different map APIs, but could not find one that met our needs that is free to use. We may choose to make this a stretch goal.
+
+### Wednesday, 3/22/2023
 
 We finished working on our project wireframe. There will be:
 
@@ -39,13 +31,29 @@ We finished working on our project wireframe. There will be:
   - We would like to implement two clickable tabs on the page,
     one to show events hosting, and one to show events attending
 
-## Thursday, 3/21/2023
+### Thursday, 3/23/2023
 
-We got advice from Ted and Tyler about using the Google Maps API, and it turns out we can use it for free, so we decided to use that and
-not to make it a stretch goal. Added some finishing touches on our
-wireframe, like buttons and form fields.
+We got advice from Ted and Tyler about using the Google Maps API, and it turns out we can use it for free, so we decided to use that and not to make it a stretch goal. Added some finishing touches on our wireframe, like buttons and form fields.
 
-## Friday, 3/21/2023
+### Friday, 3/24/2023
 
-We all joined a collab board on monday.com for our project, so that we
-we can keep track of and update our tasks. We decided we wanted to use Postgres instead of MongoDB.
+We all joined a collab board on monday.com for our project, so that we we can keep track of and update our tasks. We decided we wanted to use Postgres instead of MongoDB.
+
+## Week 2
+
+### Monday, 3/27/2023
+After we created our database tables, we worked for a bit on setting up the backend authentication, but then agreed it would be better to continue working on it after the authentication lecture tomorrow.
+
+### Tuesday, 3/28/2023
+After the lecture we finished working on the authentication.
+
+### Wednesday, 3/29/2023
+We worked on seeding the database with users and events to test our code.
+
+### Thursday, 3/30/2023
+We finished seeding the database and merged the code to main.
+
+## Week 3
+
+### Monday, 4/3/2023
+We tried out using VSCode Live Share for the first time and it went well. We worked on the events routers and queries and got most of them done. We can't test our get_attendees function until we have attendees, we plan to do that tomorrow. I had issues with Docker not deleting containers, and had to completely uninstall and reinstall it.
