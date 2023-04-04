@@ -15,3 +15,9 @@ Group coding. Worked on authentication until 8pm.
 
 29 March 2023
 Group coding. Started creating route and query for a list of events, but switched to creating a route and query for creating an event first, so we will be able to test getting the list.
+
+30 March 2023
+Successfully seeds database with users and events.
+
+3-4 April 2023
+Using VSCode's live-share feature to code and debug as a group. We can create and list events. Fixed code pushed/merged with an error in the database seeding script.
