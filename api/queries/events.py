@@ -44,7 +44,7 @@ class EventQueries:
                     ]
                 )
                 ### TODO: add logic
-                row = cur.fetchone()
+                row = db.fetchone()
                 id = row[0]
         if id is not None:
             return self.get_event(id)
