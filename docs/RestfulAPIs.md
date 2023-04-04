@@ -314,8 +314,6 @@
         "attendees": list
     }
 ```
-<<<<<<< HEAD
-=======
 
 ### Add attendee to event
 
@@ -417,4 +415,3 @@
         "attendees": list
     }
 ```
->>>>>>> 776db77140a5c950f935e77673008da34314659c
