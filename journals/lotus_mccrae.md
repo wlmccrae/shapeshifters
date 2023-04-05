@@ -21,3 +21,5 @@ Successfully seeds database with users and events.
 
 3-4 April 2023
 Using VSCode's live-share feature to code and debug as a group. We can create and list events. Fixed code pushed/merged with an error in the database seeding script.
+
+Added authentication to protect our routes. Added functionality to add and remove an attendee from an event.
