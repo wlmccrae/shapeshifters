@@ -32,6 +32,7 @@ All the events routes/queries are almost complete, we are running into issues wi
 completed almost all of the back-end: events and attendees commpleted. We also protected some routes with jwtdown for fastapi. Overall, pretty successfull day.
 
 4/5/23
+Back-end completed. We have filter events based on if a user is hosting/attending an event. We just have have to get out API set up for which ever map api we decide to utilize.
 
 4/6/23
 
