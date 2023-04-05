@@ -380,36 +380,42 @@ users = [
     {
         "first_name": "Carmen",
         "last_name": "Wheeler",
+        "zip_code": "78750",
         "email": "carmen.wheeler@example.com",
         "hashed_password": "cameron1"
     },
     {
         "first_name": "Jorge",
         "last_name": "Reid",
+        "zip_code": "78752",
         "email": "jorge.reid@example.com",
         "hashed_password": "houses"
     },
     {
         "first_name": "Rusty",
         "last_name": "Bannister",
+        "zip_code": "78725",
         "email": "rusty.banniester@example.com",
         "hashed_password": "ernest"
     },
     {
         "first_name": "Darlene",
         "last_name": "Bailey",
+		"zip_code": "78730",
         "email": "darlene.bailey@example.com",
         "hashed_password": "llllll"
     },
     {
         "first_name": "Yuri",
         "last_name": "Nator",
+        "zip_code": "78717",
         "email": "yurinator@email.com",
         "hashed_password": "number1"
     },
     {
         "first_name": "Brandy",
         "last_name": "Soto",
+        "zip_code": "78704",
         "email": "brandy.soto@email.com",
         "hashed_password": "number1"
     }

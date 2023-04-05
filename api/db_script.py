@@ -7,6 +7,7 @@ from models.accounts import AccountIn
 from models.events import EventIn
 from database import users, events
 from authenticator import authenticator
+
 # create a few different users
 # import AccountsQueries and use create method
 # pick off the ids for those uses
@@ -18,9 +19,10 @@ for user in users:
     user_account = AccountIn(
         first_name=user["first_name"],
         last_name=user["last_name"],
+        zip_code=user["zip_code"],
         email=user["email"],
-        hashed_password=user["hashed_password"]
-        )
+        hashed_password=user["hashed_password"],
+    )
     hashed_password = authenticator.hash_password(user_account.hashed_password)
     account = AccountQueries()
     # Ask instructor for best practices using try/except.
@@ -47,7 +49,7 @@ for event in events:
         end_datetime=event["end_datetime"],
         event_description=event["event_description"]
         # attendees=event["attendees"]
-        )
+    )
     new_event = EventQueries()
     print(f"New Event: {new_event}")
     # Ask instructor for best practices using try/except.
