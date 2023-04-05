@@ -13,7 +13,33 @@ Finishing up API design and plan to have Candice review it. A lecture about Mong
 Went to the dentist so I got a little bit of a late start. Set up tables and did init migrations.
 
 3/28/23:
-started off te day with some SQL practice problems, some good lectures, and some career stuff. Set up tables and did init migrations.
-We got authentication working finally, and tomorrow qwe are goign to start building our main routes.
+started off the day with some SQL practice problems, some good lectures, and some career stuff. Set up tables and did init migrations.
+We got authentication working finally, and tomorrow awe are goign to start building our main routes.
 
 3/29/23:
+Building routes, running into bugs but are making progress...
+
+3/30/23
+Building routes, running into bugs but are making progress...
+WE called it an early day so that we could enjoy the long weekend.
+
+################################## WK 3 ##################################
+
+4/3/23
+All the events routes/queries are almost complete, we are running into issues with updating an event.
+
+4/4/23
+completed almost all of the back-end: events and attendees commpleted. We also protected some routes with jwtdown for fastapi. Overall, pretty successfull day.
+
+4/5/23
+
+4/6/23
+
+4/7/23
+
+################################## SPRING BREAK|WK 4 ##################################
+
+################################## WK 5 ##################################
+
+4/17/23
+ugh.

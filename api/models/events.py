@@ -3,7 +3,7 @@ from datetime import datetime
 
 
 class EventIn(BaseModel):
-    host_id: str
+    host_id: int
     event_name: str
     event_type: str
     address_line1: str
@@ -16,11 +16,12 @@ class EventIn(BaseModel):
     start_datetime: datetime
     end_datetime: datetime
     event_description: str
+    # attendees: list
 
 
 class EventOut(BaseModel):
     id: int
-    host_id: str
+    host_id: int
     event_name: str
     event_type: str
     address_line1: str
@@ -33,4 +34,8 @@ class EventOut(BaseModel):
     start_datetime: datetime
     end_datetime: datetime
     event_description: str
-    attendees: list
+    # attendees: list
+
+
+class EventsOut(BaseModel):
+    events: list[EventOut]

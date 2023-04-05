@@ -12,3 +12,6 @@ Reviewed wireframes with Candice and discussed map APIs. Met with Ted and Tyler 
 
 ## 3/24/23:
 Finished API design and plan to have Candice review it. After debating between databases, the team decided to use PostgreSQL. Set up GitLab repository, created an issue for logging in/out and decided to work on the entire backend coding as a group. We also finalized our changes to the first logo for ShapeShifters. The team decided to give ourselves a rule to strictly call it a day once 5 o'clock hits on Fridays.
+
+## 3/27/23
+Stacked our database with events and users
