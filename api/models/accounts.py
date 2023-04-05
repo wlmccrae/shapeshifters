@@ -5,6 +5,7 @@ from jwtdown_fastapi.authentication import Token
 class AccountIn(BaseModel):
     first_name: str
     last_name: str
+    zip_code: str
     email: str
     hashed_password: str
 
@@ -14,6 +15,7 @@ class AccountOut(BaseModel):
     email: str
     first_name: str
     last_name: str
+    zip_code: str
 
 
 class AccountOutWithPassword(AccountOut):

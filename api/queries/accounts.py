@@ -10,12 +10,12 @@ class AccountQueries:
                 result = db.execute(
                     """
                     INSERT INTO users
-                        (first_name, last_name, email, hashed_password)
+                        (first_name, last_name, zip_code, email, hashed_password)
                     VALUES
-                        (%s, %s, %s, %s)
+                        (%s, %s, %s, %s, %s)
                     RETURNING id;
                     """,
-                    [account.first_name, account.last_name, account.email, hashed_password],
+                    [account.first_name, account.last_name, account.zip_code, account.email, hashed_password],
                 )
                 id = result.fetchone()[0]
                 old_data = account.dict()
@@ -26,7 +26,7 @@ class AccountQueries:
             with conn.cursor() as db:
                 db.execute(
                     """
-                    SELECT id, first_name, last_name, email, hashed_password
+                    SELECT id, first_name, last_name, zip_code, email, hashed_password
                     FROM users
                     WHERE email = %s
                     """,
