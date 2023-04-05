@@ -23,6 +23,9 @@ Successfully seeds database with users and events.
 Using VSCode's live-share feature to code and debug as a group. We can create and list events. Fixed code pushed/merged with an error in the database seeding script.
 
 Added authentication to protect our routes. Added functionality to add and remove an attendee from an event.
+<<<<<<< HEAD
 
 5 April 2023
 Added zip_code column to users table. Coded routes and queries to list events the logged in user is hosting or attending.
+=======
+>>>>>>> main

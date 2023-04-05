@@ -65,6 +65,43 @@ class EventQueries:
                 print("EVENTS*****************", events)
                 return events
 
+    def get_hosting_events(self, host_id):
+        with pool.connection() as conn:
+            with conn.cursor() as db:
+                db.execute(
+                    """
+                    SELECT * FROM events
+                    WHERE host_id = %s
+                    """,
+                    [host_id]
+                )
+                events = []
+                rows = db.fetchall()
+                for row in rows:
+                    event = self.event_record_to_dict(row, db.description)
+                    events.append(event)
+                print("EVENTS*****************", events)
+                return events
+
+    def get_attending_events(self, user_id):
+        with pool.connection() as conn:
+            with conn.cursor() as db:
+                db.execute(
+                    """
+                    SELECT * FROM events
+                    JOIN attendees ON events.id = attendees.event_id
+                    WHERE attendees.user_id = %s
+                    """,
+                    [user_id]
+                )
+                events = []
+                rows = db.fetchall()
+                for row in rows:
+                    event = self.event_record_to_dict(row, db.description)
+                    events.append(event)
+                print("EVENTS*****************", events)
+                return events
+
     def get_event(self, event_id):
         with pool.connection() as conn:
             with conn.cursor() as db:
