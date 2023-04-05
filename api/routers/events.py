@@ -1,11 +1,13 @@
 from fastapi import Depends, APIRouter, Response
-
 from models.events import EventIn, EventOut, EventsOut
 from queries.events import EventQueries
-
 from authenticator import authenticator
+import traceback
+
 
 router = APIRouter()
+
+################################# POST #################################
 
 
 @router.post("/api/events", response_model=EventOut)
@@ -17,11 +19,43 @@ def create_event(
     return queries.create_event(event)
 
 
+################################# GET ALL EVENTS #################################
+
+
 @router.get("/api/events", response_model=EventsOut)
 def get_events(
     queries: EventQueries = Depends(),
 ):
     return {"events": queries.get_events()}
+
+
+################################# FILTERING #################################
+
+
+@router.get("/api/events/hosting", response_model=EventsOut)
+def get_hosting_events(
+    queries: EventQueries = Depends(),
+    account_data: dict = Depends(authenticator.get_current_account_data),
+):
+    hosting_list = {"events": queries.get_hosting_events(account_data["id"])}
+    print("********* HOSTING LIST *********", hosting_list)
+
+    return hosting_list
+    # try:
+    #     {"hosting_events": queries.get_hosting_events(account_data["id"])}
+    # except Exception:
+    #     print(Exception)
+
+
+@router.get("/api/events/attending", response_model=EventsOut)
+def get_attending_events(
+    queries: EventQueries = Depends(),
+    account_data: dict = Depends(authenticator.get_current_account_data),
+):
+    return {"events": queries.get_attending_events(account_data["id"])}
+
+
+################################# GET | PUT | DELETE #################################
 
 
 @router.get("/api/events/{event_id}", response_model=EventOut)
@@ -43,7 +77,7 @@ def update_event(
     event_in: EventIn,
     response: Response,
     account_data: dict = Depends(authenticator.get_current_account_data),
-    queries: EventQueries = Depends()
+    queries: EventQueries = Depends(),
 ):
     record = queries.update_event(event_id, event_in)
     if record is None:
@@ -56,7 +90,7 @@ def update_event(
 def delete_event(
     event_id: int,
     account_data: dict = Depends(authenticator.get_current_account_data),
-    queries: EventQueries = Depends()
+    queries: EventQueries = Depends(),
 ):
     queries.delete_event(event_id)
     return True
