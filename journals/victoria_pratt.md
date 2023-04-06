@@ -57,3 +57,9 @@ We finished seeding the database and merged the code to main.
 
 ### Monday, 4/3/2023
 We tried out using VSCode Live Share for the first time and it went well. We worked on the events routers and queries and got most of them done. We can't test our get_attendees function until we have attendees, we plan to do that tomorrow. I had issues with Docker not deleting containers, and had to completely uninstall and reinstall it.
+
+### Tuesday, 4/4/23
+Set up attendees routers and queries so that when a logged in user joins an event, a row is added to the attendees table (a list of all user-to-event relationships) that has the table row id, the user id, and the event id. When the user leaves the event's attendees list, the table row will be deleted using the row id. Tomorrow we will work on getting a list of all events associated with a user.
+
+### Wednesday, 4/5/23
+Finished backend code that can filter events by "attending" or "hosting." Next we will set up the 3rd party maps API. Met with Tyler to get advice about using the API, he also shared some good tips regarding how to approach the front-end design, and some mistakes to avoid (avoid slow loading times: compress high quality images, only load API data in once). Tomorrow we will begin implementing the maps API on the back-end.
