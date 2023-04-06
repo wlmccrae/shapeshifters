@@ -1,11 +1,34 @@
 from pydantic import BaseModel
 from queries.pool import pool
 from models.events import EventIn, EventOut
+import requests
+from keys import RADAR_API_KEY
+import json
+
 # from queries.attendees import get_attendees
 
 
 class EventQueries:
     def create_event(self, event: EventIn):
+        address = event.address_line1
+        print("address", address)
+        city = event.city
+        state = event.state
+
+        url = f'https://api.radar.io/v1/geocode/forward?query="{address}",{city},{state}'
+        headers = {"Authorization": RADAR_API_KEY}
+
+        resp = requests.get(url, headers=headers)
+        content = json.loads(resp.content)
+
+        try:
+            lat = content["addresses"][0]["latitude"]
+            lon = content["addresses"][0]["longitude"]
+
+        except Exception:
+            print("try failed")
+            return None
+
         with pool.connection() as conn:
             with conn.cursor() as db:
                 db.execute(
@@ -20,12 +43,14 @@ class EventQueries:
                         state,
                         zip_code,
                         country,
+                        lat,
+                        lon,
                         image_url,
                         start_datetime,
                         end_datetime,
                         event_description
                     )
-                    VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+                    VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
                     RETURNING id
                     """,
                     [
@@ -36,8 +61,10 @@ class EventQueries:
                         event.address_line2,
                         event.city,
                         event.state,
-                        event.country,
                         event.zip_code,
+                        event.country,
+                        lat,
+                        lon,
                         event.image_url,
                         event.start_datetime,
                         event.end_datetime,
@@ -62,7 +89,6 @@ class EventQueries:
                 for row in rows:
                     event = self.event_record_to_dict(row, db.description)
                     events.append(event)
-                print("EVENTS*****************", events)
                 return events
 
     def get_hosting_events(self, host_id):
@@ -73,14 +99,13 @@ class EventQueries:
                     SELECT * FROM events
                     WHERE host_id = %s
                     """,
-                    [host_id]
+                    [host_id],
                 )
                 events = []
                 rows = db.fetchall()
                 for row in rows:
                     event = self.event_record_to_dict(row, db.description)
                     events.append(event)
-                print("EVENTS*****************", events)
                 return events
 
     def get_attending_events(self, user_id):
@@ -92,14 +117,13 @@ class EventQueries:
                     JOIN attendees ON events.id = attendees.event_id
                     WHERE attendees.user_id = %s
                     """,
-                    [user_id]
+                    [user_id],
                 )
                 events = []
                 rows = db.fetchall()
                 for row in rows:
                     event = self.event_record_to_dict(row, db.description)
                     events.append(event)
-                print("EVENTS*****************", events)
                 return events
 
     def get_event(self, event_id):
@@ -112,9 +136,6 @@ class EventQueries:
                     """,
                     [event_id],
                 )
-                # attendees = self.get_attendees(2)
-                # print("ATTENDEES:", attendees)
-                # print("********************************")
                 row = db.fetchone()
                 return self.event_record_to_dict(row, db.description)
 
@@ -133,7 +154,7 @@ class EventQueries:
     def update_event(self, event_id, event_data):
         with pool.connection() as conn:
             with conn.cursor() as db:
-                params =[
+                params = [
                     event_data.event_name,
                     event_data.host_id,
                     event_data.event_type,
@@ -212,11 +233,8 @@ class EventQueries:
                 "start_datetime",
                 "end_datetime",
                 "event_description"
-                # "attendees",
             ]
             for i, column in enumerate(description):
-                # print(column.name)
-                # print(i)
                 if column.name in event_fields:
                     event[column.name] = row[i]
 
@@ -228,29 +246,5 @@ class EventQueries:
                     host[column.name] = row[i]
 
             event["host"] = host
-            # event["attendees"] = []
 
         return event
-
-    # # TODO: TEST THIS ONCE WE HAVE ATTENDEES
-    # def get_attendees(self, event_id):
-    #     with pool.connection() as conn:
-    #         with conn.cursor() as db:
-    #             db.execute(
-    #                 """
-    #                 SELECT * FROM attendees
-    #                 JOIN users ON users.id = attendees.user_id
-    #                 JOIN events ON events.id = attendees.event_id
-    #                 WHERE events.id = %s
-    #                 """,
-    #                 [event_id],
-    #             )
-    #             attendees = []
-    #             rows = db.fetchall()
-    #             for row in rows:
-    #                 for i, column in enumerate(db.description):
-    #                     print("i in get_attendees:", i)
-    #                     print("Column names in get_attendees:", column.name)
-    #                     if column.name == "user_id":
-    #                         attendees.append(row[i])
-    #     print("get attendees rows", rows)

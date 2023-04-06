@@ -30,7 +30,7 @@ for user in users:
         user_in = account.create(account=user_account, hashed_password=hashed_password)
         print("**************************USER_IN", user_in)
     except:
-        print(f"*******Error*******This user is not unique.")
+        print(f"*******Error*******User not created")
 
 for event in events:
     print(f"EVENT: {event}")
