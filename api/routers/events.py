@@ -41,11 +41,7 @@ def get_hosting_events(
     print("********* HOSTING LIST *********", hosting_list)
 
     return hosting_list
-    # try:
-    #     {"hosting_events": queries.get_hosting_events(account_data["id"])}
-    # except Exception:
-    #     print(Exception)
-
+    
 
 @router.get("/api/events/attending", response_model=EventsOut)
 def get_attending_events(

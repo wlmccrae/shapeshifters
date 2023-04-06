@@ -16,7 +16,6 @@ class EventIn(BaseModel):
     start_datetime: datetime
     end_datetime: datetime
     event_description: str
-    # attendees: list
 
 
 class EventOut(BaseModel):
@@ -30,11 +29,12 @@ class EventOut(BaseModel):
     state: str
     zip_code: str
     country: str
+    lat: float
+    lon: float
     image_url: str
     start_datetime: datetime
     end_datetime: datetime
     event_description: str
-    # attendees: list
 
 
 class EventsOut(BaseModel):

@@ -16,6 +16,7 @@ class AccountOut(BaseModel):
     first_name: str
     last_name: str
     zip_code: str
+    # lat and lon
 
 
 class AccountOutWithPassword(AccountOut):

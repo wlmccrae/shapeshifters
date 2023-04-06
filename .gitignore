@@ -2,6 +2,9 @@
 # Database
 api/database.py
 
+# API KEY
+api/keys.py
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
