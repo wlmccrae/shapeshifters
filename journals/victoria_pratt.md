@@ -42,24 +42,35 @@ We all joined a collab board on monday.com for our project, so that we we can ke
 ## Week 2
 
 ### Monday, 3/27/2023
+
 After we created our database tables, we worked for a bit on setting up the backend authentication, but then agreed it would be better to continue working on it after the authentication lecture tomorrow.
 
 ### Tuesday, 3/28/2023
+
 After the lecture we finished working on the authentication.
 
 ### Wednesday, 3/29/2023
+
 We worked on seeding the database with users and events to test our code.
 
 ### Thursday, 3/30/2023
+
 We finished seeding the database and merged the code to main.
 
 ## Week 3
 
 ### Monday, 4/3/2023
+
 We tried out using VSCode Live Share for the first time and it went well. We worked on the events routers and queries and got most of them done. We can't test our get_attendees function until we have attendees, we plan to do that tomorrow. I had issues with Docker not deleting containers, and had to completely uninstall and reinstall it.
 
 ### Tuesday, 4/4/23
+
 Set up attendees routers and queries so that when a logged in user joins an event, a row is added to the attendees table (a list of all user-to-event relationships) that has the table row id, the user id, and the event id. When the user leaves the event's attendees list, the table row will be deleted using the row id. Tomorrow we will work on getting a list of all events associated with a user.
 
 ### Wednesday, 4/5/23
+
 Finished backend code that can filter events by "attending" or "hosting." Next we will set up the 3rd party maps API. Met with Tyler to get advice about using the API, he also shared some good tips regarding how to approach the front-end design, and some mistakes to avoid (avoid slow loading times: compress high quality images, only load API data in once). Tomorrow we will begin implementing the maps API on the back-end.
+
+### Thursday, 4/6/23
+
+Finished implementing and testing the Radar API for our maps in the back-end. Trying to get started on the front-end but we are having issues installing Tailwind and getting it to work.
