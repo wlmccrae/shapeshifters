@@ -35,8 +35,10 @@ completed almost all of the back-end: events and attendees commpleted. We also p
 Back-end completed. We have filter events based on if a user is hosting/attending an event. We just have have to get out API set up for which ever map api we decide to utilize.
 
 4/6/23
+Took a bit to figure out he Map API, but we got it. We spent an absorbadent amount of time trying to figure out how to install tailwind... ended the day unsuccessful.
 
 4/7/23
+installed tailwind. developed a game plan for the break. created many branches and will tackle front-end auth, login, signup, logout, and our homepage (hopefully) over the break.
 
 ################################## SPRING BREAK|WK 4 ##################################
 
