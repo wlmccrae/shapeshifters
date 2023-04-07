@@ -170,6 +170,7 @@ class EventQueries:
                     event_data.event_description,
                     event_id,
                 ]
+                print("PARAMS", params)
                 db.execute(
                     """
                     UPDATE events
@@ -197,6 +198,8 @@ class EventQueries:
                     , state
                     , zip_code
                     , country
+                    , lat
+                    , lon
                     , image_url
                     , start_datetime
                     , end_datetime
@@ -207,11 +210,13 @@ class EventQueries:
 
                 record = None
                 row = db.fetchone()
+                print("****** ROW *******", row)
                 if row is not None:
                     record = {}
                     for i, column in enumerate(db.description):
                         record[column.name] = row[i]
 
+                print("****** RECORD *******", record)
                 return record
 
     def event_record_to_dict(self, row, description):
@@ -228,11 +233,13 @@ class EventQueries:
                 "city",
                 "state",
                 "country",
+                "lat",
+                "lon",
                 "zip_code",
                 "image_url",
                 "start_datetime",
                 "end_datetime",
-                "event_description"
+                "event_description",
             ]
             for i, column in enumerate(description):
                 if column.name in event_fields:
