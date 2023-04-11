@@ -31,6 +31,7 @@ Started to set up event get and create routes. Realized that in order to test ou
 Day 4, 3/30/23
 Added a try catch block to the users table to handle errors related to the unique constraint on all users in the users table. Continued to work on seeding the database with the event information. Ran into issues with the fields on event tables. Imported traceback to get a better understanding of the error and were able to debug the issues. Made a merge request for the seed_database branch.
 
+## Week 3
 Day 1
 Made a new events branch to start working on all routes and queries. Ran into bugs but made progress. Got get events and get event queries working.
 
