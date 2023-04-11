@@ -30,3 +30,18 @@ Started to set up event get and create routes. Realized that in order to test ou
 
 Day 4, 3/30/23
 Added a try catch block to the users table to handle errors related to the unique constraint on all users in the users table. Continued to work on seeding the database with the event information. Ran into issues with the fields on event tables. Imported traceback to get a better understanding of the error and were able to debug the issues. Made a merge request for the seed_database branch.
+
+Day 1
+Made a new events branch to start working on all routes and queries. Ran into bugs but made progress. Got get events and get event queries working.
+
+Day 2
+Continued to work on the back end to finish create_event query and add attendee routes and queries. Also added attendee models. Protected routes that will only be available to logged in users- post events, delete events, update events.  Added database.py to gitignore, but want to check that we have the correct file path. Made a new issue for filtered views of events for users to see events they are hosting and events they are attending.
+
+Day 3
+Created filtered events views so users are able to see events they are hosting and events they are attending separately. Researched apis to convert zip_codes and addresses into lat and long. Looked into Google API and Radar API. Met with Tyler for advice getting started with implementing the APIs and ideas for incorporating maps on the front end. Learned about react google maps.
+
+Day 4
+Added lat and log integration with Radar API to the backend. Started planning the frontend. Met with Tyler for help planning how to get started. Added images to use on the frontend. Tried to install Tailwind and ran into issues with the installation. Asked Tyler for help with debugging.
+
+Day 5
+Continued to work on the front end. Sought help with finishing installing Tailwind due to difficulties the previous evening. Tried to make a carousel page using a template from tailwind. Ran into issues making the buttons responsive. Created front end issues for the project. Merged api map branch into map. Merged changes installing Tailwind into main so that team members that would like can try to get a better understanding of tailwind over the spring break.
