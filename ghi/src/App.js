@@ -5,6 +5,7 @@
 // import Navbar from './Components/Navbar/Navbar';
 // import Carousel from './Components/Carousel/Carousel';
 import Login from './components/Login';
+import Logout from './components/Logout';
 import { useGetAccountQuery } from './services/auth';
 
 function App() {
@@ -21,7 +22,7 @@ function App() {
       {/* <LandingPage info={launch_info} />
       <Carousel /> */}
       <h1>Hey, {account?.account.first_name || 'Friend'}</h1>
-      {showLoginForm()}
+      {account ? <Logout /> : showLoginForm()}
     </>
 
 
