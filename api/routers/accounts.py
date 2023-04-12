@@ -7,7 +7,12 @@ router = APIRouter()
 
 
 @router.post("/api/accounts")
-async def create_account(info: AccountIn, request: Request, response: Response, accounts: AccountQueries = Depends()):
+async def create_account(
+    info: AccountIn,
+    request: Request,
+    response: Response,
+    accounts: AccountQueries = Depends()
+):
     print("info*******:", info)
     hashed_password = authenticator.hash_password(info.hashed_password)
     print("hashed_pw:*******", hashed_password)
@@ -24,3 +29,17 @@ async def create_account(info: AccountIn, request: Request, response: Response, 
     print("FORM:*******************", form)
     token = await authenticator.login(response, request, form, accounts)
     return AccountToken(account=account, **token.dict())
+
+@router.get("/token", response_model=AccountToken | None)
+async def get_token(
+    request: Request,
+    account: AccountOut = Depends(authenticator.try_get_current_account_data)
+) -> AccountToken | None:
+    print("AUTHENTICATOR COOKIE:", authenticator.cookie_name)
+    print("ACCOUNT IN GET_TOKEN:", account)
+    if account and authenticator.cookie_name in request.cookies:
+        return {
+            "access_token": request.cookies[authenticator.cookie_name],
+            "type": "Bearer",
+            "account": account,
+        }
