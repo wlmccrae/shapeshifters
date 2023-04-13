@@ -2,6 +2,7 @@ from fastapi import APIRouter, Request, Response, Depends, status, HTTPException
 from models.accounts import AccountIn, AccountOut, AccountForm, HttpError, AccountToken, DuplicateAccountError
 from queries.accounts import AccountQueries
 from authenticator import authenticator
+import traceback
 
 router = APIRouter()
 

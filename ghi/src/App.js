@@ -6,6 +6,7 @@
 // import Carousel from './Components/Carousel/Carousel';
 import Login from './components/Login';
 import Logout from './components/Logout';
+import Signup from './components/Signup';
 import { useGetAccountQuery } from './services/auth';
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
       <Carousel /> */}
       <h1>Hey, {account?.account.first_name || 'Friend'}</h1>
       {account ? <Logout /> : showLoginForm()}
+      <Signup />
     </>
 
 

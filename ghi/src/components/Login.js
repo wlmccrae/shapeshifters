@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { handleUsernameChange, handlePasswordChange, reset } from "../features/auth/loginSlice";
+import { handleEmailChange, handlePasswordChange, reset } from "../features/auth/loginSlice";
 import { useLoginMutation } from "../services/auth";
 
 const Login = () => {
@@ -12,8 +12,9 @@ const Login = () => {
         e.preventDefault();
         console.log('handleSubmit');
         console.log({fields});
-        login(fields);
-        dispatch(reset());
+        // const { email, password } = fields;
+        console.trace(login({fields}));
+        console.trace(dispatch(reset()));
     }
 
     return (
@@ -30,7 +31,7 @@ const Login = () => {
                   placeholder="Email"
                   className="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:ring-1 focus:outline-none focus:ring-indigo-600 rounded-md"
                   value={fields.username}
-                  onChange={(e) => dispatch(handleUsernameChange(e.target.value))
+                  onChange={(e) => dispatch(handleEmailChange(e.target.value))
                   }
                 ></input>
                 <label className="block mt-3 font semibold">Password</label>
@@ -38,7 +39,7 @@ const Login = () => {
                   type="password"
                   placeholder="password"
                   className="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:ring-1 focus:outline-none focus:ring-indigo-600 rounded-md"
-                  value={fields.paassword}
+                  value={fields.password}
                   onChange={(e) =>
                     dispatch(handlePasswordChange(e.target.value))
                   }

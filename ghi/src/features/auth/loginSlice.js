@@ -12,7 +12,7 @@ export const loginSlice = createSlice({
     name: 'login',
     initialState,
     reducers: {
-        handleUsernameChange: (state, action) => {
+        handleEmailChange: (state, action) => {
             console.log("Action.payload in loginSlice", action.payload)
             state.fields.username = action.payload
         },
@@ -23,6 +23,6 @@ export const loginSlice = createSlice({
     }
 })
 
-export const { handleUsernameChange, handlePasswordChange, reset } = loginSlice.actions
+export const { handleEmailChange, handlePasswordChange, reset } = loginSlice.actions;
 
 export default loginSlice.reducer
