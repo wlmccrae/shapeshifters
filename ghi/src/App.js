@@ -1,4 +1,4 @@
-// import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 // import { BrowserRouter, Routes, Route } from 'react-router-dom';
 // import LandingPage from './Components/LandingPage/LandingPage';
 // import './App.css';
@@ -7,29 +7,36 @@
 import Login from './components/Login';
 import Logout from './components/Logout';
 import Signup from './components/Signup';
+import Modal from './components/Modal';
 import { useGetAccountQuery } from './services/auth';
 
 function App() {
   const { data: account } = useGetAccountQuery()
-  console.log("ACCOUNT: ", {account});
+  const [showModal, setShowModal] = useState(false);
+  console.log("showmodal", showModal);
 
-  const showLoginForm = () => (
-    <Login />
-  )
-
+  const handleOnClose = () => setShowModal(false);
 
   return (
     <>
-      {/* <LandingPage info={launch_info} />
-      <Carousel /> */}
-      <h1>Hey, {account?.account.first_name || 'Friend'}</h1>
-      {account ? <Logout /> : showLoginForm()}
-      <Signup />
+      <div className="bg-conch-100 opacity">
+        <div className="max-w-3xl mx-auto">
+          <div className="text-center py-3">
+            <Modal onClose={handleOnClose} visible={showModal}/>
+            <button
+              type="submit"
+              onClick={() => setShowModal(true)}
+              className="mt-4 bg-morning-glory-500 text-white py-2 px-6 rounded-md hover:bg-morning-glory-600 align-center"
+            >
+              Modal Button
+            </button>
+            <h1>Hey, {account?.account.first_name || "Friend"}</h1>
+            {account ? <Logout /> : <Login />}
+            <Signup />
+          </div>
+        </div>
+      </div>
     </>
-
-
-
-
   );
 }
 
