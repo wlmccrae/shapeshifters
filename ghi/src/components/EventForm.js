@@ -184,8 +184,8 @@ const EventForm = () => {
             <input
               type="datetime"
               className="form-control"
-              id="start_time-field"
-              placeholder="Desc"
+              id="starttime-field"
+              placeholder="Start Time"
               tabIndex={1}
               value={fields.satrt_datetime}
               onChange={(e) => {
@@ -201,7 +201,7 @@ const EventForm = () => {
               type="datetime"
               className="form-control"
               id="endtime-field"
-              placeholder="Event 1"
+              placeholder="End Time"
               tabIndex={1}
               value={fields.end_time}
               onChange={(e) => {
