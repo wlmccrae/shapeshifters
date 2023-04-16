@@ -19,10 +19,10 @@ function App() {
 
   return (
     <>
-      <div className="bg-conch-100 opacity">
+      <div>
         <div className="max-w-3xl mx-auto">
           <div className="text-center py-3">
-            <Modal onClose={handleOnClose} visible={showModal}/>
+            <Modal onClose={handleOnClose} visible={showModal} login={<Login />}/>
             <button
               type="submit"
               onClick={() => setShowModal(true)}
@@ -30,9 +30,15 @@ function App() {
             >
               Modal Button
             </button>
-            <h1>Hey, {account?.account.first_name || "Friend"}</h1>
+            {/* <h1>Hey, {account?.account.first_name || "Friend"}</h1> */}
             {account ? <Logout /> : <Login />}
             <Signup />
+
+            <Modal onClose={handleOnClose} visible={showModal} >
+            <Login />
+            </ Modal>
+
+
           </div>
         </div>
       </div>
