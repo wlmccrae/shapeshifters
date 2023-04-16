@@ -8,6 +8,9 @@ import Login from './components/Login';
 import Logout from './components/Logout';
 import Signup from './components/Signup';
 import Modal from './components/Modal';
+import EventsCards from './components/EventsCard';
+import EventCard from './components/Event';
+import EventForm from './components/EventForm';
 import { useGetAccountQuery } from './services/auth';
 
 function App() {
@@ -22,7 +25,9 @@ function App() {
       <div>
         <div className="max-w-3xl mx-auto">
           <div className="text-center py-3">
-            <Modal onClose={handleOnClose} visible={showModal} login={<Login />}/>
+            <EventForm />
+            <EventsCards />
+            {/* <Modal onClose={handleOnClose} visible={showModal} login={<Login />}/>
             <button
               type="submit"
               onClick={() => setShowModal(true)}

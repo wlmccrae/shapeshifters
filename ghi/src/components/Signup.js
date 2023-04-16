@@ -16,6 +16,7 @@ const Signup = () => {
   const dispatch = useDispatch();
   const [signup] = useSignupMutation();
   const { fields } = useSelector((state) => state.signup);
+  console.log("FIELDS IN SIGNUP", fields)
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -100,7 +101,7 @@ const Signup = () => {
               >
                 Signup
               </button>
-              {/* <a href="#" className="text-sm hover:underline">Signup here</a> */}
+
             </div>
           </div>
         </form>
