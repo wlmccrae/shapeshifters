@@ -2,12 +2,12 @@ from pydantic import BaseModel
 from queries.pool import pool
 from models.events import EventIn, EventOut
 import requests
-from keys import RADAR_API_KEY
+import os
 import json
 
 # from queries.attendees import get_attendees
 
-
+RADAR_API_KEY = os.environ["RADAR_API_KEY"]
 class EventQueries:
     def create_event(self, event: EventIn):
         address = event.address_line1
