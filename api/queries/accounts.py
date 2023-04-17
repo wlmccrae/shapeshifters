@@ -35,6 +35,7 @@ class AccountQueries:
 
                 record = None
                 row = db.fetchone()
+                print("row from get method in accounts.py:", row)
                 if row is not None:
                     record = {}
                     for i, column in enumerate(db.description):
