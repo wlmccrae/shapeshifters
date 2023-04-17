@@ -74,3 +74,13 @@ Finished backend code that can filter events by "attending" or "hosting." Next w
 ### Thursday, 4/6/23
 
 Finished implementing and testing the Radar API for our maps in the back-end. Trying to get started on the front-end but we are having issues installing Tailwind and getting it to work.
+
+### Friday, 4/7/23
+
+Got tailwind working, started working on the carousel for the homepage but ran into bugs. Putting that on the back burner for now.
+
+## Week 5
+
+### Monday, 4/17/23
+
+Debugged create form for events, got event cards with images to display, started implementation of nav bar. Discussed separating into smaller groups, planning to split up the work tomorrow morning during stand-up.
