@@ -35,7 +35,6 @@ for user in users:
 for event in events:
     print(f"EVENT: {event}")
     event_row = EventIn(
-        host_id=event["host_id"],
         event_name=event["event_name"],
         event_type=event["event_type"],
         address_line1=event["address_line1"],
@@ -48,13 +47,12 @@ for event in events:
         start_datetime=event["start_datetime"],
         end_datetime=event["end_datetime"],
         event_description=event["event_description"]
-        # attendees=event["attendees"]
     )
     new_event = EventQueries()
     print(f"New Event: {new_event}")
     # Ask instructor for best practices using try/except.
     try:
-        event_in = new_event.create_event(event=event_row)
+        event_in = new_event.create_event(event=event_row, host_id=event["host_id"])
         print("**************************EVENT_IN", event_in)
     except Exception as e:
         print(f"*******Error*******Event not created")
