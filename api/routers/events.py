@@ -16,7 +16,7 @@ def create_event(
     queries: EventQueries = Depends(),
     account_data: dict = Depends(authenticator.get_current_account_data),
 ):
-    return queries.create_event(event)
+    return queries.create_event(event, account_data["id"])
 
 
 ################################# GET ALL EVENTS #################################
@@ -41,7 +41,7 @@ def get_hosting_events(
     print("********* HOSTING LIST *********", hosting_list)
 
     return hosting_list
-    
+
 
 @router.get("/api/events/attending", response_model=EventsOut)
 def get_attending_events(

@@ -3,7 +3,6 @@ from datetime import datetime
 
 
 class EventIn(BaseModel):
-    host_id: int
     event_name: str
     event_type: str
     address_line1: str

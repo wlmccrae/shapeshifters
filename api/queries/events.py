@@ -9,7 +9,7 @@ import json
 
 RADAR_API_KEY = os.environ["RADAR_API_KEY"]
 class EventQueries:
-    def create_event(self, event: EventIn):
+    def create_event(self, event: EventIn, host_id):
         address = event.address_line1
         print("address", address)
         city = event.city
@@ -54,7 +54,7 @@ class EventQueries:
                     RETURNING id
                     """,
                     [
-                        event.host_id,
+                        host_id,
                         event.event_name,
                         event.event_type,
                         event.address_line1,
