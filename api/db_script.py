@@ -30,12 +30,12 @@ for user in users:
         user_in = account.create(account=user_account, hashed_password=hashed_password)
         print("**************************USER_IN", user_in)
     except:
-        print(f"*******Error*******This user is not unique.")
+        print(f"*******Error*******User not created")
 
 for event in events:
     print(f"EVENT: {event}")
+    # print(f"HOST ID: {event["host_id"]}")
     event_row = EventIn(
-        host_id=event["host_id"],
         event_name=event["event_name"],
         event_type=event["event_type"],
         address_line1=event["address_line1"],
@@ -51,10 +51,10 @@ for event in events:
         # attendees=event["attendees"]
     )
     new_event = EventQueries()
-    print(f"New Event: {new_event}")
+    print(f"New Event: {event_row}")
     # Ask instructor for best practices using try/except.
     try:
-        event_in = new_event.create_event(event=event_row)
+        event_in = new_event.create_event(event=event_row, host_id=event["host_id"])
         print("**************************EVENT_IN", event_in)
     except Exception as e:
         print(f"*******Error*******Event not created")

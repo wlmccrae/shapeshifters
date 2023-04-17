@@ -35,6 +35,8 @@ steps = [
             state VARCHAR(100) NOT NULL,
             zip_code VARCHAR(100) NOT NULL,
             country VARCHAR(100) NOT NULL,
+            lat DECIMAL(9,6) NOT NULL,
+            lon DECIMAL(9,6) NOT NULL,
             event_description TEXT NOT NULL
         );
         """,

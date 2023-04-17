@@ -11,6 +11,7 @@ services:
       WAIT_HOSTS: db:5432
       PORT: 8000
       SIGNING_KEY: ${SIGNING_KEY}
+      RADAR_API_KEY: ${RADAR_API_KEY}
       WAIT_BEFORE: 5
       WAIT_TIMEOUT: 60
     ports:
@@ -40,4 +41,4 @@ services:
       NODE_ENV: development
       HOST: "0.0.0.0"
       PUBLIC_URL: http://localhost:3000
-      REACT_APP_SAMPLE_SERVICE_API_HOST: http://localhost:8000
+      REACT_APP_API_HOST: http://localhost:8000

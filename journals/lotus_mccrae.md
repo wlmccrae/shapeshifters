@@ -29,3 +29,9 @@ Added zip_code column to users table. Coded routes and queries to list events th
 
 6 April 2023
 Using Radar API to get lat and lon for each event when it is created.
+
+5 April 2023
+Added zip_code column to users table. Coded routes and queries to list events the logged in user is hosting or attending.
+
+6 April 2023
+Using Radar API to get lat and lon for each event when it is created.
