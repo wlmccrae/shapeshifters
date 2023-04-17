@@ -11,7 +11,6 @@ RADAR_API_KEY = os.environ["RADAR_API_KEY"]
 class EventQueries:
     def create_event(self, event: EventIn, host_id):
         address = event.address_line1
-        print("address", address)
         city = event.city
         state = event.state
 
@@ -26,7 +25,7 @@ class EventQueries:
             lon = content["addresses"][0]["longitude"]
 
         except Exception:
-            print("try failed")
+            print("Fetching lat and lon failed")
             return None
 
         with pool.connection() as conn:
