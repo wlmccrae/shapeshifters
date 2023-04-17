@@ -22,7 +22,15 @@ const EventForm = () => {
     const [createEvent] = useCreateEventMutation();
     const { fields } = useSelector((state) => state.newEvent);
     console.log("fields", fields)
-    console.log("HELLOOOOOOO")
+    // console.log("HELLOOOOOOO")
+
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      console.log("ON SUBMIT, FIELDS IN EVENTFORM:", fields);
+      console.log(createEvent({fields}));
+      dispatch(reset());
+    }
+
 
     return (
       <div className="max-w-sm rounded overflow-hidden shadow-lg">
@@ -178,16 +186,16 @@ const EventForm = () => {
             />
           </div>
           <div>
-            <label htmlFor="description-field" className="form-label">
+            <label htmlFor="starttime-field" className="form-label">
               Start Time
             </label>
             <input
-              type="datetime"
+              type="datetime-local"
               className="form-control"
               id="starttime-field"
               placeholder="Start Time"
               tabIndex={1}
-              value={fields.satrt_datetime}
+              value={fields.start_datetime}
               onChange={(e) => {
                 dispatch(handleStartTimeChange(e.target.value));
               }}
@@ -198,19 +206,19 @@ const EventForm = () => {
               End Time
             </label>
             <input
-              type="datetime"
+              type="datetime-local"
               className="form-control"
               id="endtime-field"
               placeholder="End Time"
               tabIndex={1}
-              value={fields.end_time}
+              value={fields.end_datetime}
               onChange={(e) => {
                 dispatch(handleEndTimeChange(e.target.value));
               }}
             />
           </div>
           <div>
-            <label htmlFor="name-field" className="form-label">
+            <label htmlFor="description-field" className="form-label">
               Description
             </label>
             <input
@@ -219,17 +227,17 @@ const EventForm = () => {
               id="description-field"
               placeholder="Description"
               tabIndex={1}
-              value={fields.description}
+              value={fields.event_description}
               onChange={(e) => {
                 dispatch(handleEventDescriptionChange(e.target.value));
               }}
             />
           </div>
           <div>
-            <button className="btn btn-success">Submit</button>
+            <button className="btn btn-success" onClick={handleSubmit}>Submit</button>
             {` `}
             <button
-              className="btn btn-info"
+              className="btn btn-info btn-danger"
               onClick={(e) => {
                 e.preventDefault();
                 dispatch(reset());

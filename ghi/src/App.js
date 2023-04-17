@@ -1,20 +1,20 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 // import { BrowserRouter, Routes, Route } from 'react-router-dom';
 // import LandingPage from './Components/LandingPage/LandingPage';
 // import './App.css';
 // import Navbar from './Components/Navbar/Navbar';
 // import Carousel from './Components/Carousel/Carousel';
-import Login from './components/Login';
-import Logout from './components/Logout';
-import Signup from './components/Signup';
-import Modal from './components/Modal';
-import EventsCards from './components/EventsCard';
-import EventCard from './components/Event';
-import EventForm from './components/EventForm';
-import { useGetAccountQuery } from './services/auth';
+import Login from "./components/Login";
+import Logout from "./components/Logout";
+import Signup from "./components/Signup";
+import Modal from "./components/Modal";
+import EventsCards from "./components/EventsCards";
+import EventCard from "./components/EventCard";
+import EventForm from "./components/EventForm";
+import { useGetAccountQuery } from "./services/auth";
 
 function App() {
-  const { data: account } = useGetAccountQuery()
+  const { data: account } = useGetAccountQuery();
   const [showModal, setShowModal] = useState(false);
   console.log("showmodal", showModal);
 
@@ -39,11 +39,9 @@ function App() {
             {account ? <Logout /> : <Login />}
             <Signup />
 
-            <Modal onClose={handleOnClose} visible={showModal} >
-            <Login />
-            </ Modal>
-
-
+            <Modal onClose={handleOnClose} visible={showModal}>
+              <Login />
+            </Modal>
           </div>
         </div>
       </div>
@@ -53,14 +51,15 @@ function App() {
 
 export default App;
 
-
-{/* <BrowserRouter>
-  <App />
+{
+  /* <BrowserRouter>
   <Navbar />
+  <App />
 
   <Routes>
   <Route path="/" element= {<LandingPage />} />
   <Routes path="/login" element={<LoginForm />} />
   </Routes>
 
-  </BrowserRouter> */}
+  </BrowserRouter> */
+}

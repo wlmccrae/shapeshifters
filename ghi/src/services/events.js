@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const eventsApi = createApi({
   reducerPath: "eventsApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: `${process.env.REACT_APP_SAMPLE_SERVICE_API_HOST}`,
+    baseUrl: `${process.env.REACT_APP_API_HOST}`,
     credentials: "include"
   }),
   tagTypes: ['Events'],
@@ -21,10 +21,11 @@ export const eventsApi = createApi({
         }
     }),
     createEvent: builder.mutation({
-        query: (body) =>({
+        query: (body) => ({
             url:'/api/events',
             method:'POST',
-            body
+            body: body.fields,
+            credentials: "include",
         }),
         invalidateTags: [{type: 'Events', id: 'LIST'}]
     }),
