@@ -11,13 +11,13 @@ function NavBar() {
         <div class="text-sm lg:flex-grow">
           <a
             href="#responsive-header"
-            class="block mt-4 lg:inline-block lg:mt-0 text-white hover:font-bold mr-4"
+            class="block mt-4 lg:inline-block lg:mt-0 text-gun-powder-600 hover:font-bold mr-4"
           >
             Your Events
           </a>
           <a
             href="#responsive-header"
-            class="block mt-4 lg:inline-block lg:mt-0 text-white hover:font-bold mr-4"
+            class="block mt-4 lg:inline-block lg:mt-0 text-gun-powder-600 hover:font-bold mr-4"
           >
             Create Event
           </a>
@@ -26,7 +26,7 @@ function NavBar() {
           <div>
             <a
               href="#"
-              class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-morning-glory-800 hover:bg-white mt-4 lg:mt-0"
+              class="inline-block text-sm px-4 py-2 leading-none border rounded bg-jet-stream-600 text-gun-powder-600 border-jet-stream-600 hover:border-transparent hover:text-gun-powder-800 hover:bg-jet-stream-300 mt-4 lg:mt-0"
             >
               Logout
             </a>
@@ -36,24 +36,24 @@ function NavBar() {
     );
 
     const notLoggedIn = () => (
-        <div className='flex space-x-4'>
-            <div>
-              <a
-                href="#"
-                class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-morning-glory-800 hover:bg-slate mt-4 lg:mt-0"
-              >
-                Sign Up
-              </a>
-            </div>
-            <div>
-              <a
-                href="#"
-                class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-morning-glory-800 hover:bg-white mt-4 lg:mt-0"
-              >
-                Login
-              </a>
-            </div>
-          </div>
+      <div className="flex space-x-4">
+        <div>
+          <a
+            href="#"
+            class="inline-block text-sm px-4 py-2 leading-none border rounded bg-jet-stream-600 border-jet-stream-600 text-gun-powder-600 hover:border-transparent hover:text-gun-powder-800 hover:bg-jet-stream-300 mt-4 lg:mt-0"
+          >
+            Sign Up
+          </a>
+        </div>
+        <div>
+          <a
+            href="#"
+            class="inline-block text-sm px-4 py-2 leading-none border rounded bg-jet-stream-600 text-gun-powder-600 border-jet-stream-600 hover:border-transparent hover:text-gun-powder-800 hover:bg-jet-stream-300 mt-4 lg:mt-0"
+          >
+            Login
+          </a>
+        </div>
+      </div>
     );
 
   return (

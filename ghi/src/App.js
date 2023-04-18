@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import './App.css';
 import NavBar from "./components/NavBar";
+import EventsCards from "./components/EventsCards";
 import { useGetAccountQuery } from "./services/auth";
 
 function App() {
