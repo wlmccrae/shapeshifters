@@ -21,13 +21,10 @@ const EventForm = () => {
     const dispatch = useDispatch();
     const [createEvent] = useCreateEventMutation();
     const { fields } = useSelector((state) => state.newEvent);
-    console.log("fields", fields)
-    // console.log("HELLOOOOOOO")
 
     const handleSubmit = (e) => {
       e.preventDefault();
-      console.log("ON SUBMIT, FIELDS IN EVENTFORM:", fields);
-      console.log(createEvent({fields}));
+      createEvent({fields});
       dispatch(reset());
     }
 

@@ -16,7 +16,6 @@ import { useGetAccountQuery } from "./services/auth";
 function App() {
   const { data: account } = useGetAccountQuery();
   const [showModal, setShowModal] = useState(false);
-  console.log("showmodal", showModal);
 
   const handleOnClose = () => setShowModal(false);
 

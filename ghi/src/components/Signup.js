@@ -16,21 +16,16 @@ const Signup = () => {
   const dispatch = useDispatch();
   const [signup] = useSignupMutation();
   const { fields } = useSelector((state) => state.signup);
-  console.log("FIELDS IN SIGNUP", fields)
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("handleSubmit in Signup");
-    console.log("fields in handlesubmit", fields)
     if ( fields.password !== fields.password_confirmation) {
       dispatch(error("PASSWORDS DO NOT MATCH. TRY AGAIN!"))
       return;
     }
-    // const { first_name, last_name, zip_code, email, password } = fields
-    console.log("fields after destructuring", fields);
-    console.trace(signup({
+    signup({
       fields
-    }));
+    });
     dispatch(reset());
   };
 
@@ -43,7 +38,6 @@ const Signup = () => {
         <form onSubmit={handleSubmit}>
           <div className="px-8 py-6">
             <div className="flex justify-between items-baseline">
-              {/* <label className="block font semibold">First Name</label> */}
               <input
                 type="text"
                 placeholder="First Name"
@@ -53,7 +47,6 @@ const Signup = () => {
                   dispatch(handleFirstNameChange(e.target.value))
                 }
               ></input>
-              {/* <label className="block font semibold">Last Name</label> */}
               <input
                 type="text"
                 placeholder="Last Name"
@@ -62,7 +55,6 @@ const Signup = () => {
                 onChange={(e) => dispatch(handleLastNameChange(e.target.value))}
               ></input>
             </div>
-            {/* <label className="block font semibold">Email</label> */}
             <input
               type="text"
               placeholder="Email"
@@ -70,7 +62,6 @@ const Signup = () => {
               value={fields.email}
               onChange={(e) => dispatch(handleEmailChange(e.target.value))}
             ></input>
-            {/* <label className="block mt-3 font semibold">Password</label> */}
             <input
               type="text"
               placeholder="Zip Code"
