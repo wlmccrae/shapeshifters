@@ -27,7 +27,7 @@ function App() {
           <div className="text-center py-3">
             <EventForm />
             <EventsCards />
-            {/* <Modal onClose={handleOnClose} visible={showModal} login={<Login />}/>
+            <Modal onClose={handleOnClose} visible={showModal} login={<Login />}/>
             <button
               type="submit"
               onClick={() => setShowModal(true)}
@@ -35,13 +35,23 @@ function App() {
             >
               Modal Button
             </button>
-            {/* <h1>Hey, {account?.account.first_name || "Friend"}</h1> */}
+            <h1>Hey, {account?.account.first_name || "Friend"}</h1>
             {account ? <Logout /> : <Login />}
             <Signup />
 
-            <Modal onClose={handleOnClose} visible={showModal}>
-              <Login />
+            <Modal onClose={handleOnClose} visible={showModal} component={<Signup />}>
             </Modal>
+
+            {/* <BrowserRouter>
+                  <Navbar />
+                  <App />
+
+                  <Routes>
+                  <Route path="/" element= {<LandingPage />} />
+                  <Routes path="/login" element={<LoginForm />} />
+                  </Routes>
+
+              </BrowserRouter> */}
           </div>
         </div>
       </div>
@@ -50,16 +60,3 @@ function App() {
 }
 
 export default App;
-
-{
-  /* <BrowserRouter>
-  <Navbar />
-  <App />
-
-  <Routes>
-  <Route path="/" element= {<LandingPage />} />
-  <Routes path="/login" element={<LoginForm />} />
-  </Routes>
-
-  </BrowserRouter> */
-}
