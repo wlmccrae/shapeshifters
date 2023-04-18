@@ -8,8 +8,8 @@ import {
     handleZipCodeChange,
     handlePasswordChange,
     handlePasswordConfirmationChange,
-    showModal,
-    hideModal,
+    showSignupModal,
+    hideSignupModal,
     error,
     reset,
 } from "../features/auth/signupSlice"
@@ -18,7 +18,7 @@ import Modal from "./Modal";
 const Signup = () => {
   const dispatch = useDispatch();
   const [signup] = useSignupMutation();
-  const { fields, showModal, hideModal } = useSelector((state) => state.signup);
+  const { fields, showSignupModal, hideSignupModal } = useSelector((state) => state.signup);
 
   const handleSubmit = (e) => {
     e.preventDefault();

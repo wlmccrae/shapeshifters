@@ -14,11 +14,13 @@ import EventForm from "./components/EventForm";
 import { useGetAccountQuery } from "./services/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { showSignupModal, hideSignupModal } from './features/auth/signupSlice'
+import { showLoginModal, hideLoginModal } from "./features/auth/loginSlice";
 
 function App() {
   const dispatch = useDispatch();
   const { data: account } = useGetAccountQuery();
-  const { modal } = useSelector(state => state.signup)
+  const { signupModal } = useSelector(state => state.signup)
+  const { loginModal } = useSelector(state => state.login)
   // const [showModal, setShowModal] = useState(false);
   // console.log("showmodal", showModal);
   // const handleOnClick = () => dispatch(showModal());
@@ -29,22 +31,34 @@ function App() {
       <div>
         <div className="max-w-3xl mx-auto">
           <div className="text-center py-3">
-            <EventForm />
-            <EventsCards />
-            {/* <Modal visible={showModal} onClose={hideModal} ></Modal> */}
             <button
               type="submit"
-              // // onClick={() => setShowModal(true)}
-              // onClick={() => handleOnClick}
               onClick={() => dispatch(showSignupModal())}
               className="mt-4 bg-morning-glory-500 text-white py-2 px-6 rounded-md hover:bg-morning-glory-600 align-center"
             >
-              Modal Button
+              Signup Button
             </button>
+            <Modal
+              visible={signupModal}
+              onClose={() => dispatch(hideSignupModal())}
+              component={<Signup />}
+            />
             <h1>Hey, {account?.account.first_name || "Friend"}</h1>
             {account ? <Logout /> : <Login />}
-            <Modal visible={modal} onClose={() => dispatch(hideSignupModal())} component={<Signup />}/>
-
+            <button
+              type="submit"
+              onClick={() => dispatch(showLoginModal())}
+              className="mt-4 bg-morning-glory-500 text-white py-2 px-6 rounded-md hover:bg-morning-glory-600 align-center"
+            >
+              Login Button
+            </button>
+            <Modal
+              visible={loginModal}
+              onClose={() => dispatch(hideLoginModal())}
+              component={<Login />}
+            />
+            <EventForm />
+            <EventsCards />
             {/* <BrowserRouter>
                   <Navbar />
                   <App />

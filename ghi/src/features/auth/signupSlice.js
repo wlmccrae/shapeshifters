@@ -11,7 +11,7 @@ const initialState = {
         password_confirmation: ''
     },
     errorMessage: null,
-    modal: false,
+    signupModal: false,
 };
 
 export const signupSlice = createSlice({
@@ -46,10 +46,10 @@ export const signupSlice = createSlice({
                 state.errorMessage = action.payload
             },
             showSignupModal: (state) => {
-                state.modal = true
+                state.signupModal = true
             },
             hideSignupModal: (state) => {
-                state.modal = false
+                state.signupModal = false
             },
             reset: () => initialState
         }

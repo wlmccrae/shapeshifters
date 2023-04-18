@@ -2,32 +2,27 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { handleEmailChange, handlePasswordChange, reset } from "../features/auth/loginSlice";
 import { useLoginMutation } from "../services/auth";
+import { showLoginModal, hideLoginModal } from "../features/auth/loginSlice";
 import Modal from "./Modal"
 
 const Login = () => {
     const dispatch = useDispatch()
     const [login] = useLoginMutation()
-    const { fields } = useSelector(state => state.login)
+    const { fields, showLoginModal, hideLoginModal } = useSelector(state => state.login)
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log('handleSubmit');
-        console.log({fields});
-        // const { email, password } = fields;
-        console.trace(login({fields}));
-        
-        console.trace(dispatch(reset()));
+        login({fields});
+        dispatch(reset());
     }
 
     return (
-      <Modal>
         <div className="relative py-3 sm:max-w-xl sm:mx-auto">
           <div className="mt-4 bg-white shadow-md rounded-lg">
             <div className="h-2 bg-morning-glory-500 rounded-t-md"></div>
             <h2 className="text-2xl text-white bg-morning-glory-500 pb-3">
               Login to your account
             </h2>
-            {/* <div className="h-2 bg-morning-glory-500"></div> */}
             <form onSubmit={handleSubmit}>
               <div className="px-8 py-6">
                 <label className="block font-light semibold float-left">
@@ -59,14 +54,11 @@ const Login = () => {
                   >
                     Login
                   </button>
-                  {/* <a href="#" className="text-sm hover:underline">Signup here</a> */}
                 </div>
               </div>
             </form>
           </div>
         </div>
-      </Modal>
-      // </div>
     );
 }
 
