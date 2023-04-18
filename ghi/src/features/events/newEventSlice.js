@@ -18,7 +18,6 @@ const initialState = {
   errorMessage: null
 };
 
-console.log('INITIAL STATE', initialState)
 export const newEventSlice = createSlice({
   name: "event",
   initialState,

@@ -12,13 +12,17 @@ import EventsCards from "./components/EventsCards";
 import EventCard from "./components/EventCard";
 import EventForm from "./components/EventForm";
 import { useGetAccountQuery } from "./services/auth";
+import { useDispatch, useSelector } from "react-redux";
+import { showSignupModal, hideSignupModal } from './features/auth/signupSlice'
 
 function App() {
+  const dispatch = useDispatch();
   const { data: account } = useGetAccountQuery();
-  const [showModal, setShowModal] = useState(false);
-  console.log("showmodal", showModal);
-
-  const handleOnClose = () => setShowModal(false);
+  const { modal } = useSelector(state => state.signup)
+  // const [showModal, setShowModal] = useState(false);
+  // console.log("showmodal", showModal);
+  // const handleOnClick = () => dispatch(showModal());
+  // const handleOnClose = () => dispatch(hideModal());
 
   return (
     <>
@@ -27,20 +31,19 @@ function App() {
           <div className="text-center py-3">
             <EventForm />
             <EventsCards />
-            <Modal onClose={handleOnClose} visible={showModal} login={<Login />}/>
+            {/* <Modal visible={showModal} onClose={hideModal} ></Modal> */}
             <button
               type="submit"
-              onClick={() => setShowModal(true)}
+              // // onClick={() => setShowModal(true)}
+              // onClick={() => handleOnClick}
+              onClick={() => dispatch(showSignupModal())}
               className="mt-4 bg-morning-glory-500 text-white py-2 px-6 rounded-md hover:bg-morning-glory-600 align-center"
             >
               Modal Button
             </button>
             <h1>Hey, {account?.account.first_name || "Friend"}</h1>
             {account ? <Logout /> : <Login />}
-            <Signup />
-
-            <Modal onClose={handleOnClose} visible={showModal} component={<Signup />}>
-            </Modal>
+            <Modal visible={modal} onClose={() => dispatch(hideSignupModal())} component={<Signup />}/>
 
             {/* <BrowserRouter>
                   <Navbar />

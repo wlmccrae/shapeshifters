@@ -10,7 +10,8 @@ const initialState = {
         hashed_password: '',
         password_confirmation: ''
     },
-    errorMessage: null
+    errorMessage: null,
+    modal: false,
 };
 
 export const signupSlice = createSlice({
@@ -44,6 +45,12 @@ export const signupSlice = createSlice({
             error: (state, action) => {
                 state.errorMessage = action.payload
             },
+            showSignupModal: (state) => {
+                state.modal = true
+            },
+            hideSignupModal: (state) => {
+                state.modal = false
+            },
             reset: () => initialState
         }
 })
@@ -55,6 +62,8 @@ export const {
     handleZipCodeChange,
     handlePasswordChange,
     handlePasswordConfirmationChange,
+    showSignupModal,
+    hideSignupModal,
     reset,
     error
 } = signupSlice.actions;
