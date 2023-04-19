@@ -1,49 +1,32 @@
 import './App.css';
 import { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-// import { AuthProvider } from "@galvanize-inc/jwtdown-for-react";
-import Navbar from "./components/NavBar"
-// import Footer from"./components/Footer"
-import LandingPage from "./components/landingpage/LandingPage"
+// import { BrowserRouter, Routes, Route } from 'react-router-dom';
+// import LandingPage from './Components/LandingPage/LandingPage';
+// import './App.css';
+// import Navbar from './Components/Navbar/Navbar';
+// import Carousel from './Components/Carousel/Carousel';
 import Login from "./components/Login";
 import Logout from "./components/Logout";
 import Signup from "./components/Signup";
 import Modal from "./components/Modal";
 import EventsCards from "./components/EventsCards";
-import EventCard from "./components/EventCard";
-import EventForm from "./components/EventForm";
 import { useGetAccountQuery } from "./services/auth";
 
 function App() {
   const { data: account } = useGetAccountQuery();
   const [showModal, setShowModal] = useState(false);
-  console.log("showmodal", showModal);
 
   const handleOnClose = () => setShowModal(false);
 
 
   return (
     <>
-      <BrowserRouter>
-        <Navbar />
-          <div className="container">
-            <Routes>
-              <Route path="/" element={<LandingPage />} />
-            </Routes>
-          </div>
-      </BrowserRouter>
-    </>
-  );
-}
-
-/*
-{
       <div>
         <div className="max-w-3xl mx-auto">
           <div className="text-center py-3">
             <EventForm />
             <EventsCards />
-            <Modal onClose={handleOnClose} visible={showModal} login={<Login />}/>
+            {/* <Modal onClose={handleOnClose} visible={showModal} login={<Login />}/>
             <button
               type="submit"
               onClick={() => setShowModal(true)}
@@ -51,7 +34,7 @@ function App() {
             >
               Modal Button
             </button>
-            <h1>Hey, {account?.account.first_name || "Friend"}</h1>
+            {/* <h1>Hey, {account?.account.first_name || "Friend"}</h1> */}
             {account ? <Logout /> : <Login />}
             <Signup />
 
@@ -61,6 +44,8 @@ function App() {
           </div>
         </div>
       </div>
+    </>
+  );
 }
 */
 

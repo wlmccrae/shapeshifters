@@ -6,6 +6,18 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        "jet-stream": {
+          50: "#fcfdfd",
+          100: "#f9fbfb",
+          200: "#eff6f5",
+          300: "#e5f0ef",
+          400: "#d2e4e3",
+          500: "#bfd9d7",
+          600: "#acc3c2",
+          700: "#8fa3a1",
+          800: "#738281",
+          900: "#5e6a69",
+        },
         "gulf-stream": {
           50: "#f9fbfb",
           100: "#f3f8f7",
@@ -30,7 +42,7 @@ module.exports = {
           800: "#545458",
           900: "#454548",
         },
-        "conch": {
+        conch: {
           50: "#fcfdfd",
           100: "#f9fbfb",
           200: "#f1f5f4",
