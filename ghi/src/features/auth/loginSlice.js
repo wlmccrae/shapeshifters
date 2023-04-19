@@ -14,7 +14,6 @@ export const loginSlice = createSlice({
   initialState,
   reducers: {
     handleEmailChange: (state, action) => {
-      console.log("Action.payload in loginSlice", action.payload);
       state.fields.username = action.payload;
     },
     handlePasswordChange: (state, action) => {

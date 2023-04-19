@@ -1,4 +1,4 @@
-function Modal({ visible, onClose, component }) {
+function Modal({ visible, onClose, children }) {
   const handleOnClose = (e) => {
     if (e.target.id === "modal-container") onClose();
   };
@@ -11,7 +11,7 @@ function Modal({ visible, onClose, component }) {
       onClick={handleOnClose}
       className="fixed z-10 inset-0 bg-black bg-opacity-30 backdrop-blur-sm flex justify-center items-center"
     >
-      <div>{component}</div>
+      <div>{children}</div>
     </div>
   );
 }
