@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import "./App.css";
 import Nav from "./components/Nav";
 import EventsCards from "./components/EventsCards";
+import EventForm from "./components/EventForm";
 import { useGetAccountQuery } from "./services/auth";
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
   return (
     <>
       <Nav />
+      <EventForm />
     </>
   );
 }
