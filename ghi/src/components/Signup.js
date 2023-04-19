@@ -19,9 +19,11 @@ const Signup = () => {
   const [signup] = useSignupMutation();
   const { fields, signupModal } = useSelector((state) => state.signup);
 
+  console.log("FIELDS HASHED_PASSWORD:", fields.hashed_password)
+  console.log("FIELDS PASSWORD:", fields.password)
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (fields.password !== fields.password_confirmation) {
+    if (fields.hashed_password !== fields.password_confirmation) {
       dispatch(error("PASSWORDS DO NOT MATCH. TRY AGAIN!"));
       return;
     }
@@ -82,7 +84,7 @@ const Signup = () => {
                 type="password"
                 placeholder="Password"
                 className="border w-full h-5 px-3 py-5 mt-4 hover:outline-none focus:ring-1 focus:outline-none focus:ring-morning-glory-600 rounded-md"
-                value={fields.password}
+                value={fields.hashed_password}
                 onChange={(e) => dispatch(handlePasswordChange(e.target.value))}
               ></input>
               <input
