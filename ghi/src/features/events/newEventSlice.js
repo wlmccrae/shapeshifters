@@ -24,11 +24,9 @@ export const newEventSlice = createSlice({
   reducers: {
     handleEventNameChange: (state, action) => {
       state.fields.event_name = action.payload;
-      console.log("** Event Name ** payload in EventSlice", action.payload)
     },
     handleEventTypeChange: (state, action) => {
       state.fields.event_type = action.payload;
-      console.log("** EVENT TYPE ** payload in EVENTSlice", action.payload)
     },
     handleAddress1Change: (state, action) => {
       state.fields.address_line1 = action.payload;

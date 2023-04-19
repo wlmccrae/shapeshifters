@@ -1,12 +1,21 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
+<<<<<<< HEAD
     fields: {
         username: '',
         password: ''
     },
     errorMessage: null,
     loginModal: false,
+=======
+  fields: {
+    username: "",
+    password: "",
+  },
+  errorMessage: null,
+  loginModal: false,
+>>>>>>> 5a62864c7b761f18a771bb566ed708bef75ee31f
 };
 
 export const loginSlice = createSlice({
@@ -31,11 +40,19 @@ export const loginSlice = createSlice({
 });
 
 export const {
+<<<<<<< HEAD
     handleEmailChange,
     handlePasswordChange,
     showLoginModal,
     hideLoginModal,
     reset
+=======
+  handleEmailChange,
+  handlePasswordChange,
+  showLoginModal,
+  hideLoginModal,
+  reset,
+>>>>>>> 5a62864c7b761f18a771bb566ed708bef75ee31f
 } = loginSlice.actions;
 
-export default loginSlice.reducer
+export default loginSlice.reducer;

@@ -15,12 +15,9 @@ export const authApi = createApi({
     }),
     login: builder.mutation({
       query: (body) => {
-        console.log("BODY: ", body);
         const formData = new FormData();
         formData.append('username', body.fields.username);
-        console.log("BODY EMAIL:", body.fields.email);
         formData.append("password", body.fields.password);
-        console.log("BODY PASSWORD:", body.fields.password)
         return {
           url: "/token",
           method: "POST",
@@ -39,14 +36,6 @@ export const authApi = createApi({
     }),
     signup: builder.mutation({
       query: (body) => {
-        // const formData = new FormData();
-        // console.log("body", body)
-        // formData.append("first_name", body.fields.first_name);
-        // formData.append("last_name", body.fields.last_name);
-        // formData.append("email", body.fields.email);
-        // formData.append("zip_code", body.fields.zip_code);
-        // formData.append("password", body.fields.hashed_password);
-        // body.fields.hashed_password = body.fields.password;
         return {
           url: "/api/accounts",
           method: "POST",
