@@ -4,7 +4,6 @@ h1 {
     font-weight: bold;
     text-align: center;
     padding-top: 50px;
-    padding-bottom: 50px;
 }
 
 h2 {
@@ -14,4 +13,5 @@ h2 {
     text-align: left;
     padding-top: 20px;
     padding-bottom: 5px;
+    text-align: center;
 }
