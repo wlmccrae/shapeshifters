@@ -9,7 +9,7 @@ function Modal({ visible, onClose, children }) {
     <div
       id="modal-container"
       onClick={handleOnClose}
-      className="fixed z-0 inset-0 bg-black bg-opacity-30 backdrop-blur-sm flex justify-center items-center"
+      className="fixed z-10 inset-0 bg-black bg-opacity-30 backdrop-blur-sm flex justify-center items-center"
     >
       <div>{children}</div>
     </div>
