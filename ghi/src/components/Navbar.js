@@ -28,7 +28,7 @@ function NavBar() {
           </a>
           <a
             href="#responsive-header"
-            class="block mt-4 lg:inline-block lg:mt-0 text-gun-powder-600 hover:font-bold mr-4"
+            className="block mt-4 lg:inline-block lg:mt-0 text-gun-powder-600 hover:font-bold mr-4"
           >
             Create Event
           </a>
