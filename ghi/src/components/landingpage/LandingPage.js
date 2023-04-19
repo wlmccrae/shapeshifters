@@ -49,7 +49,7 @@ function LandingPage() {
         <div className='max-w-[1400px] h-[780px] w-full m-auto py-16 px-4 relative group'>
             <h1> Organize Your Next Workout Event with ShapeMates! </h1>
 
-            <div style={{backgroundImage: `url(${slides[currentIndex].url})`}} className='w-full h-full mx-10 rounded-2xl bg-center bg-cover duration-500 drop-shadow-2xl'>
+            <div style={{backgroundImage: `url(${slides[currentIndex].url})`}} className='w-full h-full rounded-2xl bg-center bg-cover duration-500 drop-shadow-2xl'>
             </div>
 
             <div className='hidden group-hover:block absolute top-[70%] -translate-x-0 translate-y-[-75%] left-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer'>
