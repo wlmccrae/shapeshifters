@@ -4,6 +4,7 @@ import { RxDotFilled } from 'react-icons/rx';
 import { useState, useEffect } from "react";
 
 import { useGetAccountQuery } from '../../services/auth';
+import EventsCards from '../EventsCards';
 import './LandingPage.css';
 
 import skatingImg from '../../imgs/091108nyc096-nw.jpg';
@@ -56,20 +57,30 @@ function LandingPage() {
         setCurrentIndex(slideIndex);
     }
 
-    const loggedIn = () => (
-        <>
-            <h1> Logged In View </h1>
-        </>
+    const notLoggedIn = () => (
+        <div className='max-w-[1400px] w-full m-auto py-1 px-4 relative'>
+            <div className='w-full m-auto py-1 px-20
+             relative'>
+                <h3 className="py-2 font-bold"> Can't find what you're looking for? </h3>
+                <button className="bg-jet-stream-500 hover:bg-jet-stream-800 text-black py-2 px-4 rounded-full">
+                    Host Event
+                </button>
+            </div>
+            <div className='w-full m-auto py-1 px-10 relative group'>
+                <h1>Current Events</h1>
+                {/* <EventsCards /> */}
+            </div>
+        </div>
     );
 
-    const notLoggedIn = () => (
+    const loggedIn = () => (
         <>
             <div className='max-w-[1400px] w-full m-auto py-1 px-4 relative'>
                 <h1> Organize Your Next Workout Event with ShapeShifters! </h1>
             </div>
             <div className='max-w-[900px] h-[600px] w-full m-auto py-1 px-10 relative group'>
                 <div>
-                    <img className='z-0 w-full h-full rounded-2xl bg-center bg-cover duration-500 drop-shadow-2xl' src={slides[currentIndex].url} />
+                    <img alt="workout images" className='z-0 w-full h-full rounded-2xl bg-center bg-cover duration-500 drop-shadow-2xl' src={slides[currentIndex].url} />
                 </div>
                 <div className='hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] left-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer'>
                     <BsChevronCompactLeft onClick={prevSlide} size={30} />
