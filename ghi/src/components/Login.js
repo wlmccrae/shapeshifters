@@ -17,8 +17,8 @@ const Login = () => {
     return (
       <div className="relative py-3 sm:max-w-xl sm:mx-auto">
         <div className="mt-4 bg-white shadow-md rounded-lg">
-          <div className="h-2 bg-morning-glory-500 rounded-t-md"></div>
-          <h2 className="text-2xl text-white bg-morning-glory-500 pb-3">
+          <div className="h-2 bg-jet-stream-500 rounded-t-md"></div>
+          <h2 className="text-2xl text-white bg-jet-stream-500 pb-3">
             Login to your account
           </h2>
           <form onSubmit={handleSubmit}>
@@ -46,7 +46,7 @@ const Login = () => {
               <div className="flex justify-between items-baseline">
                 <button
                   type="submit"
-                  className="mt-4 bg-morning-glory-500 text-white py-2 px-6 rounded-md hover:bg-morning-glory-600"
+                  className="mt-4 bg-jet-stream-500 text-white py-2 px-6 rounded-md hover:bg-jet-stream-600"
                 >
                   Login
                 </button>
