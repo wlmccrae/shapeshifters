@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import './App.css';
-import NavBar from "./components/NavBar";
+import "./App.css";
+import Nav from "./components/Nav";
 import EventsCards from "./components/EventsCards";
 import { useGetAccountQuery } from "./services/auth";
 
@@ -12,7 +12,7 @@ function App() {
 
   return (
     <>
-      <NavBar />
+      <Nav />
     </>
   );
 }
