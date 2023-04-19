@@ -30,7 +30,7 @@ export const signupSlice = createSlice({
       state.fields.zip_code = action.payload;
     },
     handlePasswordChange: (state, action) => {
-      state.fields.password = action.payload;
+      state.fields.hashed_password = action.payload;
     },
     handlePasswordConfirmationChange: (state, action) => {
       state.fields.password_confirmation = action.payload;

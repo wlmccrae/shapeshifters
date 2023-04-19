@@ -1,20 +1,14 @@
-import './App.css';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import LandingPage from './components/landingpage/LandingPage';
-import NavBar from './components/NavBar';
+import { useState, useEffect } from "react";
+import "./App.css";
+import Nav from "./components/Nav";
+import EventsCards from "./components/EventsCards";
+import { useGetAccountQuery } from "./services/auth";
 
 function App() {
 
   return (
     <>
-      <BrowserRouter>
-        <NavBar />
-          <div className="container">
-            <Routes>
-              <Route path="/" element={<LandingPage />} />
-            </Routes>
-          </div>
-      </BrowserRouter>
+      <Nav />
     </>
   );
 
