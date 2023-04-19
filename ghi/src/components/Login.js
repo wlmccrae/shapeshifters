@@ -1,14 +1,12 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { handleEmailChange, handlePasswordChange, reset } from "../features/auth/loginSlice";
+import { handleEmailChange, handlePasswordChange, reset, hideLoginModal } from "../features/auth/loginSlice";
 import { useLoginMutation } from "../services/auth";
-import { showLoginModal, hideLoginModal } from "../features/auth/loginSlice";
-import Modal from "./Modal"
 
 const Login = () => {
     const dispatch = useDispatch()
     const [login] = useLoginMutation()
-    const { fields, showLoginModal, hideLoginModal } = useSelector(state => state.login)
+    const { fields } = useSelector(state => state.login)
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -57,7 +55,6 @@ const Login = () => {
           </form>
         </div>
       </div>
-      // </div>
     );
 }
 

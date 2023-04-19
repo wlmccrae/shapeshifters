@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useSignupMutation } from "../services/auth";
 import {
+<<<<<<< HEAD
     handleFirstNameChange,
     handleLastNameChange,
     handleEmailChange,
@@ -13,38 +14,32 @@ import {
     error,
     reset,
 } from "../features/auth/signupSlice"
-import Modal from "./Modal";
 
 const Signup = () => {
   const dispatch = useDispatch();
   const [signup] = useSignupMutation();
   const { fields } = useSelector((state) => state.signup);
-  console.log("FIELDS IN SIGNUP", fields)
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if ( fields.password !== fields.password_confirmation) {
-      dispatch(error("PASSWORDS DO NOT MATCH. TRY AGAIN!"))
+    if (fields.password !== fields.password_confirmation) {
+      dispatch(error("PASSWORDS DO NOT MATCH. TRY AGAIN!"));
       return;
     }
-    // const { first_name, last_name, zip_code, email, password } = fields
-    console.log("fields after destructuring", fields);
-    console.trace(signup({
+    signup({
       fields
-    }));
+    });
     dispatch(reset());
   };
 
   return (
-    // <div className="relative flex min-h-screen text-gray-800 lex-col justify-center overflow-hidden bg-gray-50 py-6 sm:py-12">
     <div className="relative py-3 sm:max-w-xl sm:mx-auto">
       <div className="mt-4 bg-white shadow-md rounded-lg">
-        <div className="h-2 bg-morning-glory-500 rounded-t-md"></div>
-        <h2 className="text-2xl text-white bg-morning-glory-500 pb-3">Signup for an account</h2>
+        <div className="h-2 bg-jet-stream-500 rounded-t-md"></div>
+        <h2 className="text-2xl text-white bg-jet-stream-500 pb-3">Signup for an account</h2>
         <form onSubmit={handleSubmit}>
           <div className="px-8 py-6">
             <div className="flex justify-between items-baseline">
-              {/* <label className="block font semibold">First Name</label> */}
               <input
                 type="text"
                 placeholder="First Name"
@@ -54,7 +49,6 @@ const Signup = () => {
                   dispatch(handleFirstNameChange(e.target.value))
                 }
               ></input>
-              {/* <label className="block font semibold">Last Name</label> */}
               <input
                 type="text"
                 placeholder="Last Name"
@@ -63,7 +57,6 @@ const Signup = () => {
                 onChange={(e) => dispatch(handleLastNameChange(e.target.value))}
               ></input>
             </div>
-            {/* <label className="block font semibold">Email</label> */}
             <input
               type="text"
               placeholder="Email"
@@ -71,7 +64,6 @@ const Signup = () => {
               value={fields.email}
               onChange={(e) => dispatch(handleEmailChange(e.target.value))}
             ></input>
-            {/* <label className="block mt-3 font semibold">Password</label> */}
             <input
               type="text"
               placeholder="Zip Code"
@@ -98,7 +90,7 @@ const Signup = () => {
             <div className="flex justify-between items-baseline">
               <button
                 type="submit"
-                className="mt-4 bg-morning-glory-500 text-white py-2 px-6 rounded-md hover:bg-morning-glory-600"
+                className="mt-4 bg-jet-stream-500 text-white py-2 px-6 rounded-md hover:bg-jet-stream-600"
               >
                 Signup
               </button>
@@ -108,7 +100,6 @@ const Signup = () => {
         </form>
       </div>
     </div>
-    // </div>
   );
 };
 
