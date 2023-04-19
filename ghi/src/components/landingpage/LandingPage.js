@@ -1,7 +1,7 @@
 import React from 'react';
 import { BsChevronCompactLeft, BsChevronCompactRight } from 'react-icons/bs';
 import { RxDotFilled } from 'react-icons/rx';
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 
 import { useGetAccountQuery } from '../../services/auth';
 import './LandingPage.css';
@@ -64,18 +64,18 @@ function LandingPage() {
 
     const notLoggedIn = () => (
         <>
-            <div className='max-w-[1400px] w-full m-auto py-10 px-4 relative'>
+            <div className='max-w-[1400px] w-full m-auto py-1 px-4 relative'>
                 <h1> Organize Your Next Workout Event with ShapeShifters! </h1>
             </div>
-            <div className='max-w-[800px] h-[600px] w-full m-auto py-1 px-10 relative group'>
-                <div style={{backgroundImage: `url(${slides[currentIndex].url})`}} className='w-full h-full rounded-2xl bg-center bg-cover duration-500 drop-shadow-2xl'>
+            <div className='max-w-[900px] h-[600px] w-full m-auto py-1 px-10 relative group'>
+                <div>
+                    <img className='z-0 w-full h-full rounded-2xl bg-center bg-cover duration-500 drop-shadow-2xl' src={slides[currentIndex].url} />
                 </div>
-
-                <div className='hidden group-hover:block absolute top-[70%] -translate-x-0 translate-y-[-75%] left-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer'>
+                <div className='hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] left-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer'>
                     <BsChevronCompactLeft onClick={prevSlide} size={30} />
                 </div>
 
-                <div className='hidden group-hover:block absolute top-[70%] -translate-x-0 translate-y-[-50%] right-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer'>
+                <div className='hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] right-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer'>
                     <BsChevronCompactRight onClick={nextSlide} size={30} />
                 </div>
 
