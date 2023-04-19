@@ -7,7 +7,6 @@ function NavBar () {
 
 
 
-
     return (
       <nav
         className="bg-conch-200

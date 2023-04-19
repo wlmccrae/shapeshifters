@@ -29,3 +29,6 @@ Added zip_code column to users table. Coded routes and queries to list events th
 
 6 April 2023
 Using Radar API to get lat and lon for each event when it is created.
+
+18 April 2023
+Working on Landing Page. Struggling to get the bare-bones of a Landing Page (Nav bar with simple text on page) to load.

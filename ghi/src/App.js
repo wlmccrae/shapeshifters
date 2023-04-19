@@ -1,10 +1,10 @@
-// import './App.css';
-// import Carousel from './Components/Carousel/Carousel';
+import './App.css';
 import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 // import { AuthProvider } from "@galvanize-inc/jwtdown-for-react";
 import Navbar from "./components/NavBar"
 // import Footer from"./components/Footer"
+import LandingPage from "./components/landingpage/LandingPage"
 import Login from "./components/Login";
 import Logout from "./components/Logout";
 import Signup from "./components/Signup";
@@ -21,29 +21,23 @@ function App() {
 
   const handleOnClose = () => setShowModal(false);
 
+
   return (
     <>
-    <BrowserRouter>
-      {/* <AuthProvider> */}
-          <Navbar />
-          <Routes>
+      <BrowserRouter>
+        <Navbar />
+          <div className="container">
+            <Routes>
+              <Route path="/" element={<LandingPage />} />
+            </Routes>
+          </div>
+      </BrowserRouter>
+    </>
+  );
+}
 
-            {/* <Route path="/" element= {<LandingPage />} /> */}
-
-          </Routes>
-          {/* <Footer/> */}
-      {/* </AuthProvider> */}
-    </BrowserRouter>
-
-
-
-
-
-
-
-
-
-
+/*
+{
       <div>
         <div className="max-w-3xl mx-auto">
           <div className="text-center py-3">
@@ -67,8 +61,8 @@ function App() {
           </div>
         </div>
       </div>
-    </>
-  );
 }
+*/
+
 
 export default App;
