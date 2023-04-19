@@ -9,6 +9,8 @@ import Modal from './Modal';
 import Signup from './Signup';
 import Login from './Login';
 
+// modifying file with a comment so that git will commit the file
+
 function NavBar() {
     const dispatch = useDispatch();
     const { data: account } = useGetAccountQuery()
