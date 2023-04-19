@@ -38,7 +38,7 @@ function NavBar() {
             <button
               type="submit"
               onClick={logout}
-              class="inline-block text-sm px-4 py-2 leading-none border rounded bg-jet-stream-600 text-gun-powder-600 border-jet-stream-600 hover:border-transparent hover:text-gun-powder-800 hover:bg-jet-stream-300 mt-4 lg:mt-0"
+              className="inline-block text-sm px-4 py-2 leading-none border rounded bg-jet-stream-300 text-gun-powder-600 border-jet-stream-600 hover:border-transparent hover:text-gun-powder-800 hover:bg-jet-stream-600 mt-4 lg:mt-0"
             >
               Logout
             </button>
@@ -53,7 +53,7 @@ function NavBar() {
           <button
             type="submit"
             onClick={() => dispatch(showSignupModal())}
-            class="inline-block text-sm px-4 py-2 leading-none border rounded bg-jet-stream-600 border-jet-stream-600 text-gun-powder-600 hover:border-transparent hover:text-gun-powder-800 hover:bg-jet-stream-300 mt-4 lg:mt-0"
+            class="inline-block text-sm px-4 py-2 leading-none border rounded bg-jet-stream-300 border-jet-stream-600 text-gun-powder-600 hover:border-transparent hover:text-gun-powder-800 hover:bg-jet-stream-600 mt-4 lg:mt-0"
           >
             Sign Up
           </button>
@@ -62,7 +62,7 @@ function NavBar() {
           <button
             type="submit"
             onClick={() => dispatch(showLoginModal())}
-            class="inline-block text-sm px-4 py-2 leading-none border rounded bg-jet-stream-600 text-gun-powder-600 border-jet-stream-600 hover:border-transparent hover:text-gun-powder-800 hover:bg-jet-stream-300 mt-4 lg:mt-0"
+            class="inline-block text-sm px-4 py-2 leading-none border rounded bg-jet-stream-300 text-gun-powder-600 border-jet-stream-600 hover:border-transparent hover:text-gun-powder-800 hover:bg-jet-stream-600 mt-4 lg:mt-0"
           >
             Login
           </button>
