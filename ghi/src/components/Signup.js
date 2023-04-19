@@ -30,7 +30,6 @@ const Signup = () => {
   };
 
   return (
-    // <div className="relative flex min-h-screen text-gray-800 lex-col justify-center overflow-hidden bg-gray-50 py-6 sm:py-12">
     <div className="relative py-3 sm:max-w-xl sm:mx-auto">
       <div className="mt-4 bg-white shadow-md rounded-lg">
         <div className="h-2 bg-morning-glory-500 rounded-t-md"></div>
@@ -98,7 +97,6 @@ const Signup = () => {
         </form>
       </div>
     </div>
-    // </div>
   );
 };
 

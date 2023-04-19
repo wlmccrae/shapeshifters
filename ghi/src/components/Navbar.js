@@ -1,10 +1,21 @@
 import React from 'react';
 import ss_logo from '../ss_logo.png';
 import { useGetAccountQuery } from '../services/auth';
-
+import { useDispatch, useSelector } from "react-redux";
+import { showSignupModal, hideSignupModal } from '../features/auth/signupSlice';
+import { showLoginModal, hideLoginModal } from '../features/auth/loginSlice';
+import { useLogoutMutation } from '../services/auth';
+import Modal from './Modal';
+import Signup from './Signup';
+import Login from './Login';
 
 function NavBar() {
+    const dispatch = useDispatch();
     const { data: account } = useGetAccountQuery()
+    const { signupModal } = useSelector((state) => state.signup);
+    const { loginModal } = useSelector((state) => state.login);
+    const [logout] = useLogoutMutation();
+
 
     const loggedIn = () => (
       <div class="w-full px-4 block flex-grow lg:flex lg:items-center lg:w-auto">
@@ -24,12 +35,13 @@ function NavBar() {
         </div>
         <div className="flex space-x-4">
           <div>
-            <a
-              href="#"
+            <button
+              type="submit"
+              onClick={logout}
               class="inline-block text-sm px-4 py-2 leading-none border rounded bg-jet-stream-600 text-gun-powder-600 border-jet-stream-600 hover:border-transparent hover:text-gun-powder-800 hover:bg-jet-stream-300 mt-4 lg:mt-0"
             >
               Logout
-            </a>
+            </button>
           </div>
         </div>
       </div>
@@ -38,20 +50,22 @@ function NavBar() {
     const notLoggedIn = () => (
       <div className="flex space-x-4">
         <div>
-          <a
-            href="#"
+          <button
+            type="submit"
+            onClick={() => dispatch(showSignupModal())}
             class="inline-block text-sm px-4 py-2 leading-none border rounded bg-jet-stream-600 border-jet-stream-600 text-gun-powder-600 hover:border-transparent hover:text-gun-powder-800 hover:bg-jet-stream-300 mt-4 lg:mt-0"
           >
             Sign Up
-          </a>
+          </button>
         </div>
         <div>
-          <a
-            href="#"
+          <button
+            type="submit"
+            onClick={() => dispatch(showLoginModal())}
             class="inline-block text-sm px-4 py-2 leading-none border rounded bg-jet-stream-600 text-gun-powder-600 border-jet-stream-600 hover:border-transparent hover:text-gun-powder-800 hover:bg-jet-stream-300 mt-4 lg:mt-0"
           >
             Login
-          </a>
+          </button>
         </div>
       </div>
     );
@@ -64,6 +78,20 @@ function NavBar() {
         </div>
         {account ? loggedIn() : notLoggedIn()}
       </nav>
+      <div className="max-w-3xl mx-auto">
+        <div className="text-center py-3">
+          <Modal
+            visible={signupModal}
+            onClose={() => dispatch(hideSignupModal())}
+            component={<Signup />}
+          />
+          <Modal
+            visible={loginModal}
+            onClose={() => dispatch(hideLoginModal())}
+            component={<Login />}
+          />
+        </div>
+      </div>
     </>
   );
 }
