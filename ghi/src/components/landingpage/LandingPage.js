@@ -2,10 +2,8 @@ import React from 'react';
 import { BsChevronCompactLeft, BsChevronCompactRight } from 'react-icons/bs';
 import { RxDotFilled } from 'react-icons/rx';
 import { useState, useEffect } from "react";
-import { useDispatch } from 'react-redux';
 
 import { useGetAccountQuery } from '../../services/auth';
-import { showCreateEventModal } from '../CreateEventModal';
 
 import EventsCards from '../EventsCards';
 import './LandingPage.css';
@@ -17,7 +15,6 @@ import soccerImg from '../../imgs/140622nyc127-nw.jpg';
 
 
 function LandingPage() {
-    const dispatch = useDispatch();
     const slides = [
         {
             url: bikingImg
@@ -68,8 +65,6 @@ function LandingPage() {
              relative'>
                 <h3 className="py-2 font-bold"> Can't find what you're looking for? </h3>
                 <button
-                    type="submit"
-                    onClick={() => dispatch(showCreateEventModal())}
                     className="bg-jet-stream-500 hover:bg-jet-stream-800 text-black py-2 px-4 rounded-full">
                     Create and Host an Event
                 </button>
