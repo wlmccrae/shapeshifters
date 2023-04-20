@@ -20,6 +20,13 @@ export const eventsApi = createApi({
             ]
         }
     }),
+    getEvent: builder.query({
+        query: () => '/api/event/{event_id}',
+        transformResponse: (response) => response.event,
+        // providedTags: (result) => {
+
+        // }
+    }),
     createEvent: builder.mutation({
         query: (body) => ({
             url:'/api/events',
