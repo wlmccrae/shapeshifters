@@ -2,8 +2,8 @@
 # Database
 api/database.py
 
-# API KEY
-api/keys.py
+# Images folder
+ghi/imgs
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
