@@ -34,6 +34,7 @@ class EventOut(BaseModel):
     start_datetime: datetime
     end_datetime: datetime
     event_description: str
+    host: dict
 
 
 class EventsOut(BaseModel):

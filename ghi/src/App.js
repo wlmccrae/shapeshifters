@@ -1,16 +1,24 @@
-import { useState, useEffect } from "react";
-import "./App.css";
-import Nav from "./components/Nav";
-import EventsCards from "./components/EventsCards";
-import { useGetAccountQuery } from "./services/auth";
+import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import LandingPage from './components/landingpage/LandingPage';
+import Nav from './components/Nav';
+
 
 function App() {
 
   return (
     <>
-      <Nav />
+      <BrowserRouter>
+        <Nav />
+          <div className="container">
+            <Routes>
+              <Route path="/" element={<LandingPage />} />
+            </Routes>
+          </div>
+      </BrowserRouter>
     </>
   );
+
 
 }
 

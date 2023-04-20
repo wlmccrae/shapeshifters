@@ -57,23 +57,23 @@ function LandingPage() {
         setCurrentIndex(slideIndex);
     }
 
-    const notLoggedIn = () => (
+    const loggedIn = () => (
         <div className='max-w-[1400px] w-full m-auto py-1 px-4 relative'>
             <div className='w-full m-auto py-1 px-20
              relative'>
                 <h3 className="py-2 font-bold"> Can't find what you're looking for? </h3>
                 <button className="bg-jet-stream-500 hover:bg-jet-stream-800 text-black py-2 px-4 rounded-full">
-                    Host Event
+                    Create and Host an Event
                 </button>
             </div>
             <div className='w-full m-auto py-1 px-10 relative group'>
                 <h1>Current Events</h1>
-                {/* <EventsCards /> */}
+                <EventsCards />
             </div>
         </div>
     );
 
-    const loggedIn = () => (
+    const notLoggedIn = () => (
         <>
             <div className='max-w-[1400px] w-full m-auto py-1 px-4 relative'>
                 <h1> Organize Your Next Workout Event with ShapeShifters! </h1>
