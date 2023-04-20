@@ -42,3 +42,4 @@ class AccountQueries:
                         record[column.name] = row[i]
 
                 return AccountOutWithPassword(**record)
+

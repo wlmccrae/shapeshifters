@@ -80,7 +80,9 @@ class EventQueries:
             with conn.cursor() as db:
                 db.execute(
                     """
-                    SELECT * FROM events
+                    SELECT events.*, users.first_name, users.last_name
+                    FROM events
+                    LEFT JOIN users ON events.host_id = users.id
                     """
                 )
                 events = []
@@ -104,6 +106,7 @@ class EventQueries:
                 rows = db.fetchall()
                 for row in rows:
                     event = self.event_record_to_dict(row, db.description)
+                    print(f"*******EVENT: {event}")
                     events.append(event)
                 return events
 
@@ -245,12 +248,12 @@ class EventQueries:
                     event[column.name] = row[i]
 
             host = {}
-            host_fields = ["id", "first_name", "last_name"]
+            host_fields = ["first_name", "last_name"]
 
             for i, column in enumerate(description):
                 if column.name in host_fields:
                     host[column.name] = row[i]
 
+            host["host_id"] = event["host_id"]
             event["host"] = host
-
         return event
