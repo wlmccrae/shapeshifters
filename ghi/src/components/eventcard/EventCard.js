@@ -1,4 +1,7 @@
 import React from "react";
+import { useDispatch } from 'react-redux';
+
+import { showEventDetailModal } from '../EventDetailModal';
 
 const EventCard = ({
     id,
@@ -30,7 +33,8 @@ const EventCard = ({
           <p className="text-gray-700 text-base mb-2"><b>End:</b> {new Date(end_datetime).toLocaleString([], { month: 'numeric', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true })}</p>
         </div>
         <div className="flex justify-center p-4">
-          <button className="bg-jet-stream-500 hover:bg-jet-stream-800 text-black p-2 rounded-full">
+          <button
+            className="bg-jet-stream-500 hover:bg-jet-stream-800 text-black p-2 rounded-full">
             Event Details
           </button>
         </div>

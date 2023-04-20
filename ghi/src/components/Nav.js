@@ -3,7 +3,7 @@ import ss_logo from "../ss_logo.png";
 import { useGetAccountQuery } from "../services/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { showSignupModal, hideSignupModal } from "../features/auth/signupSlice";
-import { showLoginModal, hideLoginModal } from "../features/auth/loginSlice";
+import { showLoginModal } from "../features/auth/loginSlice";
 import { useLogoutMutation } from "../services/auth";
 import Modal from "./Modal";
 import Signup from "./Signup";
