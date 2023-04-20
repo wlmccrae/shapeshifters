@@ -20,7 +20,7 @@ const initialState = {
 };
 
 export const newEventSlice = createSlice({
-  name: "event",
+  name: "newEvent",
   initialState,
   reducers: {
     handleEventNameChange: (state, action) => {

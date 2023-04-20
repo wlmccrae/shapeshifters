@@ -3,6 +3,7 @@ import { setupListeners } from '@reduxjs/toolkit/query'
 import loginReducer from '../features/auth/loginSlice'
 import signupReducer from '../features/auth/signupSlice'
 import newEventReducer  from '../features/events/newEventSlice'
+import eventDetailReducer from '../features/events/eventDetailSlice'
 import { authApi } from '../services/auth'
 import { eventsApi } from '../services/events'
 
@@ -11,6 +12,7 @@ export const store = configureStore({
         login:loginReducer,
         signup:signupReducer,
         newEvent: newEventReducer,
+        eventDetail: eventDetailReducer,
         [authApi.reducerPath]: authApi.reducer,
         [eventsApi.reducerPath]: eventsApi.reducer,
     },

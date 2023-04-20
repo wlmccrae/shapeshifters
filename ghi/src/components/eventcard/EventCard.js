@@ -1,4 +1,7 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { showEventDetailModal } from "../../features/events/eventDetailSlice";
+
 
 const EventCard = ({
     id,
@@ -15,6 +18,9 @@ const EventCard = ({
     image_url,
     host,
 }) => {
+  const dispatch = useDispatch();
+  const { eventDetailModal } = useSelector((state) => state.eventDetail);
+
     return (
       <div className="max-w-lg max-h-fit rounded overflow-hidden shadow-lg">
         <img className="h-56 w-full object-cover" alt="Event location" src={image_url}/>
@@ -31,6 +37,7 @@ const EventCard = ({
         </div>
         <div className="flex justify-center p-4">
           <button
+            onClick={() => dispatch(showEventDetailModal())}
             className="bg-jet-stream-500 hover:bg-jet-stream-800 text-black p-2 rounded-full">
             Event Details
           </button>

@@ -36,15 +36,13 @@ const EventForm = () => {
         visible={createEventModal}
         onClose={() => dispatch(hideCreateEventModal())}
       >
-        <div className="relative py-3 sm:max-w-xl sm:mx-auto">
+        <div className="relative py-3 sm:max-w-xl sm:mx-auto max-w-lg">
           <div className="mt-4 mb-4 bg-white shadow-md rounded-lg">
             <div className="h-2 bg-jet-stream-500 rounded-t-md"></div>
             <h2 className="px-4 text-2xl text-white bg-jet-stream-500 pb-3">
               Create Your Event
             </h2>
-            <form
-              onSubmit={handleSubmit}
-            >
+            <form onSubmit={handleSubmit}>
               <div className="px-8 py-6">
                 <input
                   type="text"
@@ -167,7 +165,10 @@ const EventForm = () => {
                     dispatch(handleStartTimeChange(e.target.value));
                   }}
                 />
-                <label className="py-2 font-light semibold" for="endtime-field">
+                <label
+                  className="py-2 font-light semibold float-left"
+                  for="endtime-field"
+                >
                   End Time
                 </label>
                 <input

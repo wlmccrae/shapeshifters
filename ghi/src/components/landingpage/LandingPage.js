@@ -3,9 +3,14 @@ import { BsChevronCompactLeft, BsChevronCompactRight } from 'react-icons/bs';
 import { RxDotFilled } from 'react-icons/rx';
 import { useState, useEffect } from "react";
 
+import { useDispatch, useSelector } from "react-redux";
+import { showCreateEventModal } from "../../features/events/newEventSlice";
+
 import { useGetAccountQuery } from '../../services/auth';
 
 import EventsCards from '../EventsCards';
+import EventForm from '../EventForm';
+import EventDetails from '../EventDetails';
 import './LandingPage.css';
 
 import skatingImg from '../../imgs/091108nyc096-nw.jpg';
@@ -14,7 +19,14 @@ import hikingImg from '../../imgs/120526forestpk022-nw.jpg';
 import soccerImg from '../../imgs/140622nyc127-nw.jpg';
 
 
+
+
 function LandingPage() {
+    // Create event modal logic
+    const dispatch = useDispatch();
+    const { createEventModal } = useSelector((state) => state.newEvent);
+    
+
     const slides = [
         {
             url: bikingImg
@@ -65,13 +77,18 @@ function LandingPage() {
              relative'>
                 <h3 className="py-2 font-bold"> Can't find what you're looking for? </h3>
                 <button
-                    className="bg-jet-stream-500 hover:bg-jet-stream-800 text-black py-2 px-4 rounded-full">
+                    type="submit"
+                    className="bg-jet-stream-500 hover:bg-jet-stream-800 text-black py-2 px-4 rounded-full"
+                    onClick={() => dispatch(showCreateEventModal())}
+                >
                     Create and Host an Event
                 </button>
             </div>
             <div className='w-full m-auto py-1 px-10 relative group'>
                 <h1>Current Events</h1>
                 <EventsCards />
+                <EventForm />
+                <EventDetails />
             </div>
         </div>
     );
