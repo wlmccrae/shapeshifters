@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { showSignupModal, hideSignupModal } from "../features/auth/signupSlice";
 import { showLoginModal } from "../features/auth/loginSlice";
 import { useLogoutMutation } from "../services/auth";
+import { showCreateEventModal, hideCreateEventModal } from "../features/events/newEventSlice";
 import Modal from "./Modal";
 import Signup from "./Signup";
 import Login from "./Login";
@@ -14,6 +15,7 @@ function Nav() {
   const { data: account } = useGetAccountQuery();
   const { signupModal } = useSelector((state) => state.signup);
   const { loginModal } = useSelector((state) => state.login);
+  const { createEventModal } = useSelector((state) => state.newEvent);
   const [logout] = useLogoutMutation();
 
   const loggedIn = () => (
@@ -25,12 +27,14 @@ function Nav() {
         >
           Your Events
         </a>
-        <a
+        <button
           href="#responsive-header"
+          type="submit"
+          onClick={() => dispatch(showCreateEventModal())}
           className="block mt-4 lg:inline-block lg:mt-0 text-gun-powder-600 hover:font-bold mr-4"
         >
           Create Event
-        </a>
+        </button>
       </div>
       <div className="flex space-x-4">
         <div>
