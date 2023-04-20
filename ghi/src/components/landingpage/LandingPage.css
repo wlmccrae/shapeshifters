@@ -14,3 +14,7 @@ h2 {
     padding-bottom: 5px;
     text-align: center;
 }
+
+.welcomemsg {
+    font-style: italic;
+}

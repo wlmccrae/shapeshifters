@@ -32,3 +32,6 @@ Using Radar API to get lat and lon for each event when it is created.
 
 18 April 2023
 Working on Landing Page. Struggling to get the bare-bones of a Landing Page (Nav bar with simple text on page) to load.
+
+19 April 2023
+Kane and I worked together on the landing page. We merged the new Nav bar to our branch and have two different landing pages: one for when a user is logged in, and one for when a viewer is not logged in. The not logged in page had an auto-play image carousel of fitness activities. The logged in page shows event cards with the event information. There are buttons for event details and creating an event, but those are not yet functional.

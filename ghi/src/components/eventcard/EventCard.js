@@ -17,8 +17,7 @@ const EventCard = ({
 }) => {
     return (
       <div className="max-w-lg max-h-fit rounded overflow-hidden shadow-lg">
-        <img className="h-56 w-full object-cover" alt="Event photo" src={image_url}/>
-        <h3>Event ID: {id}, Host ID: {host.host_id}</h3>
+        <img className="h-56 w-full object-cover" alt="Event location" src={image_url}/>
         <div className="px-4">
           <h2>{event_name}</h2>
           <p>{address_line1}</p>

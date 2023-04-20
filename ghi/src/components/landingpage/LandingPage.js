@@ -59,6 +59,7 @@ function LandingPage() {
 
     const loggedIn = () => (
         <div className='max-w-[1400px] w-full m-auto py-1 px-4 relative'>
+            <p className="welcomemsg">Welcome back, {account.account.first_name}!</p>
             <div className='w-full m-auto py-1 px-20
              relative'>
                 <h3 className="py-2 font-bold"> Can't find what you're looking for? </h3>
