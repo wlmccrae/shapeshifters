@@ -4,6 +4,8 @@ import { showEventDetailModal, getEventId } from "../../features/events/eventDet
 import { useGetEventQuery } from "../../services/events";
 
 
+
+
 const EventCard = ({
     id,
     event_name,

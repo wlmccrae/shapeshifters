@@ -25,7 +25,7 @@ function LandingPage() {
     // Create event modal logic
     const dispatch = useDispatch();
     const { createEventModal } = useSelector((state) => state.newEvent);
-    
+
 
     const slides = [
         {
