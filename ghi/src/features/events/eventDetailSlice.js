@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     errorMessage: null,
     eventDetailModal: false,
+    eventId: 0,
 };
 
 export const eventDetailSlice = createSlice({
@@ -14,13 +15,17 @@ export const eventDetailSlice = createSlice({
     },
     hideEventDetailModal: (state) => {
       state.eventDetailModal = false;
+    },
+    getEventId: (state, id) => {
+      state.eventId = id;
     }
   },
 });
 
 export const {
     showEventDetailModal,
-    hideEventDetailModal
+    hideEventDetailModal,
+    getEventId
 } = eventDetailSlice.actions;
 
 export default eventDetailSlice.reducer;
