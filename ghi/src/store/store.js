@@ -6,6 +6,7 @@ import signupReducer from '../features/auth/signupSlice'
 import newEventReducer  from '../features/events/newEventSlice'
 import eventDetailReducer from '../features/events/eventDetailSlice'
 import addAttendeeReducer from '../features/attendees/addAttendeeSlice'
+import eventMapReducer from '../features/events/eventMapSlice'
 
 import { authApi } from '../services/auth'
 import { eventsApi } from '../services/events'
@@ -18,6 +19,7 @@ export const store = configureStore({
         newEvent: newEventReducer,
         eventDetail: eventDetailReducer,
         addAttendee: addAttendeeReducer,
+        eventMap: eventMapReducer,
         [authApi.reducerPath]: authApi.reducer,
         [eventsApi.reducerPath]: eventsApi.reducer,
         [attendeesApi.reducerPath]: attendeesApi.reducer,

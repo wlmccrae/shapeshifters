@@ -11,6 +11,7 @@ import { useGetAccountQuery } from '../../services/auth';
 import EventsCards from '../EventsCards';
 import EventForm from '../EventForm';
 import EventDetails from '../EventDetails';
+import EventMap from '../EventMap';
 import './LandingPage.css';
 
 import skatingImg from '../../imgs/091108nyc096-nw.jpg';
@@ -85,6 +86,7 @@ function LandingPage() {
                 </button>
             </div>
             <div className='w-full m-auto py-1 px-10 relative group'>
+                <EventMap />
                 <h1>Current Events</h1>
                 <EventsCards />
                 <EventForm />
