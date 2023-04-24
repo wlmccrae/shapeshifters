@@ -1,8 +1,12 @@
-import { useState, useEffect } from "react";
+import React from "react";
+import { useSelector, useDispatch } from 'react-redux';
 import EventsPageTabs from './EventsPageTabs';
 
 function EventsPage() {
-    const [role, setRole] = useState();
+    const dispatch = useDispatch();
+    const { userRole } = useSelector(
+        (state) => state.eventsPage
+    );
 
     const attending = () => (
             <div>
@@ -21,7 +25,7 @@ function EventsPage() {
             <EventsPageTabs />
             <div className='max-w-[900px] h-[600px] w-full m-auto py-1 px-10 relative group'>
                 <div>
-                    {role ? attending() : hosting()}
+                    {(userRole === "attending") ? attending() : hosting()}
                 </div>
             </div>
         </div>

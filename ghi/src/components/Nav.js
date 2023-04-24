@@ -28,7 +28,7 @@ function Nav() {
           className="block mt-4 lg:inline-block lg:mt-0 text-gun-powder-600 hover:font-bold mr-4"
         >
           Your Events
-        </a>
+        </NavLink>
         <button
           type="submit"
           onClick={() => dispatch(showCreateEventModal())}
