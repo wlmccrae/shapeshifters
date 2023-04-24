@@ -1,6 +1,8 @@
 import React from "react";
 import { useSelector, useDispatch } from 'react-redux';
+
 import EventsPageTabs from './EventsPageTabs';
+import EventsCards from '../EventsCards';
 
 function EventsPage() {
     const dispatch = useDispatch();
