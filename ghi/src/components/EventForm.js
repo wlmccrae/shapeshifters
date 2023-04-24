@@ -36,15 +36,13 @@ const EventForm = () => {
         visible={createEventModal}
         onClose={() => dispatch(hideCreateEventModal())}
       >
-        <div className="relative py-3 sm:max-w-xl sm:mx-auto">
+        <div className="relative py-3 sm:max-w-xl sm:mx-auto max-w-lg">
           <div className="mt-4 mb-4 bg-white shadow-md rounded-lg">
             <div className="h-2 bg-jet-stream-500 rounded-t-md"></div>
             <h2 className="px-4 text-2xl text-white bg-jet-stream-500 pb-3">
               Create Your Event
             </h2>
-            <form
-              onSubmit={handleSubmit}
-            >
+            <form onSubmit={handleSubmit}>
               <div className="px-8 py-6">
                 <input
                   type="text"
@@ -150,37 +148,42 @@ const EventForm = () => {
                     dispatch(handleImgUrlChange(e.target.value));
                   }}
                 />
-                <label
-                  className="block font-light semibold float-left"
-                  for="starttime-field"
-                >
-                  Start Time
-                </label>
-                <input
-                  type="datetime-local"
-                  className="border w-full mb-4 h-5 px-3 py-5 mt-4 mr-4 text-gray-400 hover:outline-none focus:ring-1 focus:outline-none focus:ring-morning-glory-600 rounded-md"
-                  id="starttime-field"
-                  placeholder="Start Time"
-                  tabIndex={1}
-                  value={fields.start_datetime}
-                  onChange={(e) => {
-                    dispatch(handleStartTimeChange(e.target.value));
-                  }}
-                />
-                <label className="py-2 font-light semibold" for="endtime-field">
-                  End Time
-                </label>
-                <input
-                  type="datetime-local"
-                  className="border w-full h-5 px-3 py-5 mt-4 mr-4 text-gray-400 hover:outline-none focus:ring-1 focus:outline-none focus:ring-morning-glory-600 rounded-md"
-                  id="endtime-field"
-                  placeholder="End Time"
-                  tabIndex={1}
-                  value={fields.end_datetime}
-                  onChange={(e) => {
-                    dispatch(handleEndTimeChange(e.target.value));
-                  }}
-                />
+                <div className="flex justify-between items-baseline">
+                  <label
+                    className="font-light semibold px-2 text-gray-400"
+                    for="starttime-field"
+                  >
+                    Start:
+                  </label>
+                  <input
+                    type="datetime-local"
+                    className="border w-full mb-4 h-5 px-3 py-5 mt-4 mr-4 text-gray-400 hover:outline-none focus:ring-1 focus:outline-none focus:ring-morning-glory-600 rounded-md"
+                    id="starttime-field"
+                    placeholder="Start Time"
+                    tabIndex={1}
+                    value={fields.start_datetime}
+                    onChange={(e) => {
+                      dispatch(handleStartTimeChange(e.target.value));
+                    }}
+                  />
+                  <label
+                    className="py-2 px-2 font-light semibold text-gray-400"
+                    for="endtime-field"
+                  >
+                    End:
+                  </label>
+                  <input
+                    type="datetime-local"
+                    className="border w-full h-5 px-3 py-5 mt-4 mr-4 text-gray-400 hover:outline-none focus:ring-1 focus:outline-none focus:ring-morning-glory-600 rounded-md"
+                    id="endtime-field"
+                    placeholder="End Time"
+                    tabIndex={1}
+                    value={fields.end_datetime}
+                    onChange={(e) => {
+                      dispatch(handleEndTimeChange(e.target.value));
+                    }}
+                  />
+                </div>
                 <input
                   type="text"
                   className="border w-full h-5 px-3 py-5 mt-4 mr-4 hover:outline-none focus:ring-1 focus:outline-none focus:ring-morning-glory-600 rounded-md"
