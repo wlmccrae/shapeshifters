@@ -9,6 +9,7 @@ import { showCreateEventModal, hideCreateEventModal } from "../features/events/n
 import Modal from "./Modal";
 import Signup from "./Signup";
 import Login from "./Login";
+import EventForm from "./EventForm";
 
 function Nav() {
   const dispatch = useDispatch();
@@ -28,7 +29,6 @@ function Nav() {
           Your Events
         </a>
         <button
-          href="#responsive-header"
           type="submit"
           onClick={() => dispatch(showCreateEventModal())}
           className="block mt-4 lg:inline-block lg:mt-0 text-gun-powder-600 hover:font-bold mr-4"
@@ -83,12 +83,9 @@ function Nav() {
       </nav>
       <div className="max-w-3xl mx-auto">
         <div className="text-center py-3">
-          <Modal
-            visible={signupModal}
-            onClose={() => dispatch(hideSignupModal())}
-            children={<Signup />}
-          />
+          <Signup />
           <Login />
+          <EventForm />
         </div>
       </div>
     </>
