@@ -77,7 +77,9 @@ function Nav() {
     <>
       <nav className="flex items-center justify-between flex-wrap bg-jet-stream-500 p-2">
         <div className='"flex items-center flex-shrink-0 text-white mr-6"'>
-          <img src={ss_logo} height="75" width="140" />
+          <a href="/">
+            <img src={ss_logo} height="75" width="140" />
+          </a>
         </div>
         {account ? loggedIn() : notLoggedIn()}
       </nav>
