@@ -83,7 +83,8 @@ class EventQueries:
                     SELECT events.*, users.first_name, users.last_name
                     FROM events
                     LEFT JOIN users ON events.host_id = users.id
-                    """
+                    """,
+
                 )
                 events = []
                 rows = db.fetchall()
