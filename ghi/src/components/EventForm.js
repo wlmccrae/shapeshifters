@@ -14,240 +14,207 @@ import {
     handleStartTimeChange,
     handleEndTimeChange,
     handleEventDescriptionChange,
+    hideCreateEventModal,
     reset
 } from "../features/events/newEventSlice";
+import Modal from "./Modal";
 
 const EventForm = () => {
     const dispatch = useDispatch();
     const [createEvent] = useCreateEventMutation();
-    const { fields } = useSelector((state) => state.newEvent);
-    console.log("fields", fields)
-    // console.log("HELLOOOOOOO")
+    const { fields, createEventModal } = useSelector((state) => state.newEvent);
 
     const handleSubmit = (e) => {
       e.preventDefault();
-      console.log("ON SUBMIT, FIELDS IN EVENTFORM:", fields);
-      console.log(createEvent({fields}));
+      createEvent({fields});
       dispatch(reset());
     }
 
 
     return (
-      <div className="max-w-sm rounded overflow-hidden shadow-lg">
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            createEvent({ fields });
-            dispatch(reset());
-          }}
-        >
-          <div>
-            <label htmlFor="name-field" className="form-label">
-              Name
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="name-field"
-              placeholder="Name"
-              tabIndex={1}
-              value={fields.event_name}
-              onChange={(e) => {
-                dispatch(handleEventNameChange(e.target.value));
-              }}
-            />
-          </div>
-          <div>
-            <label htmlFor="event_t-field" className="form-label">
-              Event Type
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="event_type-field"
-              placeholder="Event Type"
-              tabIndex={1}
-              value={fields.event_type}
-              onChange={(e) => {
-                dispatch(handleEventTypeChange(e.target.value));
-              }}
-            />
-          </div>
-          <div>
-            <label htmlFor="address1-field" className="form-label">
-              Address 1
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="address1-field"
-              placeholder="Address line 1"
-              tabIndex={1}
-              value={fields.address_line1}
-              onChange={(e) => {
-                dispatch(handleAddress1Change(e.target.value));
-              }}
-            />
-          </div>
-          <div>
-            <label htmlFor="address2-field" className="form-label">
-              Address 2
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="address2-field"
-              placeholder="Address 2"
-              tabIndex={1}
-              value={fields.address_line2}
-              onChange={(e) => {
-                dispatch(handleAddress2Change(e.target.value));
-              }}
-            />
-          </div>
-          <div>
-            <label htmlFor="city-field" className="form-label">
-              City
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="city-field"
-              placeholder="City"
-              tabIndex={1}
-              value={fields.city}
-              onChange={(e) => {
-                dispatch(handleCityChange(e.target.value));
-              }}
-            />
-          </div>
-          <div>
-            <label htmlFor="state-field" className="form-label">
-              State
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="state-field"
-              placeholder="State"
-              tabIndex={1}
-              value={fields.state}
-              onChange={(e) => {
-                dispatch(handleStateChange(e.target.value));
-              }}
-            />
-          </div>
-          <div>
-            <label htmlFor="zip_code-field" className="form-label">
-              Zip Code
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="zip_code-field"
-              placeholder="Zip Code"
-              tabIndex={1}
-              value={fields.zip_code}
-              onChange={(e) => {
-                dispatch(handleZipCodeChange(e.target.value));
-              }}
-            />
-          </div>
-          <div>
-            <label htmlFor="country-field" className="form-label">
-              Country
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="country-field"
-              placeholder="Country"
-              tabIndex={1}
-              value={fields.country}
-              onChange={(e) => {
-                dispatch(handleCountryChange(e.target.value));
-              }}
-            />
-          </div>
-          <div>
-            <label htmlFor="url-field" className="form-label">
-              Image Url
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="url-field"
-              placeholder="Image Url"
-              tabIndex={1}
-              value={fields.image_url}
-              onChange={(e) => {
-                dispatch(handleImgUrlChange(e.target.value));
-              }}
-            />
-          </div>
-          <div>
-            <label htmlFor="starttime-field" className="form-label">
-              Start Time
-            </label>
-            <input
-              type="datetime-local"
-              className="form-control"
-              id="starttime-field"
-              placeholder="Start Time"
-              tabIndex={1}
-              value={fields.start_datetime}
-              onChange={(e) => {
-                dispatch(handleStartTimeChange(e.target.value));
-              }}
-            />
-          </div>
-          <div>
-            <label htmlFor="endtime-field" className="form-label">
-              End Time
-            </label>
-            <input
-              type="datetime-local"
-              className="form-control"
-              id="endtime-field"
-              placeholder="End Time"
-              tabIndex={1}
-              value={fields.end_datetime}
-              onChange={(e) => {
-                dispatch(handleEndTimeChange(e.target.value));
-              }}
-            />
-          </div>
-          <div>
-            <label htmlFor="description-field" className="form-label">
-              Description
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="description-field"
-              placeholder="Description"
-              tabIndex={1}
-              value={fields.event_description}
-              onChange={(e) => {
-                dispatch(handleEventDescriptionChange(e.target.value));
-              }}
-            />
-          </div>
-          <div>
-            <button className="btn btn-success" onClick={handleSubmit}>Submit</button>
-            {` `}
-            <button
-              className="btn btn-info btn-danger"
-              onClick={(e) => {
-                e.preventDefault();
-                dispatch(reset());
-              }}
+      <Modal
+        visible={createEventModal}
+        onClose={() => dispatch(hideCreateEventModal())}
+      >
+        <div className="relative py-3 sm:max-w-xl sm:mx-auto">
+          <div className="mt-4 mb-4 bg-white shadow-md rounded-lg">
+            <div className="h-2 bg-jet-stream-500 rounded-t-md"></div>
+            <h2 className="px-4 text-2xl text-white bg-jet-stream-500 pb-3">
+              Create Your Event
+            </h2>
+            <form
+              onSubmit={handleSubmit}
             >
-              Reset
-            </button>
+              <div className="px-8 py-6">
+                <input
+                  type="text"
+                  className="border w-full h-5 px-3 py-5 mt-4 mr-4 hover:outline-none focus:ring-1 focus:outline-none focus:ring-morning-glory-600 rounded-md"
+                  id="name-field"
+                  placeholder="Name"
+                  tabIndex={1}
+                  value={fields.event_name}
+                  onChange={(e) => {
+                    dispatch(handleEventNameChange(e.target.value));
+                  }}
+                />
+
+                <input
+                  type="text"
+                  className="border w-full h-5 px-3 py-5 mt-4 mr-4 hover:outline-none focus:ring-1 focus:outline-none focus:ring-morning-glory-600 rounded-md"
+                  id="event_type-field"
+                  placeholder="Event Type"
+                  tabIndex={1}
+                  value={fields.event_type}
+                  onChange={(e) => {
+                    dispatch(handleEventTypeChange(e.target.value));
+                  }}
+                />
+                <input
+                  type="text"
+                  className="border w-full h-5 px-3 py-5 mt-4 mr-4 hover:outline-none focus:ring-1 focus:outline-none focus:ring-morning-glory-600 rounded-md"
+                  id="address1-field"
+                  placeholder="Address line 1"
+                  tabIndex={1}
+                  value={fields.address_line1}
+                  onChange={(e) => {
+                    dispatch(handleAddress1Change(e.target.value));
+                  }}
+                />
+                <input
+                  type="text"
+                  className="border w-full h-5 px-3 py-5 mt-4 mr-4 hover:outline-none focus:ring-1 focus:outline-none focus:ring-morning-glory-600 rounded-md"
+                  id="address2-field"
+                  placeholder="Address 2"
+                  tabIndex={1}
+                  value={fields.address_line2}
+                  onChange={(e) => {
+                    dispatch(handleAddress2Change(e.target.value));
+                  }}
+                />
+                <div className="flex justify-between items-baseline">
+                  <input
+                    type="text"
+                    className="border w-full h-5 px-3 py-5 mt-4 mr-4 hover:outline-none focus:ring-1 focus:outline-none focus:ring-morning-glory-600 rounded-md"
+                    id="city-field"
+                    placeholder="City"
+                    tabIndex={1}
+                    value={fields.city}
+                    onChange={(e) => {
+                      dispatch(handleCityChange(e.target.value));
+                    }}
+                  />
+                  <input
+                    type="text"
+                    className="border w-full h-5 px-3 py-5 mt-4 mr-4 hover:outline-none focus:ring-1 focus:outline-none focus:ring-morning-glory-600 rounded-md"
+                    id="state-field"
+                    placeholder="State"
+                    tabIndex={1}
+                    value={fields.state}
+                    onChange={(e) => {
+                      dispatch(handleStateChange(e.target.value));
+                    }}
+                  />
+                </div>
+                <div className="flex justify-between items-baseline">
+                  <input
+                    type="text"
+                    className="border w-full h-5 px-3 py-5 mt-4 mr-4 hover:outline-none focus:ring-1 focus:outline-none focus:ring-morning-glory-600 rounded-md"
+                    id="zip_code-field"
+                    placeholder="Zip Code"
+                    tabIndex={1}
+                    value={fields.zip_code}
+                    onChange={(e) => {
+                      dispatch(handleZipCodeChange(e.target.value));
+                    }}
+                  />
+                  <input
+                    type="text"
+                    className="border w-full h-5 px-3 py-5 mt-4 mr-4 hover:outline-none focus:ring-1 focus:outline-none focus:ring-morning-glory-600 rounded-md"
+                    id="country-field"
+                    placeholder="Country"
+                    tabIndex={1}
+                    value={fields.country}
+                    onChange={(e) => {
+                      dispatch(handleCountryChange(e.target.value));
+                    }}
+                  />
+                </div>
+                <input
+                  type="text"
+                  className="mb-4 border w-full h-5 px-3 py-5 mt-4 mr-4 hover:outline-none focus:ring-1 focus:outline-none focus:ring-morning-glory-600 rounded-md"
+                  id="url-field"
+                  placeholder="Image Url"
+                  tabIndex={1}
+                  value={fields.image_url}
+                  onChange={(e) => {
+                    dispatch(handleImgUrlChange(e.target.value));
+                  }}
+                />
+                <label
+                  className="block font-light semibold float-left"
+                  for="starttime-field"
+                >
+                  Start Time
+                </label>
+                <input
+                  type="datetime-local"
+                  className="border w-full mb-4 h-5 px-3 py-5 mt-4 mr-4 text-gray-400 hover:outline-none focus:ring-1 focus:outline-none focus:ring-morning-glory-600 rounded-md"
+                  id="starttime-field"
+                  placeholder="Start Time"
+                  tabIndex={1}
+                  value={fields.start_datetime}
+                  onChange={(e) => {
+                    dispatch(handleStartTimeChange(e.target.value));
+                  }}
+                />
+                <label className="py-2 font-light semibold" for="endtime-field">
+                  End Time
+                </label>
+                <input
+                  type="datetime-local"
+                  className="border w-full h-5 px-3 py-5 mt-4 mr-4 text-gray-400 hover:outline-none focus:ring-1 focus:outline-none focus:ring-morning-glory-600 rounded-md"
+                  id="endtime-field"
+                  placeholder="End Time"
+                  tabIndex={1}
+                  value={fields.end_datetime}
+                  onChange={(e) => {
+                    dispatch(handleEndTimeChange(e.target.value));
+                  }}
+                />
+                <input
+                  type="text"
+                  className="border w-full h-5 px-3 py-5 mt-4 mr-4 hover:outline-none focus:ring-1 focus:outline-none focus:ring-morning-glory-600 rounded-md"
+                  id="description-field"
+                  placeholder="Description"
+                  tabIndex={1}
+                  value={fields.event_description}
+                  onChange={(e) => {
+                    dispatch(handleEventDescriptionChange(e.target.value));
+                  }}
+                />
+                <div className="flex justify-between items-baseline">
+                  <button
+                    className="mt-4 bg-jet-stream-500 text-white py-2 px-6 rounded-md hover:bg-jet-stream-600"
+                    type="submit"
+                  >
+                    Submit
+                  </button>
+                  {` `}
+                  <button
+                    className="mt-4 bg-jet-stream-500 text-white py-2 px-6 rounded-md hover:bg-jet-stream-600"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      dispatch(reset());
+                    }}
+                  >
+                    Reset
+                  </button>
+                </div>
+              </div>
+            </form>
           </div>
-        </form>
-      </div>
+        </div>
+      </Modal>
     );
 }
 

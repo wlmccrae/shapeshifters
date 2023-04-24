@@ -15,21 +15,19 @@ const initialState = {
     end_datetime: '',
     event_description: ''
   },
-  errorMessage: null
+  errorMessage: null,
+  createEventModal: false,
 };
 
-console.log('INITIAL STATE', initialState)
 export const newEventSlice = createSlice({
   name: "event",
   initialState,
   reducers: {
     handleEventNameChange: (state, action) => {
       state.fields.event_name = action.payload;
-      console.log("** Event Name ** payload in EventSlice", action.payload)
     },
     handleEventTypeChange: (state, action) => {
       state.fields.event_type = action.payload;
-      console.log("** EVENT TYPE ** payload in EVENTSlice", action.payload)
     },
     handleAddress1Change: (state, action) => {
       state.fields.address_line1 = action.payload;
@@ -61,6 +59,12 @@ export const newEventSlice = createSlice({
     handleEventDescriptionChange: (state, action) => {
       state.fields.event_description = action.payload;
     },
+    showCreateEventModal: (state) => {
+      state.createEventModal = true;
+    },
+    hideCreateEventModal: (state) => {
+      state.createEventModal = false;
+    },
     reset: () => initialState
   },
 });
@@ -78,6 +82,8 @@ export const {
     handleStartTimeChange,
     handleEndTimeChange,
     handleEventDescriptionChange,
+    showCreateEventModal,
+    hideCreateEventModal,
     reset
 } = newEventSlice.actions;
 
