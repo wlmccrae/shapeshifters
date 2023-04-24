@@ -23,9 +23,7 @@ const EventCard = ({
 }) => {
   const dispatch = useDispatch();
   const { eventDetailModal } = useSelector((state) => state.eventDetail);
-  // const { data, isLoading } = useGetEventQuery(id);
-  // if (isLoading) return <div>Loading...</div>;
-  // console.log("DATA", data);
+
   const handleClick = (e) => {
     dispatch(getEventId(id));
     dispatch(showEventDetailModal());
