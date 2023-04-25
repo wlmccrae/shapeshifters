@@ -2,7 +2,8 @@ import React from "react";
 import { useSelector, useDispatch } from 'react-redux';
 
 import EventsPageTabs from './EventsPageTabs';
-import EventsCards from '../EventsCards';
+import EventsHostingCards from '../EventsHostingCards';
+import EventsAttendingCards from '../EventsAttendingCards';
 
 function EventsPage() {
     const dispatch = useDispatch();
@@ -13,12 +14,14 @@ function EventsPage() {
     const attending = () => (
             <div>
                 <h1> Events You Are Attending </h1>
+                <EventsAttendingCards />
             </div>
     );
 
     const hosting = () => (
             <div>
                 <h1> Events You Are Hosting </h1>
+                <EventsHostingCards />
             </div>
     );
 

@@ -67,4 +67,6 @@ export const {
     useGetEventsQuery,
     useCreateEventMutation,
     useGetEventQuery,
+    useGetAttendingEventsQuery,
+    useGetHostingEventsQuery,
 } = eventsApi;
