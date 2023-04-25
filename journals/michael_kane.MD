@@ -45,4 +45,19 @@ installed tailwind. developed a game plan for the break. created many branches a
 ################################## WK 5 ##################################
 
 4/17/23
-ugh.
+completed the login/logout/signup, all around front-end authentication, with the front end over spring break. spent some time reviewing code with teams members. created new branches and issues. strated building individual components for the application. we ended the day discussing our next steps and breaking into groups so we can divide and conquer the remaining tasks.
+
+4/18/23 - 4/20/23
+wife was admitted to hospital and I my daughter was born.
+
+4/24/23
+took practice exam then went back to hospital. my group has been filling me in on code/changes they've done. pulled code and reviewing so I can catch up.
+
+4/25/23
+started day in afternoon after visit to hospital. contuniation of reviewing code and strating to plan a test to implement.
+
+4/26/23
+
+4/27/23
+
+4/28/23
