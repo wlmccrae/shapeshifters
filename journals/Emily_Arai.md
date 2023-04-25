@@ -46,3 +46,16 @@ Added lat and log integration with Radar API to the backend. Started planning th
 
 ### Day 5
 Continued to work on the front end. Sought help with finishing installing Tailwind due to difficulties the previous evening. Tried to make a carousel page using a template from tailwind. Ran into issues making the buttons responsive. Created front end issues for the project. Merged api map branch into map. Merged changes installing Tailwind into main so that team members that would like can try to get a better understanding of tailwind over the spring break.
+
+## Week 4
+### Day 1
+Merged work completed over the break to add frontend authentication to the app into the main branch. We completed the create event form and debugged a 422 error. Started work on Modal component and the Navbar component. Discussed splitting into pairs for completing the Modal/Navbar and LandingPage components. Agreed to split into pairs the next day.
+
+### Day 2
+Split into pairs. Michael is out for family reasons. Victoria and I worked on the Modal Component while Lotus and Kane worked on the LandingPage component. We worked on converting the Modal logic we had from React into Redux. We consulted with Riley. Got the Modal component working in Redux. Then, we worked on the Navbar component. We got the Navbar component at the top of the page. Worked on hooking up the Modal logic to the Navbar buttons.
+
+### Day 3
+Today we continued to work in our pairs. Victoria and I got the modals working but had a warning, and asked Riley for advice on our Modals. We refactored based on his feedback. Victoria and I completed the Event Form modal. We debugged some issues that Lotus and Kane were having with the LandingPage.
+
+### Day 4
+In the morning, Lotus, Victoria and I discussed the design of the user’s events page and how to structure this in our app. In the afternoon, Victoria and I worked on getting the EventsDetail modal working and hooked up to the Redux store. We were able to get the component working but need to get the functionality of the buttons going. At the end of the day, we all discussed how Redux is working in our app.

@@ -15,11 +15,12 @@ const initialState = {
     end_datetime: '',
     event_description: ''
   },
-  errorMessage: null
+  errorMessage: null,
+  createEventModal: false,
 };
 
 export const newEventSlice = createSlice({
-  name: "event",
+  name: "newEvent",
   initialState,
   reducers: {
     handleEventNameChange: (state, action) => {
@@ -58,6 +59,12 @@ export const newEventSlice = createSlice({
     handleEventDescriptionChange: (state, action) => {
       state.fields.event_description = action.payload;
     },
+    showCreateEventModal: (state) => {
+      state.createEventModal = true;
+    },
+    hideCreateEventModal: (state) => {
+      state.createEventModal = false;
+    },
     reset: () => initialState
   },
 });
@@ -75,6 +82,8 @@ export const {
     handleStartTimeChange,
     handleEndTimeChange,
     handleEventDescriptionChange,
+    showCreateEventModal,
+    hideCreateEventModal,
     reset
 } = newEventSlice.actions;
 

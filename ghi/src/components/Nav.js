@@ -1,36 +1,41 @@
 import React from "react";
 import ss_logo from "../ss_logo.png";
+import { NavLink } from 'react-router-dom';
 import { useGetAccountQuery } from "../services/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { showSignupModal, hideSignupModal } from "../features/auth/signupSlice";
 import { showLoginModal } from "../features/auth/loginSlice";
 import { useLogoutMutation } from "../services/auth";
+import { showCreateEventModal, hideCreateEventModal } from "../features/events/newEventSlice";
 import Modal from "./Modal";
 import Signup from "./Signup";
 import Login from "./Login";
+import EventForm from "./EventForm";
 
 function Nav() {
   const dispatch = useDispatch();
   const { data: account } = useGetAccountQuery();
   const { signupModal } = useSelector((state) => state.signup);
   const { loginModal } = useSelector((state) => state.login);
+  const { createEventModal } = useSelector((state) => state.newEvent);
   const [logout] = useLogoutMutation();
 
   const loggedIn = () => (
     <div className="w-full px-4 block flex-grow lg:flex lg:items-center lg:w-auto">
       <div className="text-sm lg:flex-grow">
-        <a
-          href="#responsive-header"
+        <NavLink
+          to="/events"
           className="block mt-4 lg:inline-block lg:mt-0 text-gun-powder-600 hover:font-bold mr-4"
         >
           Your Events
-        </a>
-        <a
-          href="#responsive-header"
+        </NavLink>
+        <button
+          type="submit"
+          onClick={() => dispatch(showCreateEventModal())}
           className="block mt-4 lg:inline-block lg:mt-0 text-gun-powder-600 hover:font-bold mr-4"
         >
           Create Event
-        </a>
+        </button>
       </div>
       <div className="flex space-x-4">
         <div>
@@ -73,18 +78,17 @@ function Nav() {
     <>
       <nav className="flex items-center justify-between flex-wrap bg-jet-stream-500 p-2">
         <div className='"flex items-center flex-shrink-0 text-white mr-6"'>
-          <img src={ss_logo} height="75" width="140" />
+          <a href="/">
+            <img src={ss_logo} height="75" width="140" />
+          </a>
         </div>
         {account ? loggedIn() : notLoggedIn()}
       </nav>
       <div className="max-w-3xl mx-auto">
         <div className="text-center py-3">
-          <Modal
-            visible={signupModal}
-            onClose={() => dispatch(hideSignupModal())}
-            children={<Signup />}
-          />
+          <Signup />
           <Login />
+          <EventForm />
         </div>
       </div>
     </>

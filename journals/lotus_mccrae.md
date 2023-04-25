@@ -39,4 +39,4 @@ Planned work division for tomorrow: working on modals and on landing page.
 Created logged in landing page and not logged in landing page.
 
 19 April 2023
-Fixed backend code to correctly list events based on event id and host id. Added button to event cards that will later dispatch the event details modal and to create event button that will later dispatch the create event modal.
+Kane and I worked together on the landing page. We merged the new Nav bar to our branch and have two different landing pages: one for when a user is logged in, and one for when a viewer is not logged in. The not logged in page had an auto-play image carousel of fitness activities. The logged in page shows event cards with the event information. There are buttons for event details and creating an event, but those are not yet functional.

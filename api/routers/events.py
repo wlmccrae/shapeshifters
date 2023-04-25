@@ -2,10 +2,17 @@ from fastapi import Depends, APIRouter, Response
 from models.events import EventIn, EventOut, EventsOut
 from queries.events import EventQueries
 from authenticator import authenticator
+from datetime import datetime
+
 import traceback
 
 
 router = APIRouter()
+
+def filter_past_events(events):
+    today = datetime.now().date()
+    return [event for event in events if event.end_date.date() >= today]
+
 
 ################################# POST #################################
 
@@ -38,7 +45,6 @@ def get_hosting_events(
     account_data: dict = Depends(authenticator.get_current_account_data),
 ):
     hosting_list = {"events": queries.get_hosting_events(account_data["id"])}
-    print("********* HOSTING LIST *********", hosting_list)
 
     return hosting_list
 

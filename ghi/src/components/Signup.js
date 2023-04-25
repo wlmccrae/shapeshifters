@@ -11,7 +11,7 @@ import {
   error,
   reset,
 } from "../features/auth/signupSlice";
-import { signupModal, hideSignupModal } from "../features/auth/signupSlice";
+import { hideSignupModal } from "../features/auth/signupSlice";
 import Modal from "./Modal";
 
 const Signup = () => {
@@ -19,8 +19,6 @@ const Signup = () => {
   const [signup] = useSignupMutation();
   const { fields, signupModal } = useSelector((state) => state.signup);
 
-  console.log("FIELDS HASHED_PASSWORD:", fields.hashed_password)
-  console.log("FIELDS PASSWORD:", fields.password)
   const handleSubmit = (e) => {
     e.preventDefault();
     if (fields.hashed_password !== fields.password_confirmation) {
