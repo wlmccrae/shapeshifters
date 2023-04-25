@@ -6,6 +6,33 @@ from queries.events import EventQueries
 client = TestClient(app)
 
 class FakeEventQueries:
+
+    def get_event(self, event_id):
+        return {
+            "id": event_id,
+            "host_id": 5,
+            "event_name": "Lake Travis Kayak Tour",
+            "event_type": "kayaking",
+            "address_line1": "16107 FM2769",
+            "address_line2": "",
+            "city": "Leander",
+            "state": "TX",
+            "zip_code": "78641",
+            "country": "US",
+            "lat": 30.577534,
+            "lon": -97.851725,
+            "image_url": "",
+            "start_datetime": "2023-06-02T10:00:00",
+            "end_datetime": "2023-06-02T12:00:00",
+            "event_description": "Join us for a scenic kayak tour on Lake Travis.",
+            "host": {
+                "first_name": "Yuri",
+                "last_name": "Nator",
+                "host_id": 5
+            }
+        }
+
+
     def get_events(self):
         return [
               {
@@ -46,3 +73,16 @@ def test_get_events():
 
     # A Cleanup
     app.dependency_overrides = {}
+
+
+# Mike's Test
+def test_get_event():
+    #Arrange
+    app.dependency_overrides[EventQueries]= FakeEventQueries
+
+    #Act
+    res = client.get("api/events/10")
+
+    #Assert
+    assert res.status_code == 200
+
