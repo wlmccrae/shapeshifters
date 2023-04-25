@@ -45,3 +45,6 @@ Added button to event cards that will later dispatch the event details modal and
 
 24 April 2023
 Group coding the Your Events page. To conditionally load the list of events the user is attending or hosting and style the components, we created a global state that can be used for the EventsPageTabs and EventsPage components.
+
+25 April 2023
+Used Redux to store whether the user is looking at events they attending or events they are hosting. The EventsPageTabs and EventsPage components read that state and display event cards based on that state.
