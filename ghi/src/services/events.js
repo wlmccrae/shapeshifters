@@ -6,7 +6,7 @@ export const eventsApi = createApi({
     baseUrl: `${process.env.REACT_APP_API_HOST}`,
     credentials: "include",
   }),
-  tagTypes: ["Events"],
+  tagTypes: ["Events", "Attending", "Hosting"],
   endpoints: (builder) => ({
     getEvents: builder.query({
       query: () => "/api/events",
@@ -21,18 +21,18 @@ export const eventsApi = createApi({
         query: () => "/api/events/attending",
         transformResponse: (response) => response.events,
         providedTags: (result) => {
-            const tags = [{ type: "Events", id: "LIST" }];
+            const tags = [{ type: "Attending", id: "LIST" }];
             if (!result) return tags;
-            return [...result.map(({ id }) => ({ type: "Events", id })), ...tags];
+            return [...result.map(({ id }) => ({ type: "Attending", id })), ...tags];
       },
     }),
     getHostingEvents: builder.query({
         query: () => "/api/events/hosting",
         transformResponse: (response) => response.events,
         providedTags: (result) => {
-            const tags = [{ type: "Events", id: "LIST" }];
+            const tags = [{ type: "Hosting", id: "LIST" }];
             if (!result) return tags;
-            return [...result.map(({ id }) => ({ type: "Events", id })), ...tags];
+            return [...result.map(({ id }) => ({ type: "Hosting", id })), ...tags];
       },
     }),
     getEvent: builder.query({
