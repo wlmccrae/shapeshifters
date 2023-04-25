@@ -1,8 +1,9 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { showEventDetailModal, getEventId } from "../../features/events/eventDetailSlice";
-import { useGetEventQuery } from "../../services/events";
-
+import { useDeleteEventMutation } from "../../services/events";
+import { handleEmailChange } from "../../features/auth/signupSlice";
+import { showHostingEvents } from "../../features/events/eventsPageSlice";
 
 const EventCard = ({
     id,
@@ -20,12 +21,56 @@ const EventCard = ({
     host,
 }) => {
   const dispatch = useDispatch();
-  const { eventDetailModal } = useSelector((state) => state.eventDetail);
+  const [deleteEvent] = useDeleteEventMutation();
+  const { eventDetailModal } = useSelector(state => state.eventDetail);
+  const { eventId } = useSelector(state => state.eventDetail)
+  const { userRole } = useSelector(state => state.eventsPage)
 
-  const handleClick = (e) => {
+  const notHosting = () => (
+    <div className="flex justify-center p-4">
+      <button
+        onClick={handleNotHostingClick}
+        className="bg-jet-stream-500 hover:bg-jet-stream-800 text-black p-2 rounded"
+      >
+        Event Details
+      </button>
+    </div>
+  );
+
+  const hosting = () => (
+    <div className="flex justify-center items-baseline">
+      <button
+        onClick={handleUpdate}
+        className="mr-8 bg-jet-stream-500 hover:bg-jet-stream-800 text-black p-2 rounded"
+      >
+        Update
+      </button>
+      <button
+        onClick={handleDelete}
+        className="bg-jet-stream-500 hover:bg-jet-stream-800 text-black p-2 rounded"
+      >
+        Delete
+      </button>
+    </div>
+  );
+
+  const handleNotHostingClick = (e) => {
     dispatch(getEventId(id));
     dispatch(showEventDetailModal());
   }
+
+  const handleUpdate = (e) => {
+
+  };
+
+  const handleDelete = (e) => {
+    console.log("ID IN HANDLEDELETE", id)
+    dispatch(getEventId(id));
+    deleteEvent(id);
+    dispatch(showHostingEvents());
+    window.location.reload();
+  };
+
     return (
       <div className="max-w-lg max-h-fit rounded overflow-hidden shadow-lg">
         <img
@@ -72,14 +117,7 @@ const EventCard = ({
             })}
           </p>
         </div>
-        <div className="flex justify-center p-4">
-          <button
-            onClick={handleClick}
-            className="bg-jet-stream-500 hover:bg-jet-stream-800 text-black p-2 rounded-full"
-          >
-            Event Details
-          </button>
-        </div>
+          { userRole == "hosting" ? hosting() : notHosting() }
       </div>
     );
 }
