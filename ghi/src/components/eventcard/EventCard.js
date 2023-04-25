@@ -5,8 +5,6 @@ import { useDeleteEventMutation } from "../../services/events";
 import { handleEmailChange } from "../../features/auth/signupSlice";
 import { showHostingEvents } from "../../features/events/eventsPageSlice";
 
-
-
 const EventCard = ({
     id,
     event_name,
