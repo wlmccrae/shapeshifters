@@ -25,8 +25,13 @@ const EventCard = ({
   const { eventDetailModal } = useSelector((state) => state.eventDetail);
 
   const handleClick = (e) => {
+    console.log("HandleClick in EventCard before dispatch: ")
+    console.log("ID IN HANDLECLICK", id)
     dispatch(getEventId(id));
+    console.log("EventDetailModal before dispatch:", eventDetailModal)
     dispatch(showEventDetailModal());
+    console.log("EventDetailModal", eventDetailModal)
+    console.log("HandleClick in EventCard after dispatch: ")
   }
     return (
       <div className="max-w-lg max-h-fit rounded overflow-hidden shadow-lg">

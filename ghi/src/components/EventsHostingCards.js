@@ -4,8 +4,8 @@ import EventCard from "./eventcard/EventCard";
 
 const EventsHostingCards = ({ event }) => {
   const { data, isLoading } = useGetHostingEventsQuery();
-  console.log("******* DATA (EventsHostingCards): ", data);
   if (isLoading) return <div>Loading...</div>;
+  console.log("******* DATA (EventsHostingCards): ", data);
   if (data?.length === 0) return <div>No events</div>;
 
   return (

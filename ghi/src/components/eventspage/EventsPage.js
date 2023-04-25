@@ -6,6 +6,7 @@ import { useGetAccountQuery } from '../../services/auth';
 import EventsPageTabs from './EventsPageTabs';
 import EventsHostingCards from '../EventsHostingCards';
 import EventsAttendingCards from '../EventsAttendingCards';
+import EventDetails from '../EventDetails';
 import './EventsPage.css';
 
 function EventsPage() {
@@ -18,6 +19,7 @@ function EventsPage() {
             <div>
                 <h1> Events {account.account.first_name} Is Attending </h1>
                 <EventsAttendingCards />
+                <EventDetails />
             </div>
     );
 
@@ -25,6 +27,7 @@ function EventsPage() {
             <div>
                 <h1> Events {account.account.first_name} Is Hosting </h1>
                 <EventsHostingCards />
+                <EventDetails />
             </div>
     );
 
