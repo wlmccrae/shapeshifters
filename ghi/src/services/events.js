@@ -17,11 +17,29 @@ export const eventsApi = createApi({
         return [...result.map(({ id }) => ({ type: "Events", id })), ...tags];
       },
     }),
+    getAttendingEvents: builder.query({
+        query: () => "/api/events/attending",
+        transformResponse: (response) => response.events,
+        providedTags: (result) => {
+            const tags = [{ type: "Events", id: "LIST" }];
+            if (!result) return tags;
+            return [...result.map(({ id }) => ({ type: "Events", id })), ...tags];
+      },
+    }),
+    getHostingEvents: builder.query({
+        query: () => "/api/events/hosting",
+        transformResponse: (response) => response.events,
+        providedTags: (result) => {
+            const tags = [{ type: "Events", id: "LIST" }];
+            if (!result) return tags;
+            return [...result.map(({ id }) => ({ type: "Events", id })), ...tags];
+      },
+    }),
     getEvent: builder.query({
       query: (event_id) => ({
         url: `api/events/${event_id}`,
         transformResponse: (response) => response?.event,
-        providesTags: ["Event"],
+        providedTags: ["Event"],
       }),
     }),
     createEvent: builder.mutation({
@@ -49,4 +67,6 @@ export const {
     useGetEventsQuery,
     useCreateEventMutation,
     useGetEventQuery,
+    useGetAttendingEventsQuery,
+    useGetHostingEventsQuery,
 } = eventsApi;

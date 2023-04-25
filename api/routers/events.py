@@ -2,10 +2,17 @@ from fastapi import Depends, APIRouter, Response
 from models.events import EventIn, EventOut, EventsOut
 from queries.events import EventQueries
 from authenticator import authenticator
+from datetime import datetime
+
 import traceback
 
 
 router = APIRouter()
+
+def filter_past_events(events):
+    today = datetime.now().date()
+    return [event for event in events if event.end_date.date() >= today]
+
 
 ################################# POST #################################
 
