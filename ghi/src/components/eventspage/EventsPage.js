@@ -10,10 +10,12 @@ import EventDetails from '../EventDetails';
 import './EventsPage.css';
 
 function EventsPage() {
-    const { data: account } = useGetAccountQuery();
+    const { data: account, isLoading } = useGetAccountQuery();
     const { userRole } = useSelector(
         (state) => state.eventsPage
     );
+    
+    if (isLoading) return <div>Loading...</div>;
 
     const attending = () => (
             <div>

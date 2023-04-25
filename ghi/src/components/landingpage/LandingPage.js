@@ -3,7 +3,7 @@ import { BsChevronCompactLeft, BsChevronCompactRight } from 'react-icons/bs';
 import { RxDotFilled } from 'react-icons/rx';
 import { useState, useEffect } from "react";
 
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { showCreateEventModal } from "../../features/events/newEventSlice";
 
 import { useGetAccountQuery } from '../../services/auth';
@@ -18,14 +18,9 @@ import bikingImg from '../../imgs/080816summersts-178-nw.jpg';
 import hikingImg from '../../imgs/120526forestpk022-nw.jpg';
 import soccerImg from '../../imgs/140622nyc127-nw.jpg';
 
-
-
-
 function LandingPage() {
     // Create event modal logic
     const dispatch = useDispatch();
-    const { createEventModal } = useSelector((state) => state.newEvent);
-
 
     const slides = [
         {
