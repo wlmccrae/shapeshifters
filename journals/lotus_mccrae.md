@@ -39,4 +39,12 @@ Planned work division for tomorrow: working on modals and on landing page.
 Created logged in landing page and not logged in landing page.
 
 19 April 2023
-Kane and I worked together on the landing page. We merged the new Nav bar to our branch and have two different landing pages: one for when a user is logged in, and one for when a viewer is not logged in. The not logged in page had an auto-play image carousel of fitness activities. The logged in page shows event cards with the event information. There are buttons for event details and creating an event, but those are not yet functional.
+Fixed backend code to correctly list events based on event id and host id. With our original query both the events and users tables returned a column named ‘id’, and I thought that may be confusing event_record_to_dict when it tried ‘if column.name in event_fields’. It seemed to always choose the ‘id’ column from users instead of the ‘id’ column from events. So I changed our query to only get the first_name and last_name columns from the users table. Then in event_record_to_dict I added the host_id from the event to the host dictionary before returning event. I'm far more familiar with SQL queries now.
+
+Added button to event cards that will later dispatch the event details modal and to create event button that will later dispatch the create event modal.
+
+24 April 2023
+Group coding the Your Events page. To conditionally load the list of events the user is attending or hosting and style the components, we created a global state that can be used for the EventsPageTabs and EventsPage components.
+
+25 April 2023
+Used Redux to store whether the user is looking at events they attending or events they are hosting. The EventsPageTabs and EventsPage components read that state and display event cards based on that state.
