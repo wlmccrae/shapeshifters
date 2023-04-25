@@ -161,12 +161,12 @@ class EventQueries:
                 )
 
     # Would like to make it so the request body doesn't need all fields
-    def update_event(self, event_id, event_data):
+    def update_event(self, event_id, event_data, user_id):
         with pool.connection() as conn:
             with conn.cursor() as db:
                 params = [
                     event_data.event_name,
-                    event_data.host_id,
+                    user_id,
                     event_data.event_type,
                     event_data.address_line1,
                     event_data.address_line2,
@@ -180,7 +180,6 @@ class EventQueries:
                     event_data.event_description,
                     event_id,
                 ]
-                print("PARAMS", params)
                 db.execute(
                     """
                     UPDATE events
@@ -217,17 +216,11 @@ class EventQueries:
                     """,
                     params,
                 )
-
-                record = None
                 row = db.fetchone()
-                print("****** ROW *******", row)
-                if row is not None:
-                    record = {}
-                    for i, column in enumerate(db.description):
-                        record[column.name] = row[i]
-
-                print("****** RECORD *******", record)
-                return record
+                id = row[0]
+        if id is not None:
+            return self.get_event(id)
+  
 
     def event_record_to_dict(self, row, description):
         event = None

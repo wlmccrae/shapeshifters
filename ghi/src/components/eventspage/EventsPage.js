@@ -7,6 +7,7 @@ import EventsPageTabs from './EventsPageTabs';
 import EventsHostingCards from '../EventsHostingCards';
 import EventsAttendingCards from '../EventsAttendingCards';
 import EventDetails from '../EventDetails';
+import EventUpdate from '../EventUpdate';
 import './EventsPage.css';
 
 function EventsPage() {
@@ -14,7 +15,7 @@ function EventsPage() {
     const { userRole } = useSelector(
         (state) => state.eventsPage
     );
-    
+
     if (isLoading) return <div>Loading...</div>;
 
     const attending = () => (
@@ -30,6 +31,7 @@ function EventsPage() {
                 <h1> Events {account.account.first_name} Is Hosting </h1>
                 <EventsHostingCards />
                 <EventDetails />
+                <EventUpdate />
             </div>
     );
 

@@ -2,8 +2,10 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { showEventDetailModal, getEventId } from "../../features/events/eventDetailSlice";
 import { useDeleteEventMutation } from "../../services/events";
+import { useUpdateEventMutation } from "../../services/events";
 import { handleEmailChange } from "../../features/auth/signupSlice";
 import { showHostingEvents } from "../../features/events/eventsPageSlice";
+import { showEventUpdateModal } from "../../features/events/eventUpdateSlice";
 
 
 
@@ -24,6 +26,10 @@ const EventCard = ({
 }) => {
   const dispatch = useDispatch();
   const [deleteEvent] = useDeleteEventMutation();
+  const [updateEvent] = useUpdateEventMutation();
+  const { fields, eventUpdateModal } = useSelector(
+    (state) => state.eventUpdate
+  );
   const { eventDetailModal } = useSelector(state => state.eventDetail);
   const { eventId } = useSelector(state => state.eventDetail)
   const { userRole } = useSelector(state => state.eventsPage)
@@ -62,15 +68,16 @@ const EventCard = ({
   }
 
   const handleUpdate = (e) => {
-
+    dispatch(getEventId(id));
+    dispatch(showEventUpdateModal());
+    updateEvent({fields});
   };
 
   const handleDelete = (e) => {
-    console.log("ID IN HANDLEDELETE", id)
     dispatch(getEventId(id));
     deleteEvent(id);
-    dispatch(showHostingEvents());
     window.location.reload();
+    dispatch(showHostingEvents());
   };
 
     return (

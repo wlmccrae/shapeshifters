@@ -81,7 +81,7 @@ def update_event(
     account_data: dict = Depends(authenticator.get_current_account_data),
     queries: EventQueries = Depends(),
 ):
-    record = queries.update_event(event_id, event_in)
+    record = queries.update_event(event_id, event_in, account_data["id"])
     if record is None:
         response.status_code = 404
     else:

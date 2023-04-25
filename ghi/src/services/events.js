@@ -18,21 +18,24 @@ export const eventsApi = createApi({
       },
     }),
     getAttendingEvents: builder.query({
-        query: () => "/api/events/attending",
-        transformResponse: (response) => response.events,
-        providedTags: (result) => {
-            const tags = [{ type: "Attending", id: "LIST" }];
-            if (!result) return tags;
-            return [...result.map(({ id }) => ({ type: "Attending", id })), ...tags];
+      query: () => "/api/events/attending",
+      transformResponse: (response) => response.events,
+      providedTags: (result) => {
+        const tags = [{ type: "Attending", id: "LIST" }];
+        if (!result) return tags;
+        return [
+          ...result.map(({ id }) => ({ type: "Attending", id })),
+          ...tags,
+        ];
       },
     }),
     getHostingEvents: builder.query({
-        query: () => "/api/events/hosting",
-        transformResponse: (response) => response.events,
-        providedTags: (result) => {
-            const tags = [{ type: "Hosting", id: "LIST" }];
-            if (!result) return tags;
-            return [...result.map(({ id }) => ({ type: "Hosting", id })), ...tags];
+      query: () => "/api/events/hosting",
+      transformResponse: (response) => response.events,
+      providedTags: (result) => {
+        const tags = [{ type: "Hosting", id: "LIST" }];
+        if (!result) return tags;
+        return [...result.map(({ id }) => ({ type: "Hosting", id })), ...tags];
       },
     }),
     getEvent: builder.query({
@@ -45,6 +48,15 @@ export const eventsApi = createApi({
     createEvent: builder.mutation({
       query: (body) => ({
         url: "/api/events",
+        method: "POST",
+        body: body.fields,
+        credentials: "include",
+      }),
+      invalidateTags: [{ type: "Events", id: "LIST" }],
+    }),
+    updateEvent: builder.mutation({
+      query: (body, event_id) => ({
+        url: `/api/events/${event_id}`,
         method: "POST",
         body: body.fields,
         credentials: "include",
@@ -70,4 +82,5 @@ export const {
     useGetAttendingEventsQuery,
     useGetHostingEventsQuery,
     useDeleteEventMutation,
+    useUpdateEventMutation,
 } = eventsApi;
