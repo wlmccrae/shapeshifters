@@ -1,27 +1,33 @@
 import React from "react";
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+
+import { useGetAccountQuery } from '../../services/auth';
 
 import EventsPageTabs from './EventsPageTabs';
 import EventsHostingCards from '../EventsHostingCards';
 import EventsAttendingCards from '../EventsAttendingCards';
+import EventDetails from '../EventDetails';
+import './EventsPage.css';
 
 function EventsPage() {
-    const dispatch = useDispatch();
+    const { data: account } = useGetAccountQuery();
     const { userRole } = useSelector(
         (state) => state.eventsPage
     );
 
     const attending = () => (
             <div>
-                <h1> Events You Are Attending </h1>
+                <h1> Events {account.account.first_name} Is Attending </h1>
                 <EventsAttendingCards />
+                <EventDetails />
             </div>
     );
 
     const hosting = () => (
             <div>
-                <h1> Events You Are Hosting </h1>
+                <h1> Events {account.account.first_name} Is Hosting </h1>
                 <EventsHostingCards />
+                <EventDetails />
             </div>
     );
 
