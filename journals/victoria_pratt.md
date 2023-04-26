@@ -84,3 +84,22 @@ Got tailwind working, started working on the carousel for the homepage but ran i
 ### Monday, 4/17/23
 
 Debugged create form for events, got event cards with images to display, started implementation of nav bar. Discussed separating into smaller groups, planning to split up the work tomorrow morning during stand-up.
+
+### Tuesday, 4/18/23
+
+Split into smaller groups to continue implementing the front end. Set up login and signup modals, a nav bar, and some of the landing page.
+
+### Wednesday, 4/19/23
+
+Added a modal for the event form, and got that and the login and signup modals to pop up when their respective links/buttons are clicked on the nav bar. Landing page now displays a carousel when logged out, and a list of all events as detailed event cards when logged in.
+
+### Thursday, 4/20/23
+We set up a modal to display an event's details when clicking the button on an event card.
+
+## Week 6
+
+### Monday, 4/24/23
+Worked on the Your Events page to display events being attended and hosted depending on whtehr the "Attending" or "Hosting" tab is cicked. Made our logo in the nav bar clickable so it redirects to the landing page.
+
+### Tuesday, 4/25/23
+Worked on adding functionality to update event and delete an event. When a user views their hosted events, the event cards have an "Update" button and a "Delete" button. Able to delete events now, but the update event modal doesn't work yet. The modal comes up but it doesn't actually update the event.
