@@ -1,31 +1,47 @@
-import { NavLink } from 'react-router-dom';
 
 
-function Footer () {
-    return(
-        <footer class="bg-white rounded-lg shadow dark:bg-gray-900 m-4">
-            <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
-                <div class="sm:flex sm:items-center sm:justify-between">
-                    <a href="https://flowbite.com/" class="flex items-center mb-4 sm:mb-0">
-                        <img src="https://flowbite.com/docs/images/logo.svg" class="h-8 mr-3" alt="Flowbite Logo" />
-                        <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
-                    </a>
-                    <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
+// import { NavLink } from 'react-router-dom';
+import ss_logo from "../imgs/logo_ss.png";
 
-                        <li>
-                            <a href="#" class="mr-4 hover:underline md:mr-6">Linked In</a>
-                        </li>
-                        <li>
-                            <a href="#" class="mr-4 hover:underline md:mr-6 ">Gitlab</a>
-                        </li>
-                        <li>
-                            <a href="#" class="hover:underline">Contact</a>
-                        </li>
-                    </ul>
-                </div>
+function Footer() {
+    return (
+        <>
+        <footer>
+            <div className="flex items-center justify-between flex-wrap bg-jet-stream-500 p-2" />
+            <div className='"flex items-center flex-shrink-0 text-white mr-6"'>
+                    <a href="/" alt="app-logo" />
+                    <img src={ss_logo.png} alt="app-logo" height="75" width="140" />
+            </div>
+
+            <div>
                 <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
-                <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a href="https://flowbite.com/" class="hover:underline">ShapeShifters™</a>. All Rights Reserved.</span>
+                <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a href="/" class="hover:underline">ShapeShifters™</a>. All Rights Reserved.</span>
+                <div>
+                    <div>
+                        <p>Linked In</p>
+                        <ul>
+                            <li>Emily</li>
+                            <li>Victoria</li>
+                            <li>Lotus</li>
+                            <li>Kane</li>
+                            <li>Michael</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <p>Gitlab</p>
+                        <ul>
+                            <li>Emily</li>
+                            <li>Victoria</li>
+                            <li>Lotus</li>
+                            <li>Kane</li>
+                            <li>Michael</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </footer>
-    )
+        </>
+    );
 }
+
+export default Footer;
