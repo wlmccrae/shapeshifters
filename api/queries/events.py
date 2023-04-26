@@ -147,6 +147,13 @@ class EventQueries:
             with conn.cursor() as db:
                 db.execute(
                     """
+                    DELETE FROM attendees
+                    WHERE event_id = %s
+                    """,
+                    [event_id],
+                )
+                db.execute(
+                    """
                     DELETE FROM events
                     WHERE id = %s
                     """,

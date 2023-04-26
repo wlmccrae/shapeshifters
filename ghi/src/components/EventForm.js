@@ -5,7 +5,6 @@ import {
     handleEventNameChange,
     handleEventTypeChange,
     handleAddress1Change,
-    handleAddress2Change,
     handleCityChange,
     handleStateChange,
     handleCountryChange,
@@ -71,22 +70,11 @@ const EventForm = () => {
                   type="text"
                   className="border w-full h-5 px-3 py-5 mt-4 mr-4 hover:outline-none focus:ring-1 focus:outline-none focus:ring-morning-glory-600 rounded-md"
                   id="address1-field"
-                  placeholder="Address line 1"
+                  placeholder="Address"
                   tabIndex={1}
                   value={fields.address_line1}
                   onChange={(e) => {
                     dispatch(handleAddress1Change(e.target.value));
-                  }}
-                />
-                <input
-                  type="text"
-                  className="border w-full h-5 px-3 py-5 mt-4 mr-4 hover:outline-none focus:ring-1 focus:outline-none focus:ring-morning-glory-600 rounded-md"
-                  id="address2-field"
-                  placeholder="Address 2"
-                  tabIndex={1}
-                  value={fields.address_line2}
-                  onChange={(e) => {
-                    dispatch(handleAddress2Change(e.target.value));
                   }}
                 />
                 <div className="flex justify-between items-baseline">
@@ -151,7 +139,7 @@ const EventForm = () => {
                 <div className="flex justify-between items-baseline">
                   <label
                     className="font-light semibold px-2 text-gray-400"
-                    for="starttime-field"
+                    htmlFor="starttime-field"
                   >
                     Start:
                   </label>
@@ -168,7 +156,7 @@ const EventForm = () => {
                   />
                   <label
                     className="py-2 px-2 font-light semibold text-gray-400"
-                    for="endtime-field"
+                    htmlFor="endtime-field"
                   >
                     End:
                   </label>
