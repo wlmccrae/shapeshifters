@@ -16,21 +16,101 @@ function Footer() {
                         <div>
                             <p>Linked In</p>
                             <ul>
-                                <li>Emily</li>
-                                <li>Victoria</li>
-                                <li>Lotus</li>
-                                <li>Kane</li>
-                                <li>Michael</li>
+                                <li>
+                                    <a
+                                        href="www.linkedin.com/in/emily-arai/"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >
+                                        Emily
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        href="https://www.linkedin.com/in/wmccrae/"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >
+                                        Lotus
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        href="https://www.linkedin.com/in/victoriapratt/"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >
+                                        Victoria
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        href="https://www.linkedin.com/in/kane-rodriguez/"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >
+                                        Kane
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        href="https://www.linkedin.com/in/kane-michael/"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >
+                                        Michael
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                         <div>
                             <p>Gitlab</p>
                             <ul>
-                                <li>Emily</li>
-                                <li>Victoria</li>
-                                <li>Lotus</li>
-                                <li>Kane</li>
-                                <li>Michael</li>
+                                <li>
+                                    <a
+                                        href="https://gitlab.com/emi.rai"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >
+                                        Emily
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        href="https://gitlab.com/wmccrae"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >
+                                        Lotus
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        href="https://gitlab.com/victoriagfpratt"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >
+                                        Victoria
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        href="https://gitlab.com/kanearo"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >
+                                        Kane
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        href="https://gitlab.com/512kma"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >
+                                        Michael
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                     </div>
