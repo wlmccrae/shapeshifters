@@ -7,8 +7,6 @@ import { handleEmailChange } from "../../features/auth/signupSlice";
 import { showHostingEvents } from "../../features/events/eventsPageSlice";
 import { showEventUpdateModal } from "../../features/events/eventUpdateSlice";
 
-
-
 const EventCard = ({
     id,
     event_name,
