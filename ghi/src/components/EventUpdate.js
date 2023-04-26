@@ -69,7 +69,7 @@ const EventUpdate = ({ event }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    eventUpdate({ fields });
+    eventUpdate({ body, eventId });
     dispatch(reset());
     window.location.reload();
   };
