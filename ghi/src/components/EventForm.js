@@ -27,7 +27,6 @@ const EventForm = () => {
       e.preventDefault();
       createEvent({fields});
       dispatch(reset());
-      window.location.reload();
     }
 
 
