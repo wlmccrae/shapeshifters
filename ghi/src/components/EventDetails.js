@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 
 import { hideEventDetailModal } from '../features/events/eventDetailSlice';
-import { useGetEventQuery } from "../services/events";
+import { useGetEventQuery, useLazyGetEventQuery } from "../services/events";
 import { useGetAccountQuery } from '../services/auth';
 import { useAddAttendeeMutation } from "../services/attendees";
 
@@ -21,10 +21,16 @@ const EventDetails = ({ event }) => {
     (state) => state.eventDetail
   );
   // Query /api/event/{event_id} for the event with the id from the payload
-  const { data, isLoading } = useGetEventQuery(eventId.payload);
+  // const { data, isLoading } = useGetEventQuery(eventId.payload);
+  const [ trigger, result ] = useLazyGetEventQuery(eventId.payload);
   const [addAttendee] = useAddAttendeeMutation(eventId.payload);
-  if (isLoading) return <div>Loading...</div>;
-
+  // if (isLoading) return <div>Loading...</div>;
+  useEffect(() => {
+    if (eventDetailModal) {
+      trigger(eventId.payload);
+      console.log("TRIGGERED");
+    }
+  }, [eventDetailModal])
   // The handleSubmit for the eventDetail
   const handleSubmit = (e) => {
     // prevents the default action on the form
@@ -39,7 +45,7 @@ const EventDetails = ({ event }) => {
     dispatch(reset());
   };
   return (
-    data && (
+    result && (
       <Modal
         visible={eventDetailModal}
         onClose={() => dispatch(hideEventDetailModal())}
@@ -48,33 +54,33 @@ const EventDetails = ({ event }) => {
           <div className="mt-4 mb-4 bg-white shadow-md rounded-lg">
             <div className="h-2 bg-jet-stream-500 rounded-t-md"></div>
             <h2 className="px-4 text-2xl text-white bg-jet-stream-500 pb-3">
-              {data.event_name}
+              {result.data.event_name}
             </h2>
             <img
               className="h-56 w-full object-cover"
               alt="Event location"
-              src={data.image_url}
+              src={result.data.image_url}
             />
             <form onSubmit={handleSubmit}>
               <div className="px-4">
-                <h2>{data.event_name}</h2>
-                <p>{data.address_line1}</p>
-                <p>{data.address_line2}</p>
+                <h2>{result.data.event_name}</h2>
+                <p>{result.data.address_line1}</p>
+                <p>{result.data.address_line2}</p>
                 <p className="text-gray-700 text-base mb-2">
-                  {data.city}, {data.state} {data.zip_code}
+                  {result.data.city}, {result.data.state} {result.data.zip_code}
                 </p>
                 <p className="text-gray-700 text-base mb-2">
-                  <b>Event Type:</b> {data.event_type}
+                  <b>Event Type:</b> {result.data.event_type}
                 </p>
                 <p className="text-gray-700 text-base mb-2">
                   {/* <b>Host:</b> {host.first_name} {host.last_name}{" "} */}
                 </p>
                 <p className="text-gray-700 text-base mb-2">
-                  <i>{data.event_description}</i>
+                  <i>{result.data.event_description}</i>
                 </p>
                 <p className="text-gray-700 text-base mb-2">
                   <b>Start:</b>{" "}
-                  {new Date(data.start_datetime).toLocaleString([], {
+                  {new Date(result.data.start_datetime).toLocaleString([], {
                     month: "numeric",
                     day: "numeric",
                     year: "numeric",
@@ -85,7 +91,7 @@ const EventDetails = ({ event }) => {
                 </p>
                 <p className="text-gray-700 text-base mb-2">
                   <b>End:</b>{" "}
-                  {new Date(data.end_datetime).toLocaleString([], {
+                  {new Date(result.data.end_datetime).toLocaleString([], {
                     month: "numeric",
                     day: "numeric",
                     year: "numeric",

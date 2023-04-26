@@ -4,6 +4,7 @@ import { showEventDetailModal, getEventId } from "../../features/events/eventDet
 import { useDeleteEventMutation } from "../../services/events";
 import { handleEmailChange } from "../../features/auth/signupSlice";
 import { showHostingEvents } from "../../features/events/eventsPageSlice";
+import { useLazyGetEventQuery } from "../../services/events";
 
 const EventCard = ({
     id,
@@ -25,11 +26,14 @@ const EventCard = ({
   const { eventDetailModal } = useSelector(state => state.eventDetail);
   const { eventId } = useSelector(state => state.eventDetail)
   const { userRole } = useSelector(state => state.eventsPage)
+  const [ trigger, result ] = useLazyGetEventQuery(id);
+  // console.log("TRIGGER IN EVENT CARD", trigger)
+
 
   const notHosting = () => (
     <div className="flex justify-center p-4">
       <button
-        onClick={handleNotHostingClick}
+        onClick={handleEventDetailClick}
         className="bg-jet-stream-500 hover:bg-jet-stream-800 text-black p-2 rounded"
       >
         Event Details
@@ -54,9 +58,13 @@ const EventCard = ({
     </div>
   );
 
-  const handleNotHostingClick = (e) => {
+  const handleEventDetailClick = async (e) => {
     dispatch(getEventId(id));
     dispatch(showEventDetailModal());
+    // console.log("ID IN HANDLEEVENTDETAILCLICK:", id);
+    const returnFromTrigger = await trigger(id);
+    console.log("RETURNFROMTRIGGER", returnFromTrigger)
+    console.log("RESULT: ", result)
   }
 
   const handleUpdate = (e) => {

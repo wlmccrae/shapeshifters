@@ -56,8 +56,8 @@ export const eventsApi = createApi({
         url: `api/events/${event_id}`,
         method: "DELETE",
       }),
-      invalidateTags: (result, error, { event_id }) => [
-        { type: "Events", event_id },
+      invalidateTags: (result, error, { id }) => [
+        { type: "Events", id},
       ],
     }),
   }),
@@ -67,6 +67,7 @@ export const {
     useGetEventsQuery,
     useCreateEventMutation,
     useGetEventQuery,
+    useLazyGetEventQuery,
     useGetAttendingEventsQuery,
     useGetHostingEventsQuery,
     useDeleteEventMutation,
