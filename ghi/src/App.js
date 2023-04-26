@@ -23,8 +23,8 @@ function App() {
               </Route>
 
             </Routes>
-        </div>
-      {/* <Footer /> */}
+          </div>
+        {/* <Footer /> */}
       </BrowserRouter>
     </>
   );
