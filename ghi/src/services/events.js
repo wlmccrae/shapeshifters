@@ -6,7 +6,7 @@ export const eventsApi = createApi({
     baseUrl: `${process.env.REACT_APP_API_HOST}`,
     credentials: "include",
   }),
-  tagTypes: ["Events"],
+  tagTypes: ["Events", "Attending", "Hosting"],
   endpoints: (builder) => ({
     getEvents: builder.query({
       query: () => "/api/events",
@@ -17,16 +17,46 @@ export const eventsApi = createApi({
         return [...result.map(({ id }) => ({ type: "Events", id })), ...tags];
       },
     }),
+    getAttendingEvents: builder.query({
+      query: () => "/api/events/attending",
+      transformResponse: (response) => response.events,
+      providedTags: (result) => {
+        const tags = [{ type: "Attending", id: "LIST" }];
+        if (!result) return tags;
+        return [
+          ...result.map(({ id }) => ({ type: "Attending", id })),
+          ...tags,
+        ];
+      },
+    }),
+    getHostingEvents: builder.query({
+      query: () => "/api/events/hosting",
+      transformResponse: (response) => response.events,
+      providedTags: (result) => {
+        const tags = [{ type: "Hosting", id: "LIST" }];
+        if (!result) return tags;
+        return [...result.map(({ id }) => ({ type: "Hosting", id })), ...tags];
+      },
+    }),
     getEvent: builder.query({
       query: (event_id) => ({
         url: `api/events/${event_id}`,
         transformResponse: (response) => response?.event,
-        providesTags: ["Event"],
+        providedTags: ["Event"],
       }),
     }),
     createEvent: builder.mutation({
       query: (body) => ({
         url: "/api/events",
+        method: "POST",
+        body: body.fields,
+        credentials: "include",
+      }),
+      invalidateTags: [{ type: "Events", id: "LIST" }],
+    }),
+    updateEvent: builder.mutation({
+      query: (body, event_id) => ({
+        url: `/api/events/${event_id}`,
         method: "POST",
         body: body.fields,
         credentials: "include",
@@ -49,4 +79,8 @@ export const {
     useGetEventsQuery,
     useCreateEventMutation,
     useGetEventQuery,
+    useGetAttendingEventsQuery,
+    useGetHostingEventsQuery,
+    useDeleteEventMutation,
+    useUpdateEventMutation,
 } = eventsApi;
