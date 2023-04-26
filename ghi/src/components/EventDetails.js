@@ -64,8 +64,12 @@ const EventDetails = ({ event }) => {
             />
             <form onSubmit={handleSubmit}>
               <div className="px-4">
-                <h2>{result.data.event_type}</h2>
-                <p>{result.data.address_line1}</p>
+                <h2 className="text-jet-stream-900">
+                  {result.data.event_type}
+                </h2>
+                <p className="text-gray-700 text-base mb-2">
+                  {result.data.address_line1}
+                </p>
                 <p>{result.data.address_line2}</p>
                 <p className="text-gray-700 text-base mb-2">
                   {result.data.city}, {result.data.state} {result.data.zip_code}
