@@ -20,15 +20,16 @@ const EventDetails = ({ event }) => {
   const { eventDetailModal, eventId } = useSelector(
     (state) => state.eventDetail
   );
-  // Query /api/event/{event_id} for the event with the id from the payload
-  // const { data, isLoading } = useGetEventQuery(eventId.payload);
+
+  // Query /api/event/{event_id} using the LazyQuery so it does not
+  // call when there is no event id
+
   const [ trigger, result ] = useLazyGetEventQuery(eventId.payload);
   const [addAttendee] = useAddAttendeeMutation(eventId.payload);
-  // if (isLoading) return <div>Loading...</div>;
+
   useEffect(() => {
     if (eventDetailModal) {
       trigger(eventId.payload);
-      console.log("TRIGGERED");
     }
   }, [eventDetailModal])
   // The handleSubmit for the eventDetail
@@ -45,7 +46,7 @@ const EventDetails = ({ event }) => {
     dispatch(reset());
   };
   return (
-    result && (
+    result.data && (
       <Modal
         visible={eventDetailModal}
         onClose={() => dispatch(hideEventDetailModal())}
@@ -63,7 +64,7 @@ const EventDetails = ({ event }) => {
             />
             <form onSubmit={handleSubmit}>
               <div className="px-4">
-                <h2>{result.data.event_name}</h2>
+                <h2>{result.data.event_type}</h2>
                 <p>{result.data.address_line1}</p>
                 <p>{result.data.address_line2}</p>
                 <p className="text-gray-700 text-base mb-2">

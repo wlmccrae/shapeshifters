@@ -27,7 +27,6 @@ const EventCard = ({
   const { eventId } = useSelector(state => state.eventDetail)
   const { userRole } = useSelector(state => state.eventsPage)
   const [ trigger, result ] = useLazyGetEventQuery(id);
-  // console.log("TRIGGER IN EVENT CARD", trigger)
 
 
   const notHosting = () => (
@@ -61,10 +60,7 @@ const EventCard = ({
   const handleEventDetailClick = async (e) => {
     dispatch(getEventId(id));
     dispatch(showEventDetailModal());
-    // console.log("ID IN HANDLEEVENTDETAILCLICK:", id);
     const returnFromTrigger = await trigger(id);
-    console.log("RETURNFROMTRIGGER", returnFromTrigger)
-    console.log("RESULT: ", result)
   }
 
   const handleUpdate = (e) => {
@@ -72,11 +68,9 @@ const EventCard = ({
   };
 
   const handleDelete = (e) => {
-    console.log("ID IN HANDLEDELETE", id)
     dispatch(getEventId(id));
     deleteEvent(id);
     dispatch(showHostingEvents());
-    window.location.reload();
   };
 
     return (
