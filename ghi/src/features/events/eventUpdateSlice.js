@@ -1,31 +1,36 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  fields: {
-    event_name: "",
-    event_type: "",
-    address_line1: "",
-    address_line2: "",
-    city: "",
-    state: "",
-    zip_code: "",
-    country: "",
-    image_url: "",
-    start_datetime: "",
-    end_datetime: "",
-    event_description: "",
-  },
+    fields: {
+      event_name: "",
+      event_type: "",
+      address_line1: "",
+      address_line2: "",
+      city: "",
+      state: "",
+      zip_code: "",
+      country: "",
+      image_url: "",
+      start_datetime: "",
+      end_datetime: "",
+      event_description: "",
+    },
+  //   errorMessage: null,
+  //   eventUpdateModal: false,
+  // };
+  // fields: {},
   errorMessage: null,
   eventUpdateModal: false,
 };
+
 
 export const eventUpdateSlice = createSlice({
   name: "eventUpdate",
   initialState,
   reducers: {
-    setEventName: (state, action) => {
-      state.fields.event_name = action.payload;
-    },
+    // setEventName: (state, action) => {
+    //   state.fields.event_name = action.payload;
+    // },
     // setEventType: (state, action) => {
     //   state.fields.event_type = action.payload;
     // },
@@ -107,16 +112,16 @@ export const eventUpdateSlice = createSlice({
 
 export const {
   setEventName,
-//   setEventType,
-//   setAddress1,
-//   setCity,
-//   setState,
-//   setCountry,
-//   setZipCode,
-//   setImgUrl,
-//   setStartTime,
-//   setEndTime,
-  // setEventDescription,
+  setEventType,
+  setAddress1,
+  setCity,
+  setState,
+  setCountry,
+  setZipCode,
+  setImgUrl,
+  setStartTime,
+  setEndTime,
+  setEventDescription,
   handleEventNameChange,
   handleEventTypeChange,
   handleAddress1Change,

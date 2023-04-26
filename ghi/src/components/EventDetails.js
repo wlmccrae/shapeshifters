@@ -21,8 +21,8 @@ const EventDetails = ({ event }) => {
     (state) => state.eventDetail
   );
   // Query /api/event/{event_id} for the event with the id from the payload
-  const { data, isLoading } = useGetEventQuery(eventId.payload);
-  const [addAttendee] = useAddAttendeeMutation(eventId.payload);
+  const { data, isLoading } = useGetEventQuery(eventId?.payload);
+  const [addAttendee] = useAddAttendeeMutation(eventId?.payload);
   if (isLoading) return <div>Loading...</div>;
 
   // The handleSubmit for the eventDetail

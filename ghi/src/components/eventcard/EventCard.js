@@ -70,7 +70,7 @@ const EventCard = ({
   const handleUpdate = (e) => {
     dispatch(getEventId(id));
     dispatch(showEventUpdateModal());
-    updateEvent({fields});
+    // updateEvent({fields});
   };
 
   const handleDelete = (e) => {

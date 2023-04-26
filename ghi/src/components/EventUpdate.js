@@ -5,16 +5,16 @@ import { useGetEventQuery } from "../services/events";
 import { useUpdateEventMutation } from "../services/events";
 import {
   setEventName,
-//   setEventType,
-//   setAddress1,
-//   setCity,
-//   setState,
-//   setCountry,
-//   setZipCode,
-//   setImgUrl,
-//   setStartTime,
-//   setEndTime,
-//   setEventDescription,
+  setEventType,
+  setAddress1,
+  setCity,
+  setState,
+  setCountry,
+  setZipCode,
+  setImgUrl,
+  setStartTime,
+  setEndTime,
+  setEventDescription,
   handleEventNameChange,
   handleEventTypeChange,
   handleAddress1Change,
@@ -42,13 +42,30 @@ const EventUpdate = ({ event }) => {
   );
   console.log("eventID.payload in EVENTUPDATE", eventId.payload);
   // Query /api/event/{event_id} for the event with the id from the payload
-  const { data, isLoading } = useGetEventQuery(eventId.payload);
+  const { data, isLoading } = useGetEventQuery(eventId?.payload);
   if (isLoading) return <div>Loading...</div>;
-  console.log("DATA IN EVENTUPDATE: ", data);
-  console.log("DATA.EVENT_NAME", data.event_name);
-  dispatch(setEventName(data.event_name));
-  console.log("FIELDS.EVENT_NAME IN EVENTUPDATE", fields.event_name)
+  if (data) {
+    console.log("DATA IN EVENTUPDATE: ", data);
+    console.log("TYPEOF Data", typeof(data));
+    // const stringifiedData = JSON.stringify(data);
+    // const unpackedData = JSON.parse(data);
+    // console.log("TYPE OF UNPACKED DATA", typeof(unpackedData))
+    console.log("DATA.EVENT_NAME", data?.event_name);
+    console.log("FIELDS", fields)
+    console.log("TYPE OF FIELDS", typeof(fields));
 
+    // setEventName(data.event_name);
+    // setEventType(data.event_type);
+    // setAddress1(data.address_line1);
+    // setCity(data.city);
+    // setState(data.state);
+    // setCountry(data.country);
+    // setStartTime(data.start_datetime);
+    // setEndTime(data.end_datetime);
+    // setImgUrl(data.image_url);
+    // setEventDescription(data.event_description);
+    console.log("FIELDS.EVENT_NAME IN EVENTUPDATE", fields.event_name);
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -78,6 +95,7 @@ const EventUpdate = ({ event }) => {
                 tabIndex={1}
                 value={fields.event_name}
                 onChange={(e) => {
+                  console.log("CHANGED TO:", e.target.value);
                   dispatch(handleEventNameChange(e.target.value));
                 }}
               />
