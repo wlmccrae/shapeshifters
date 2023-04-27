@@ -39,16 +39,10 @@ const EventCard = ({
 
   const handleShowMap = (e) => {
     dispatch(getEventId(id));
-    console.log("DATA", data)
-    console.log("LONG", data.lon)
-    console.log("LAT", data.lat)
     const lat = Math.round(data.lat * 1000) / 1000;
     const lng = Math.round(data.lon * 1000) / 1000;
-    console.log("LAT:", lat)
-    console.log("LNG:", lng)
     dispatch(setLat(lat));
     dispatch(setLng(lng))
-    console.log("CENTER IN EVENTCARD", center)
     dispatch(showEventMapModal());
   };
 

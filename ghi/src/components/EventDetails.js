@@ -24,7 +24,7 @@ const EventDetails = ({ event }) => {
 
   // Get the center and the eventMapModal from eventMapSlice
   const { center, eventMapModal } = useSelector(state => state.eventMap);
-  console.log("center in EventDetails", center);
+
   // Query /api/event/{event_id} for the event with the id from the payload
   const { data, isLoading } = useGetEventQuery(eventId.payload);
   const [addAttendee] = useAddAttendeeMutation(eventId.payload);

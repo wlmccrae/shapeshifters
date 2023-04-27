@@ -20,10 +20,6 @@ const containerStyle = {
 // as the initialState. We pass it as a prop to the EventMap component
 // in the component where the EventMap Modal is rendered
 
-// const center = {
-//   lat: -3.745,
-//   lng: -38.523,
-// };
 
 function EventMap({ center }) {
   const dispatch = useDispatch();
