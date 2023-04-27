@@ -4,6 +4,8 @@ from queries.events import EventQueries
 from authenticator import authenticator
 
 client = TestClient(app)
+
+
 def fake_get_current_account_data():
     return {
         'id': 4
@@ -37,10 +39,9 @@ class FakeEventQueries:
             }
         }
 
-
     def get_events(self):
         return [
-              {
+            {
                 "id": 21,
                 "host_id": 1,
                 "event_name": "Yoga at the Park",
@@ -64,7 +65,6 @@ class FakeEventQueries:
                 }
             },
         ]
-
 
     def get_hosting_events(self, host_id):
         return [
@@ -94,7 +94,7 @@ class FakeEventQueries:
         ]
 
 
- # Emily's Test
+# Emily's Test
 def test_get_events():
     # Arrange
     app.dependency_overrides[EventQueries] = FakeEventQueries
@@ -111,7 +111,6 @@ def test_get_events():
     app.dependency_overrides = {}
 
 
-<<<<<<< api/tests/test_events.py
 # Test Author: Lotus
 # Date Written: 25 April 2023
 # Unit Being Tested: get_hosting_events route
@@ -134,16 +133,15 @@ def test_get_hosting_events():
 
     # A Cleanup
     app.dependency_overrides = {}
-    
+
+
 # Mike's Test
 def test_get_event():
-    #Arrange
-    app.dependency_overrides[EventQueries]= FakeEventQueries
+    # Arrange
+    app.dependency_overrides[EventQueries] = FakeEventQueries
 
-    #Act
+    # Act
     res = client.get("api/events/10")
 
-    #Assert
+    # Assert
     assert res.status_code == 200
-
->>>>>>> api/tests/test_events.py

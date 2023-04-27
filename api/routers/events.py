@@ -9,12 +9,13 @@ import traceback
 
 router = APIRouter()
 
+
 def filter_past_events(events):
     today = datetime.now().date()
     return [event for event in events if event.end_date.date() >= today]
 
 
-################################# POST #################################
+# ################################ POST #################################
 
 
 @router.post("/api/events", response_model=EventOut)
@@ -26,7 +27,7 @@ def create_event(
     return queries.create_event(event, account_data["id"])
 
 
-################################# GET ALL EVENTS #################################
+# ################################ GET ALL EVENTS #################################
 
 
 @router.get("/api/events", response_model=EventsOut)
@@ -36,7 +37,7 @@ def get_events(
     return {"events": queries.get_events()}
 
 
-################################# FILTERING #################################
+# ################################ FILTERING #################################
 
 
 @router.get("/api/events/hosting", response_model=EventsOut)
@@ -57,7 +58,7 @@ def get_attending_events(
     return {"events": queries.get_attending_events(account_data["id"])}
 
 
-################################# GET | PUT | DELETE #################################
+# ################################ GET | PUT | DELETE #################################
 
 
 @router.get("/api/events/{event_id}", response_model=EventOut)

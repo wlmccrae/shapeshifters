@@ -2,11 +2,10 @@ import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 
 import { hideEventDetailModal } from '../features/events/eventDetailSlice';
-import { useGetEventQuery, useLazyGetEventQuery } from "../services/events";
-import { useGetAccountQuery } from '../services/auth';
+import { useLazyGetEventQuery } from "../services/events";
 import { useAddAttendeeMutation } from "../services/attendees";
 
-import { getAttendeeId, reset } from '../features/attendees/addAttendeeSlice';
+import { reset } from '../features/attendees/addAttendeeSlice';
 
 
 import Modal from './Modal';

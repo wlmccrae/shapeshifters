@@ -2,7 +2,6 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { showEventDetailModal, getEventId } from "../../features/events/eventDetailSlice";
 import { useDeleteEventMutation } from "../../services/events";
-import { handleEmailChange } from "../../features/auth/signupSlice";
 import { showHostingEvents } from "../../features/events/eventsPageSlice";
 import { useLazyGetEventQuery } from "../../services/events";
 
@@ -23,8 +22,8 @@ const EventCard = ({
 }) => {
   const dispatch = useDispatch();
   const [deleteEvent] = useDeleteEventMutation();
-  const { eventDetailModal } = useSelector(state => state.eventDetail);
-  const { eventId } = useSelector(state => state.eventDetail)
+  // const { eventDetailModal } = useSelector(state => state.eventDetail);
+  // const { eventId } = useSelector(state => state.eventDetail)
   const { userRole } = useSelector(state => state.eventsPage)
   const [ trigger, result ] = useLazyGetEventQuery(id);
 
@@ -119,7 +118,7 @@ const EventCard = ({
             })}
           </p>
         </div>
-        {userRole == "hosting" ? hosting() : notHosting()}
+        {userRole === "hosting" ? hosting() : notHosting()}
       </div>
     );
 }

@@ -2,12 +2,12 @@ import React from "react";
 import ss_logo from "../ss_logo.png";
 import { NavLink } from 'react-router-dom';
 import { useGetAccountQuery } from "../services/auth";
-import { useDispatch, useSelector } from "react-redux";
-import { showSignupModal, hideSignupModal } from "../features/auth/signupSlice";
+import { useDispatch } from "react-redux";
+import { showSignupModal } from "../features/auth/signupSlice";
 import { showLoginModal } from "../features/auth/loginSlice";
 import { useLogoutMutation } from "../services/auth";
-import { showCreateEventModal, hideCreateEventModal } from "../features/events/newEventSlice";
-import Modal from "./Modal";
+import { showCreateEventModal } from "../features/events/newEventSlice";
+
 import Signup from "./Signup";
 import Login from "./Login";
 import EventForm from "./EventForm";
@@ -15,9 +15,6 @@ import EventForm from "./EventForm";
 function Nav() {
   const dispatch = useDispatch();
   const { data: account } = useGetAccountQuery();
-  const { signupModal } = useSelector((state) => state.signup);
-  const { loginModal } = useSelector((state) => state.login);
-  const { createEventModal } = useSelector((state) => state.newEvent);
   const [logout] = useLogoutMutation();
 
   const loggedIn = () => (
@@ -79,7 +76,7 @@ function Nav() {
       <nav className="flex items-center justify-between flex-wrap bg-jet-stream-500 p-2">
         <div className='"flex items-center flex-shrink-0 text-white mr-6"'>
           <a href="/">
-            <img src={ss_logo} height="75" width="140" />
+            <img src={ss_logo} alt="logo" height="75" width="140" />
           </a>
         </div>
         {account ? loggedIn() : notLoggedIn()}
