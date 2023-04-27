@@ -110,6 +110,7 @@ def test_get_events():
     # A Cleanup
     app.dependency_overrides = {}
 
+
 # Test Author: Lotus
 # Date Written: 25 April 2023
 # Unit Being Tested: get_hosting_events route

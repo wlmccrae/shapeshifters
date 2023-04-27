@@ -1,6 +1,7 @@
 ### ASK ABOUT THIS PATH
-# Keys
-api/keys.py
+
+# Google Maps Api Key
+ghi/src/keys.js
 
 # Database
 api/database.py

@@ -5,7 +5,10 @@ import { useDeleteEventMutation } from "../../services/events";
 import { useUpdateEventMutation } from "../../services/events";
 import { handleEmailChange } from "../../features/auth/signupSlice";
 import { showHostingEvents } from "../../features/events/eventsPageSlice";
-import { showEventUpdateModal } from "../../features/events/eventUpdateSlice";
+import { useLazyGetEventQuery } from "../../services/events";
+import { useGetEventQuery } from "../../services/events";
+import { showEventMapModal, setLat, setLng } from "../../features/events/eventMapSlice";
+
 
 const EventCard = ({
     id,
@@ -31,14 +34,22 @@ const EventCard = ({
   const { eventDetailModal } = useSelector(state => state.eventDetail);
   const { eventId } = useSelector(state => state.eventDetail)
   const { userRole } = useSelector(state => state.eventsPage)
+  const [ trigger, result ] = useLazyGetEventQuery(id);
+
 
   const notHosting = () => (
     <div className="flex justify-center p-4">
       <button
-        onClick={handleNotHostingClick}
+        onClick={handleEventDetailClick}
         className="bg-jet-stream-500 hover:bg-jet-stream-800 text-black p-2 rounded"
       >
         Event Details
+      </button>
+      <button
+        onClick={handleShowMap}
+        className="bg-jet-stream-500 hover:bg-jet-stream-800 text-black p-2 rounded"
+      >
+        Show Map
       </button>
     </div>
   );
@@ -60,9 +71,10 @@ const EventCard = ({
     </div>
   );
 
-  const handleNotHostingClick = (e) => {
+  const handleEventDetailClick = async (e) => {
     dispatch(getEventId(id));
     dispatch(showEventDetailModal());
+    const returnFromTrigger = await trigger(id);
   }
 
   const handleUpdate = (e) => {
@@ -74,8 +86,26 @@ const EventCard = ({
   const handleDelete = (e) => {
     dispatch(getEventId(id));
     deleteEvent(id);
-    window.location.reload();
-    dispatch(showHostingEvents());
+    dispatch(showHostingEvents());};
+
+  const { eventDetailModal } = useSelector((state) => state.eventDetail);
+  // const { showMapModal } = useSelector(state => state.eventMap);
+
+  // get the eventMap slice center
+  const { center } = useSelector(state => state.eventMap)
+
+  const handleClick = (e) => {
+    dispatch(getEventId(id));
+    dispatch(showEventDetailModal());
+  };
+
+  const handleShowMap = (e) => {
+    dispatch(getEventId(id));
+    const lat = Math.round(data.lat * 1000) / 1000;
+    const lng = Math.round(data.lon * 1000) / 1000;
+    dispatch(setLat(lat));
+    dispatch(setLng(lng))
+    dispatch(showEventMapModal());
   };
 
     return (
@@ -86,8 +116,8 @@ const EventCard = ({
           src={image_url}
         />
         <div className="px-4">
-          <h2>{event_name}</h2>
-          <p>{address_line1}</p>
+          <h2 className="text-jet-stream-900">{event_name}</h2>
+          <p className="text-gray-700 text-base mb-2">{address_line1}</p>
           <p>{address_line2}</p>
           <p className="text-gray-700 text-base mb-2">
             {city}, {state} {zip_code}
@@ -124,7 +154,9 @@ const EventCard = ({
             })}
           </p>
         </div>
-          { userRole == "hosting" ? hosting() : notHosting() }
+
+        {userRole == "hosting" ? hosting() : notHosting()}
+
       </div>
     );
 }
