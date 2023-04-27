@@ -57,7 +57,9 @@ took practice exam then went back to hospital. my group has been filling me in o
 started day in afternoon after visit to hospital. contuniation of reviewing code and strating to plan a test to implement.
 
 4/26/23
+started the day close to noon. the group was working updating an event and after discussing with an instructor, we decided to make that functionality a stretch goal. we cleaned up code and removed 'print' and 'console.log' statements. we linked git issues to corresponding merge requests. started to build the footer - which is also a stretch goal.
 
 4/27/23
+continuing to work on the footer, tyler is helping us with this experties with tailwind. 
 
 4/28/23
