@@ -11,20 +11,16 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <Nav />
-        <div>
-          <Routes>
-            <Route path="/" element={<LandingPage />} />
-
-            <Route path="events">
-              <Route index element={<EventsPage />} />
-              <Route path="attending" element={<EventsPage />} />
-              <Route path="hosting" element={<EventsPage />} />
-            </Route>
-
-          </Routes>
-        </div>
-        <Footer />
+          <Nav />
+            <Routes>
+              <Route path="/" element={<LandingPage />} />
+              <Route path="events">
+                <Route index element={<EventsPage />} />
+                <Route path="attending" element={<EventsPage />} />
+                <Route path="hosting" element={<EventsPage />} />
+              </Route>
+            </Routes>
+          <Footer />
       </BrowserRouter>
     </>
   );
