@@ -8,10 +8,9 @@ import Modal from "./Modal";
 import { hideEventMapModal } from "../features/events/eventMapSlice";
 import { useGetEventQuery } from "../services/events";
 
-import GOOGLE_MAP_API_KEY from "../keys"
 //Still need help with hiding the API key
-// const GOOGLE_API_KEY = process.env.REACT_APP_GOOGLE_API_KEY;
-console.log(GOOGLE_MAP_API_KEY);
+const GOOGLE_API_KEY = process.env.REACT_APP_GOOGLE_API_KEY;
+
 const containerStyle = {
   width: "400px",
   height: "400px",
@@ -34,7 +33,7 @@ function EventMap({ center }) {
   // Logic taken from react-google-maps: https://www.npmjs.com/package/@react-google-maps/api
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
-    googleMapsApiKey: GOOGLE_MAP_API_KEY,
+    googleMapsApiKey: GOOGLE_API_KEY,
   });
 
   // Set the location of the marker
