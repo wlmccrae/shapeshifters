@@ -3,6 +3,7 @@ from main import app
 from queries.events import EventQueries
 from authenticator import authenticator
 
+
 client = TestClient(app)
 
 
