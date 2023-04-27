@@ -12,7 +12,7 @@ function Footer() {
                     © 2023 ShapeShifters™. All Rights Reserved. Engineers listed below.
                 </span>
             </div>
-            <div className="flex justify-evenly items-center w-full">
+            <div className="flex justify-evenly items-center w-full text-jet-stream-900">
                 <div className="flex items-center">
                     <a
                         href="/" alt="app-logo" className="hover:underline">
@@ -69,7 +69,7 @@ function Footer() {
                         </li>
                     </ul>
                 </div>
-                <div className="flex items-center">
+                <div className="flex items-center text-jet-stream-900">
                     <a href="/">
                         <img src={gitlab} alt="gitlab logo" height="40" width="90" />
                     </a>

@@ -11,7 +11,7 @@ const EventCard = ({
     id,
     event_name,
     event_type,
-    event_description,
+    // event_description,
     address_line1,
     address_line2,
     city,
@@ -33,16 +33,16 @@ const EventCard = ({
   const { showMapModal } = useSelector((state) => state.eventMap);
 
   const notHosting = () => (
-    <div className="flex justify-center mr-3 items-baseline">
+    <div className="flex justify-center mr-3 items-baseline text-jet-stream-900">
       <button
         onClick={handleEventDetailClick}
-        className="mr-8 bg-jet-stream-500 hover:bg-jet-stream-800 text-black p-2 rounded"
+        className="mr-8 bg-jet-stream-500 hover:bg-jet-stream-800 text-gun-powder-700 p-2 rounded mb-6 mt-4"
       >
         Event Details
       </button>
       <button
         onClick={handleShowMap}
-        className="bg-jet-stream-500 hover:bg-jet-stream-800 text-black p-2 rounded"
+        className="bg-jet-stream-500 hover:bg-jet-stream-800 text-gun-powder-700 p-2 rounded mb-6 mt-4"
       >
         Show Map
       </button>
@@ -53,13 +53,13 @@ const EventCard = ({
     <div className="flex justify-center items-baseline">
       <button
         onClick={handleUpdate}
-        className="mr-8 bg-jet-stream-500 hover:bg-jet-stream-800 text-black p-2 rounded"
+        className="mr-8 bg-jet-stream-500 hover:bg-jet-stream-800 text-jet-stream-900 p-2 rounded mb-6 mt-4"
       >
         Update
       </button>
       <button
         onClick={handleDelete}
-        className="bg-jet-stream-500 hover:bg-jet-stream-800 text-black p-2 rounded"
+        className="bg-jet-stream-500 hover:bg-jet-stream-800 text-jet-stream-900 p-2 rounded mb-6 mt-4"
       >
         Delete
       </button>
@@ -99,29 +99,29 @@ const EventCard = ({
   };
 
   return (
-    <div className="max-w-lg max-h-fit rounded overflow-hidden shadow-lg">
+    <div className="max-w-lg max-h-fit rounded overflow-hidden shadow-lg ">
       <img
         className="h-56 w-full object-cover"
         alt="Event location"
         src={image_url}
       />
-      <div className="px-4">
+      <div className="px-4 text-jet-stream-900">
         <h2 className="text-jet-stream-900">{event_name}</h2>
-        <p className="text-gray-700 text-base mb-2">{address_line1}</p>
+        <p className="text-base mb-2">{address_line1}</p>
         <p>{address_line2}</p>
-        <p className="text-gray-700 text-base mb-2">
+        <p className="text-base mb-2">
           {city}, {state} {zip_code}
         </p>
-        <p className="text-gray-700 text-base mb-2">
+        <p className="text-base mb-2">
           <b>Event Type:</b> {event_type}
         </p>
-        <p className="text-gray-700 text-base mb-2">
+        <p className="text-base mb-2">
           <b>Host:</b> {host.first_name} {host.last_name}{" "}
         </p>
-        <p className="text-gray-700 text-base mb-2">
+        {/* <p className="text-base mb-2">
           <i>{event_description}</i>
-        </p>
-        <p className="text-gray-700 text-base mb-2">
+        </p> */}
+        <p className="text-base mb-2">
           <b>Start:</b>{" "}
           {new Date(start_datetime).toLocaleString([], {
             month: "numeric",
@@ -132,7 +132,7 @@ const EventCard = ({
             hour12: true,
           })}
         </p>
-        <p className="text-gray-700 text-base mb-2">
+        <p className="text-base mb-2">
           <b>End:</b>{" "}
           {new Date(end_datetime).toLocaleString([], {
             month: "numeric",
@@ -145,7 +145,7 @@ const EventCard = ({
         </p>
       </div>
 
-      {userRole == "hosting" ? hosting() : notHosting()}
+      {userRole === "hosting" ? hosting() : notHosting()}
     </div>
   );
 }
