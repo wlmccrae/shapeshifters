@@ -1,10 +1,12 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { showEventDetailModal, getEventId } from "../../features/events/eventDetailSlice";
+import { useDeleteEventMutation } from "../../services/events";
+import { handleEmailChange } from "../../features/auth/signupSlice";
+import { showHostingEvents } from "../../features/events/eventsPageSlice";
+import { useLazyGetEventQuery } from "../../services/events";
 import { useGetEventQuery } from "../../services/events";
-
 import { showEventMapModal, setLat, setLng } from "../../features/events/eventMapSlice";
-
 
 
 const EventCard = ({
@@ -23,14 +25,67 @@ const EventCard = ({
     host,
 }) => {
   const dispatch = useDispatch();
+  const [deleteEvent] = useDeleteEventMutation();
+  const { eventDetailModal } = useSelector(state => state.eventDetail);
+  const { eventId } = useSelector(state => state.eventDetail)
+  const { userRole } = useSelector(state => state.eventsPage)
+  const [ trigger, result ] = useLazyGetEventQuery(id);
+
+
+  const notHosting = () => (
+    <div className="flex justify-center p-4">
+      <button
+        onClick={handleEventDetailClick}
+        className="bg-jet-stream-500 hover:bg-jet-stream-800 text-black p-2 rounded"
+      >
+        Event Details
+      </button>
+      <button
+        onClick={handleShowMap}
+        className="bg-jet-stream-500 hover:bg-jet-stream-800 text-black p-2 rounded"
+      >
+        Show Map
+      </button>
+    </div>
+  );
+
+  const hosting = () => (
+    <div className="flex justify-center items-baseline">
+      <button
+        onClick={handleUpdate}
+        className="mr-8 bg-jet-stream-500 hover:bg-jet-stream-800 text-black p-2 rounded"
+      >
+        Update
+      </button>
+      <button
+        onClick={handleDelete}
+        className="bg-jet-stream-500 hover:bg-jet-stream-800 text-black p-2 rounded"
+      >
+        Delete
+      </button>
+    </div>
+  );
+
+  const handleEventDetailClick = async (e) => {
+    dispatch(getEventId(id));
+    dispatch(showEventDetailModal());
+    const returnFromTrigger = await trigger(id);
+  }
+
+  const handleUpdate = (e) => {
+
+  };
+
+  const handleDelete = (e) => {
+    dispatch(getEventId(id));
+    deleteEvent(id);
+    dispatch(showHostingEvents());};
+
   const { eventDetailModal } = useSelector((state) => state.eventDetail);
   // const { showMapModal } = useSelector(state => state.eventMap);
 
   // get the eventMap slice center
   const { center } = useSelector(state => state.eventMap)
-  //Query for the event with the eventId from the payload
-  const { data, isLoading } = useGetEventQuery(id);
-  if (isLoading) return <div>Loading...</div>;
 
   const handleClick = (e) => {
     dispatch(getEventId(id));
@@ -54,8 +109,8 @@ const EventCard = ({
           src={image_url}
         />
         <div className="px-4">
-          <h2>{event_name}</h2>
-          <p>{address_line1}</p>
+          <h2 className="text-jet-stream-900">{event_name}</h2>
+          <p className="text-gray-700 text-base mb-2">{address_line1}</p>
           <p>{address_line2}</p>
           <p className="text-gray-700 text-base mb-2">
             {city}, {state} {zip_code}
@@ -92,20 +147,9 @@ const EventCard = ({
             })}
           </p>
         </div>
-        <div className="flex justify-center p-4">
-          <button
-            onClick={handleClick}
-            className="mr-4 bg-jet-stream-500 hover:bg-jet-stream-800 text-black p-2 rounded"
-          >
-            Event Details
-          </button>
-          <button
-            onClick={handleShowMap}
-            className="bg-jet-stream-500 hover:bg-jet-stream-800 text-black p-2 rounded"
-          >
-            Show Map
-          </button>
-        </div>
+
+        {userRole == "hosting" ? hosting() : notHosting()}
+
       </div>
     );
 }

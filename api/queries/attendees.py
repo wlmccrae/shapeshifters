@@ -22,13 +22,10 @@ class AttendeesQueries:
                     ],
                 )
                 row = db.fetchone()
-                print("ROW*******", row)
                 id = row[0]
-                print("ID*************", id)
 
         if id is not None:
             attendee = self.get_attendee(id)
-            print("ATTENDEE************", attendee)
             return attendee
 
     def get_attendees(self, event_id):
@@ -47,11 +44,8 @@ class AttendeesQueries:
                 rows = db.fetchall()
                 for row in rows:
                     for i, column in enumerate(db.description):
-                        print("i in get_attendees:", i)
-                        print("Column names in get_attendees:", column.name)
                         if column.name == "user_id":
                             attendees.append(row[i])
-                print("get attendees rows", rows)
 
 
     def get_attendee(self, attendee_id):
@@ -65,9 +59,7 @@ class AttendeesQueries:
                     [attendee_id],
                 )
                 row = db.fetchone()
-                print("ROW IN GET_ATTENDEE METHOD", row)
                 attendee_dict = self.attendee_record_to_dict(row, db.description)
-                print("ATTENDEE_DICT", attendee_dict)
                 return attendee_dict
 
 

@@ -11,17 +11,35 @@ export const eventsApi = createApi({
     getEvents: builder.query({
       query: () => "/api/events",
       transformResponse: (response) => response.events,
-      providedTags: (result) => {
+      providesTags: (result) => {
         const tags = [{ type: "Events", id: "LIST" }];
         if (!result) return tags;
         return [...result.map(({ id }) => ({ type: "Events", id })), ...tags];
       },
     }),
+    getAttendingEvents: builder.query({
+        query: () => "/api/events/attending",
+        transformResponse: (response) => response.events,
+        providesTags: (result) => {
+            const tags = [{ type: "Events", id: "LIST" }];
+            if (!result) return tags;
+            return [...result.map(({ id }) => ({ type: "Events", id })), ...tags];
+      },
+    }),
+    getHostingEvents: builder.query({
+        query: () => "/api/events/hosting",
+        transformResponse: (response) => response.events,
+        providesTags: (result) => {
+            const tags = [{ type: "Events", id: "LIST" }];
+            if (!result) return tags;
+            return [...result.map(({ id }) => ({ type: "Events", id })), ...tags];
+      },
+    }),
     getEvent: builder.query({
-      query: (event_id) => ({
-        url: `api/events/${event_id}`,
+      query: (id) => ({
+        url: `api/events/${id}`,
         transformResponse: (response) => response?.event,
-        providesTags: ["Event"],
+        providesTags: ["Events"],
       }),
     }),
     createEvent: builder.mutation({
@@ -31,15 +49,15 @@ export const eventsApi = createApi({
         body: body.fields,
         credentials: "include",
       }),
-      invalidateTags: [{ type: "Events", id: "LIST" }],
+      invalidatesTags: [{ type: "Events", id: "LIST" }],
     }),
     deleteEvent: builder.mutation({
-      query: (event_id) => ({
-        url: `api/events/${event_id}`,
+      query: (id) => ({
+        url: `api/events/${id}`,
         method: "DELETE",
       }),
-      invalidateTags: (result, error, { event_id }) => [
-        { type: "Events", event_id },
+      invalidatesTags: (result, error, { id }) => [
+        { type: "Events", id }
       ],
     }),
   }),
@@ -49,4 +67,8 @@ export const {
     useGetEventsQuery,
     useCreateEventMutation,
     useGetEventQuery,
+    useLazyGetEventQuery,
+    useGetAttendingEventsQuery,
+    useGetHostingEventsQuery,
+    useDeleteEventMutation,
 } = eventsApi;

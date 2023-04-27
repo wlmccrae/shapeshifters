@@ -83,7 +83,8 @@ class EventQueries:
                     SELECT events.*, users.first_name, users.last_name
                     FROM events
                     LEFT JOIN users ON events.host_id = users.id
-                    """
+                    """,
+
                 )
                 events = []
                 rows = db.fetchall()
@@ -97,7 +98,7 @@ class EventQueries:
             with conn.cursor() as db:
                 db.execute(
                     """
-                    SELECT * FROM events
+                    SELECT events.* FROM events
                     WHERE host_id = %s
                     """,
                     [host_id],
@@ -106,7 +107,6 @@ class EventQueries:
                 rows = db.fetchall()
                 for row in rows:
                     event = self.event_record_to_dict(row, db.description)
-                    print(f"*******EVENT: {event}")
                     events.append(event)
                 return events
 
@@ -115,7 +115,8 @@ class EventQueries:
             with conn.cursor() as db:
                 db.execute(
                     """
-                    SELECT * FROM events
+                    SELECT events.*
+                    FROM events
                     JOIN attendees ON events.id = attendees.event_id
                     WHERE attendees.user_id = %s
                     """,
@@ -144,6 +145,13 @@ class EventQueries:
     def delete_event(self, event_id):
         with pool.connection() as conn:
             with conn.cursor() as db:
+                db.execute(
+                    """
+                    DELETE FROM attendees
+                    WHERE event_id = %s
+                    """,
+                    [event_id],
+                )
                 db.execute(
                     """
                     DELETE FROM events
