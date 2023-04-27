@@ -42,7 +42,7 @@ module.exports = {
           800: "#545458",
           900: "#454548",
         },
-        conch: {
+        "conch": {
           50: "#fcfdfd",
           100: "#f9fbfb",
           200: "#f1f5f4",

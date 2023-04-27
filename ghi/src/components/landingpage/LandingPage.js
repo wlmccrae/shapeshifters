@@ -11,6 +11,7 @@ import { useGetAccountQuery } from '../../services/auth';
 import EventsCards from '../EventsCards';
 import EventForm from '../EventForm';
 import EventDetails from '../EventDetails';
+import EventMap from '../EventMap';
 import './LandingPage.css';
 
 import skatingImg from '../../imgs/091108nyc096-nw.jpg';
@@ -66,20 +67,21 @@ function LandingPage() {
     };
 
     const loggedIn = () => (
-        <div className='max-w-[1400px] w-full m-auto py-1 px-4 relative'>
-            <p className="welcomemsg">Welcome back, {account.account.first_name}!</p>
+        <div className='max-w-[1400px] w-full m-auto py-1 px-4 relative text-jet-stream-900'>
+            <h3 className="welcomemsg">Welcome back, {account.account.first_name}!</h3>
             <div className='w-full m-auto py-1 px-20
              relative'>
                 <h3 className="py-2 font-bold"> Can't find what you're looking for? </h3>
                 <button
                     type="submit"
-                    className="bg-jet-stream-500 hover:bg-jet-stream-800 text-black py-2 px-4 rounded-full"
+                    className="bg-jet-stream-500 hover:bg-jet-stream-800 py-2 px-4 rounded"
                     onClick={() => dispatch(showCreateEventModal())}
                 >
-                    Create and Host an Event
+                    Host an Event
                 </button>
             </div>
             <div className='w-full m-auto py-1 px-10 relative group'>
+                <EventMap />
                 <h1>Current Events</h1>
                 <EventsCards />
                 <EventForm />
