@@ -1,25 +1,29 @@
+import ss_logo from "../ss_logo.png";
+import linkedin from "../imgs/linkedin.png";
+import gitlab from "../imgs/gitlab.png";
 
-
-// import { NavLink } from 'react-router-dom';
-import ss_logo from "../imgs/logo_ss.png";
 
 function Footer() {
     return (
-        <>
-            <footer>
-                <div>
-                    <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
-                    <span className="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a href="/" alt="app-logo" className="hover:underline">ShapeShifters™. All Rights Reserved.</a>
-                        <img src={ss_logo.png} alt="app-logo" height="75" width="140" />
-                    </span>
+        <footer className="flex justify-center items-center mt-auto px-4 py-4 bg-gray-100 dark:bg-gray-100">
+            <div className="flex flex-row items-center">
+                <span className="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a href="/" alt="app-logo" className="hover:underline">ShapeShifters™. All Rights Reserved. Engineers listed below.</a>
+                    <img src={ss_logo} alt="app-logo" height="75" width="140" className="justify-content-left" />
+                </span>
+                <div className="flex  justify-evenly items-center ml-8">
                     <div>
-                        <div>
-                            <p>Linked In</p>
-                            <ul>
+                        <div className="flex items-center">
+                            <p>
+                                <a href="/">
+                                    <img src={linkedin} alt="linked in logo" height="75" width="140" />
+                                </a>
+                            </p>
+                            <ul className="flex space-x-4 ml-4">
                                 <li>
                                     <a
                                         href="www.linkedin.com/in/emily-arai/"
                                         target="_blank"
+
                                         rel="noopener noreferrer"
                                     >
                                         Emily
@@ -63,9 +67,13 @@ function Footer() {
                                 </li>
                             </ul>
                         </div>
-                        <div>
-                            <p>Gitlab</p>
-                            <ul>
+                        <div className="flex items-center">
+                            <p>
+                                <a href="/">
+                                    <img src={gitlab} alt="gitlab logo" height="75" width="140" />
+                                </a>
+                            </p>
+                            <ul className="flex space-x-4 ml-4">
                                 <li>
                                     <a
                                         href="https://gitlab.com/emi.rai"
@@ -115,8 +123,8 @@ function Footer() {
                         </div>
                     </div>
                 </div>
-            </footer>
-        </>
+            </div>
+        </footer >
     );
 }
 
