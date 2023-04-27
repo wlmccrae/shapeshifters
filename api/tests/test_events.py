@@ -110,8 +110,6 @@ def test_get_events():
     # A Cleanup
     app.dependency_overrides = {}
 
-
-<<<<<<< api/tests/test_events.py
 # Test Author: Lotus
 # Date Written: 25 April 2023
 # Unit Being Tested: get_hosting_events route
@@ -145,5 +143,3 @@ def test_get_event():
 
     #Assert
     assert res.status_code == 200
-
->>>>>>> api/tests/test_events.py
