@@ -40,6 +40,14 @@ const EventDetails = ({ event }) => {
       trigger(eventId.payload);
     }
   }, [eventDetailModal, eventMapModal])
+
+  useEffect(() => {
+    if (eventMapModal) {
+      trigger(eventId.payload);
+    }
+  }, [eventMapModal]);
+
+
   // The handleSubmit for the eventDetail
   const handleSubmit = (e) => {
     // prevents the default action on the form
