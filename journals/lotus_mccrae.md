@@ -48,3 +48,17 @@ Group coding the Your Events page. To conditionally load the list of events the 
 
 25 April 2023
 Used Redux to store whether the user is looking at events they attending or events they are hosting. The EventsPageTabs and EventsPage components read that state and display event cards based on that state.
+
+26 April 2023
+Group debugging the Redux tags that would allow the EventsPage to hot reload when an event is created or deleted. Group debugging the Update feature for events; after speaking with the instructors we decided to make this a stretch goal. Spent time as a group refactoring our code to get rid of console errors. Instructors also recommended making updating an event its own page rather than doing it in a modal and using React Hooks instead of Redux, in order to simplify things for us.
+
+27 April 2023
+Group debugging.
+- Used Tailwind CSS to style the divs on EventPage to get the Footer to stay at the bottom of the page. We had a lot of unneeded divs, and deleting those fixed the issue.
+- We implemented CSS styling to make the text look more consistent across the site and added padding under the buttons on the event cards. We also moved the description of each event to the EventDetails modal so the cards are less busy.
+
+Plan for Tomorrow:
+- Fix our queries so we can display the host name on the event details modal.
+- Run all code through linters.
+- Make sure all unnecessary print statements are removed from front and back end code.
+- SUBMIT
