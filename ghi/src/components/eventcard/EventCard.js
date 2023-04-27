@@ -5,6 +5,9 @@ import { useDeleteEventMutation } from "../../services/events";
 import { handleEmailChange } from "../../features/auth/signupSlice";
 import { showHostingEvents } from "../../features/events/eventsPageSlice";
 import { useLazyGetEventQuery } from "../../services/events";
+import { useGetEventQuery } from "../../services/events";
+import { showEventMapModal, setLat, setLng } from "../../features/events/eventMapSlice";
+
 
 const EventCard = ({
     id,
@@ -36,6 +39,12 @@ const EventCard = ({
         className="bg-jet-stream-500 hover:bg-jet-stream-800 text-black p-2 rounded"
       >
         Event Details
+      </button>
+      <button
+        onClick={handleShowMap}
+        className="bg-jet-stream-500 hover:bg-jet-stream-800 text-black p-2 rounded"
+      >
+        Show Map
       </button>
     </div>
   );
@@ -70,7 +79,26 @@ const EventCard = ({
   const handleDelete = (e) => {
     dispatch(getEventId(id));
     deleteEvent(id);
-    dispatch(showHostingEvents());
+    dispatch(showHostingEvents());};
+
+  const { eventDetailModal } = useSelector((state) => state.eventDetail);
+  // const { showMapModal } = useSelector(state => state.eventMap);
+
+  // get the eventMap slice center
+  const { center } = useSelector(state => state.eventMap)
+
+  const handleClick = (e) => {
+    dispatch(getEventId(id));
+    dispatch(showEventDetailModal());
+  };
+
+  const handleShowMap = (e) => {
+    dispatch(getEventId(id));
+    const lat = Math.round(data.lat * 1000) / 1000;
+    const lng = Math.round(data.lon * 1000) / 1000;
+    dispatch(setLat(lat));
+    dispatch(setLng(lng))
+    dispatch(showEventMapModal());
   };
 
     return (
@@ -119,7 +147,9 @@ const EventCard = ({
             })}
           </p>
         </div>
+
         {userRole == "hosting" ? hosting() : notHosting()}
+
       </div>
     );
 }
