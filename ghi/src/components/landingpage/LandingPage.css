@@ -1,5 +1,5 @@
 h1 {
-    color: black;
+    color: #5e6a69;
     font-size: 40px;
     font-weight: bold;
     text-align: center;
@@ -7,12 +7,15 @@ h1 {
 }
 
 h2 {
-    color: black;
+    color: #5e6a69;
     font-size: 20px;
     font-weight: bold;
     padding-top: 20px;
     padding-bottom: 5px;
     text-align: center;
+}
+img {
+    
 }
 
 .welcomemsg {

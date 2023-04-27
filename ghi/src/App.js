@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import LandingPage from './components/landingpage/LandingPage';
 import EventsPage from './components/eventspage/EventsPage';
 import Nav from './components/Nav';
+import Footer from './components/Footer';
 
 
 function App() {
@@ -11,18 +12,19 @@ function App() {
     <>
       <BrowserRouter>
         <Nav />
-          <div className="container">
-            <Routes>
-              <Route path="/" element={<LandingPage />} />
+        <div>
+          <Routes>
+            <Route path="/" element={<LandingPage />} />
 
-              <Route path="events">
-                <Route index element={<EventsPage />} />
-                <Route path="attending" element={<EventsPage />} />
-                <Route path="hosting" element={<EventsPage />} />
-              </Route>
+            <Route path="events">
+              <Route index element={<EventsPage />} />
+              <Route path="attending" element={<EventsPage />} />
+              <Route path="hosting" element={<EventsPage />} />
+            </Route>
 
-            </Routes>
-          </div>
+          </Routes>
+        </div>
+        <Footer />
       </BrowserRouter>
     </>
   );

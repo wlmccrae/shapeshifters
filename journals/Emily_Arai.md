@@ -59,3 +59,13 @@ Today we continued to work in our pairs. Victoria and I got the modals working b
 
 ### Day 4
 In the morning, Lotus, Victoria and I discussed the design of the user’s events page and how to structure this in our app. In the afternoon, Victoria and I worked on getting the EventsDetail modal working and hooked up to the Redux store. We were able to get the component working but need to get the functionality of the buttons going. At the end of the day, we all discussed how Redux is working in our app.
+
+## Week 5
+### Day 1
+Reviewed MVP requirements and talked to Candice about the grading requirements, as they are different than what is on learn. Made a list of things we need to do before Friday. Worked as a group to add the EventsPageTabs to the Redux store to be able to have them change views when clicked. Showed group the api-maps branch I have been working on and discussed issues with hiding the api key.
+
+### Day 2
+Victoria and I worked on the update and delete event modals. We were able to get delete events working, but need to continue to work on update. We worked on setting up the EventsPageTabs and EventsPage in Redux, so that different views could be shown based on whether the user is attending or hosting an event.
+
+### Day 3
+We worked on update as a group, and continued to run into issues. We sought help from Riley who advised us to deal with an 404 error message in our console related to an event being called when it did not have an id assigned yet. Since update is a stretch goal, we decided to focus on fixing this error. We got help from Candice and Ted to change this from a getEventQuery to a getLazyEventQuery. We made styling updates as a group and decided that we will present our project with Candice tomorrow.
