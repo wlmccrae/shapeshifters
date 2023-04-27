@@ -182,7 +182,6 @@ class EventQueries:
                     event_data.event_description,
                     event_id,
                 ]
-                print("PARAMS", params)
                 db.execute(
                     """
                     UPDATE events
@@ -222,13 +221,10 @@ class EventQueries:
 
                 record = None
                 row = db.fetchone()
-                print("****** ROW *******", row)
                 if row is not None:
                     record = {}
                     for i, column in enumerate(db.description):
                         record[column.name] = row[i]
-
-                print("****** RECORD *******", record)
                 return record
 
     def event_record_to_dict(self, row, description):
