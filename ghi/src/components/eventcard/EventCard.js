@@ -2,10 +2,8 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { showEventDetailModal, getEventId } from "../../features/events/eventDetailSlice";
 import { useDeleteEventMutation } from "../../services/events";
-import { handleEmailChange } from "../../features/auth/signupSlice";
 import { showHostingEvents } from "../../features/events/eventsPageSlice";
 import { useLazyGetEventQuery } from "../../services/events";
-import { useGetEventQuery } from "../../services/events";
 import { showEventMapModal, setLat, setLng } from "../../features/events/eventMapSlice";
 
 
@@ -26,17 +24,17 @@ const EventCard = ({
 }) => {
   const dispatch = useDispatch();
   const [deleteEvent] = useDeleteEventMutation();
-  const { eventDetailModal } = useSelector(state => state.eventDetail);
-  const { eventId } = useSelector(state => state.eventDetail)
+  // const { eventDetailModal } = useSelector(state => state.eventDetail);
+  // const { eventId } = useSelector(state => state.eventDetail)
   const { userRole } = useSelector(state => state.eventsPage)
   const [ trigger, result ] = useLazyGetEventQuery(id);
 
 
   const notHosting = () => (
-    <div className="flex justify-center p-4">
+    <div className="flex justify-center mr-3 items-baseline">
       <button
         onClick={handleEventDetailClick}
-        className="bg-jet-stream-500 hover:bg-jet-stream-800 text-black p-2 rounded"
+        className="mr-8 bg-jet-stream-500 hover:bg-jet-stream-800 text-black p-2 rounded"
       >
         Event Details
       </button>
@@ -79,9 +77,9 @@ const EventCard = ({
   const handleDelete = (e) => {
     dispatch(getEventId(id));
     deleteEvent(id);
-    dispatch(showHostingEvents());};
+    dispatch(showHostingEvents());
+  };
 
-  const { eventDetailModal } = useSelector((state) => state.eventDetail);
   // const { showMapModal } = useSelector(state => state.eventMap);
 
   // get the eventMap slice center
@@ -94,8 +92,8 @@ const EventCard = ({
 
   const handleShowMap = (e) => {
     dispatch(getEventId(id));
-    const lat = Math.round(data.lat * 1000) / 1000;
-    const lng = Math.round(data.lon * 1000) / 1000;
+    const lat = Math.round(result.data.lat * 1000) / 1000;
+    const lng = Math.round(result.data.lon * 1000) / 1000;
     dispatch(setLat(lat));
     dispatch(setLng(lng))
     dispatch(showEventMapModal());
