@@ -11,7 +11,6 @@ const EventCard = ({
     id,
     event_name,
     event_type,
-    // event_description,
     address_line1,
     address_line2,
     city,
