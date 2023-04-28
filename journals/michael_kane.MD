@@ -60,6 +60,7 @@ started day in afternoon after visit to hospital. contuniation of reviewing code
 started the day close to noon. the group was working updating an event and after discussing with an instructor, we decided to make that functionality a stretch goal. we cleaned up code and removed 'print' and 'console.log' statements. we linked git issues to corresponding merge requests. started to build the footer - which is also a stretch goal.
 
 4/27/23
-continuing to work on the footer, tyler is helping us with this experties with tailwind. 
+continuing to work on the footer, tyler is helping us with this experties with tailwind.
 
 4/28/23
+changed code a little and made it so the user return to the landing page when they logout. little refactoring and cleaning code.
