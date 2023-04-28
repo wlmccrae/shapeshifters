@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 
 import { useGetAccountQuery } from '../../services/auth';
 
+import LandingPage from '../landingpage/LandingPage';
 import EventsPageTabs from './EventsPageTabs';
 import EventsHostingCards from '../EventsHostingCards';
 import EventsAttendingCards from '../EventsAttendingCards';
@@ -33,11 +34,17 @@ function EventsPage() {
       </>
     );
 
-    return (
+    const loggedIn = () => (
         <div className='max-w-[1400px] w-full m-auto py-1 px-4 relative mb-10'>
             <EventsPageTabs />
             {(userRole === "attending") ? attending() : hosting()}
         </div>
+    );
+
+    return (
+      <>
+        {account ? loggedIn() : <LandingPage />}
+      </>
     )
 }
 
