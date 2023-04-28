@@ -103,3 +103,8 @@ Worked on the Your Events page to display events being attended and hosted depen
 
 ### Tuesday, 4/25/23
 Worked on adding functionality to update event and delete an event. When a user views their hosted events, the event cards have an "Update" button and a "Delete" button. Able to delete events now, but the update event modal doesn't work yet. The modal comes up but it doesn't actually update the event.
+
+### Tuesday, 4/26/23
+
+### Friday, 4/25/23
+Changes to SQL tables to display host name for attending and hosting events, cleaned up code and remo
