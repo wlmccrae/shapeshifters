@@ -5,7 +5,6 @@ import requests
 import os
 import json
 
-# from queries.attendees import get_attendees
 
 RADAR_API_KEY = os.environ["RADAR_API_KEY"]
 
@@ -167,7 +166,7 @@ class EventQueries:
                     [event_id],
                 )
 
-    # Would like to make it so the request body doesn't need all fields
+
     def update_event(self, event_id, event_data):
         with pool.connection() as conn:
             with conn.cursor() as db:
