@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 from queries.pool import pool
-from models.events import EventIn, EventOut
+from models.events import EventIn
 import requests
 import os
 import json
@@ -8,6 +8,8 @@ import json
 # from queries.attendees import get_attendees
 
 RADAR_API_KEY = os.environ["RADAR_API_KEY"]
+
+
 class EventQueries:
     def create_event(self, event: EventIn, host_id):
         address = event.address_line1
@@ -98,7 +100,9 @@ class EventQueries:
             with conn.cursor() as db:
                 db.execute(
                     """
-                    SELECT events.* FROM events
+                    SELECT events.*, users.first_name, users.last_name
+                    FROM events
+                    LEFT JOIN users ON events.host_id = users.id
                     WHERE host_id = %s
                     """,
                     [host_id],
@@ -115,9 +119,10 @@ class EventQueries:
             with conn.cursor() as db:
                 db.execute(
                     """
-                    SELECT events.*
+                    SELECT events.*, users.first_name, users.last_name
                     FROM events
                     JOIN attendees ON events.id = attendees.event_id
+                    LEFT JOIN users ON events.host_id = users.id
                     WHERE attendees.user_id = %s
                     """,
                     [user_id],
@@ -134,8 +139,10 @@ class EventQueries:
             with conn.cursor() as db:
                 db.execute(
                     """
-                    SELECT * FROM events
-                    WHERE id = %s
+                    SELECT events.*, users.first_name, users.last_name
+                    FROM events
+                    LEFT JOIN users ON events.host_id = users.id
+                    WHERE events.id = %s
                     """,
                     [event_id],
                 )
@@ -180,7 +187,6 @@ class EventQueries:
                     event_data.event_description,
                     event_id,
                 ]
-                print("PARAMS", params)
                 db.execute(
                     """
                     UPDATE events
@@ -220,13 +226,11 @@ class EventQueries:
 
                 record = None
                 row = db.fetchone()
-                print("****** ROW *******", row)
                 if row is not None:
                     record = {}
                     for i, column in enumerate(db.description):
                         record[column.name] = row[i]
 
-                print("****** RECORD *******", record)
                 return record
 
     def event_record_to_dict(self, row, description):
