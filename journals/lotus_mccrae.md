@@ -62,3 +62,6 @@ Plan for Tomorrow:
 - Run all code through linters.
 - Make sure all unnecessary print statements are removed from front and back end code.
 - SUBMIT
+
+28 April 2023
+We added a conditional statement in EventsPage to load the LandingPage when the user logs out. Now we are ready to submit!
