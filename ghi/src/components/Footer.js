@@ -5,14 +5,14 @@ import gitlab from "../imgs/gitlab.png";
 
 function Footer() {
     return (
-        <footer className="flex flex-col items-center justify-center mt-auto px-1 py-1 bg-jet-stream-500">
+        <footer className="flex flex-col items-center justify-center mt-auto px-1 py-1 bg-jet-stream-500 z-1">
             <div className="flex flex-row items-center w-full justify-center">
                 <span className="flex items-center text-sm text-gray-500 sm:text-center dark:text-gray-400 justify-center text-center">
                     <img src={ss_logo} alt="app-logo" height="75" width="140" className="mr-8" />
                     © 2023 ShapeShifters™. All Rights Reserved. Engineers listed below.
                 </span>
             </div>
-            <div className="flex justify-evenly items-center w-full">
+            <div className="flex justify-evenly items-center w-full text-jet-stream-900">
                 <div className="flex items-center">
                     <a
                         href="/" alt="app-logo" className="hover:underline">
@@ -69,7 +69,7 @@ function Footer() {
                         </li>
                     </ul>
                 </div>
-                <div className="flex items-center">
+                <div className="flex items-center text-jet-stream-900">
                     <a href="/">
                         <img src={gitlab} alt="gitlab logo" height="40" width="90" />
                     </a>
