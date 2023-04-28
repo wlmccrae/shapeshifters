@@ -14,33 +14,29 @@ function EventsPage() {
     const { userRole } = useSelector(
         (state) => state.eventsPage
     );
-    
+
     if (isLoading) return <div>Loading...</div>;
 
     const attending = () => (
-            <div>
-                <h1> Events {account.account.first_name} Is Attending </h1>
-                <EventsAttendingCards />
-                <EventDetails />
-            </div>
+      <>
+        <h1> Events {account.account.first_name} Is Attending </h1>
+        <EventsAttendingCards />
+        <EventDetails />
+      </>
     );
 
     const hosting = () => (
-            <div>
-                <h1> Events {account.account.first_name} Is Hosting </h1>
-                <EventsHostingCards />
-                <EventDetails />
-            </div>
+      <>
+        <h1> Events {account.account.first_name} Is Hosting </h1>
+        <EventsHostingCards />
+        <EventDetails />
+      </>
     );
 
     return (
-        <div className='max-w-[1400px] w-full m-auto py-1 px-4 relative'>
+        <div className='max-w-[1400px] w-full m-auto py-1 px-4 relative mb-10'>
             <EventsPageTabs />
-            <div className='max-w-[900px] h-[600px] w-full m-auto py-1 px-10 relative group'>
-                <div>
-                    {(userRole === "attending") ? attending() : hosting()}
-                </div>
-            </div>
+            {(userRole === "attending") ? attending() : hosting()}
         </div>
     )
 }

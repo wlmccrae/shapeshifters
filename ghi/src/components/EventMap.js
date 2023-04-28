@@ -1,12 +1,10 @@
 import React from "react";
-import { useMemo } from "react";
 
 import { GoogleMap, useJsApiLoader, MarkerF } from "@react-google-maps/api";
 import { useSelector, useDispatch } from "react-redux";
 
 import Modal from "./Modal";
 import { hideEventMapModal } from "../features/events/eventMapSlice";
-import { useGetEventQuery } from "../services/events";
 
 //Still need help with hiding the API key
 const GOOGLE_API_KEY = process.env.REACT_APP_GOOGLE_API_KEY;
@@ -32,25 +30,14 @@ function EventMap({ center }) {
     googleMapsApiKey: GOOGLE_API_KEY,
   });
 
-  // Set the location of the marker
-  const markerLocation = useMemo(() => ({
-    lat: center?.lat,
-    lng: center?.lng,
-  }));
-
   // lines 40-54 are taken from react-google-maps
   const [map, setMap] = React.useState(null);
 
-  const onLoad = React.useCallback(function callback(map) {
-    // This is just an example of getting and using the map instance!!! don't just blindly copy!
-    const bounds = new window.google.maps.LatLngBounds(center);
-    // had to comment out map.fitBounds(bounds) to get MarkerF to work
-    // map.fitBounds(bounds);
-
-    setMap(map);
+  const onLoad = React.useCallback(function callback(eventMap) {
+    setMap(eventMap);
   }, []);
 
-  const onUnmount = React.useCallback(function callback(map) {
+  const onUnmount = React.useCallback(function callback(eventMap) {
     setMap(null);
   }, []);
 

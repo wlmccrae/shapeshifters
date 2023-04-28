@@ -6,12 +6,10 @@ import { hideEventDetailModal } from '../features/events/eventDetailSlice';
 import { useLazyGetEventQuery } from "../services/events";
 
 import { hideEventMapModal } from '../features/events/eventMapSlice';
-import { useGetEventQuery } from "../services/events";
 
-import { useGetAccountQuery } from '../services/auth';
 import { useAddAttendeeMutation } from "../services/attendees";
 
-import { getAttendeeId, reset } from '../features/attendees/addAttendeeSlice';
+import { reset } from '../features/attendees/addAttendeeSlice';
 
 import Modal from './Modal';
 import EventMap from './EventMap'
@@ -29,6 +27,7 @@ const EventDetails = ({ event }) => {
   // Query /api/event/{event_id} using the LazyQuery so it does not
   // call when there is no event id
   const [ trigger, result ] = useLazyGetEventQuery(eventId.payload);
+
 
   // Get the center and the eventMapModal from eventMapSlice
   const { center, eventMapModal } = useSelector(state => state.eventMap);
@@ -76,23 +75,22 @@ const EventDetails = ({ event }) => {
           src={result.data.image_url}
         />
         <form onSubmit={handleSubmit}>
-          <div className="px-4">
+          <div className="px-4 text-jet-stream-900">
             <h2>{result.data.event_name}</h2>
+            <p className='font-bold'>Address:</p>
             <p>{result.data.address_line1}</p>
             <p>{result.data.address_line2}</p>
-            <p className="text-gray-700 text-base mb-2">
+            <p className="mb-2">
               {result.data.city}, {result.data.state} {result.data.zip_code}
             </p>
-            <p className="text-gray-700 text-base mb-2">
+            <p className="mb-2">
               <b>Event Type:</b> {result.data.event_type}
             </p>
-            <p className="text-gray-700 text-base mb-2">
-              {/* <b>Host:</b> {host.first_name} {host.last_name}{" "} */}
+            <p className="mb-2">
+              <b>Host:</b> {result.data.host.first_name}{" "}
+              {result.data.host.last_name}{" "}
             </p>
-            <p className="text-gray-700 text-base mb-2">
-              <i>{result.data.event_description}</i>
-            </p>
-            <p className="text-gray-700 text-base mb-2">
+            <p className="mb-2">
               <b>Start:</b>{" "}
               {new Date(result.data.start_datetime).toLocaleString([], {
                 month: "numeric",
@@ -103,7 +101,7 @@ const EventDetails = ({ event }) => {
                 hour12: true,
               })}
             </p>
-            <p className="text-gray-700 text-base mb-2">
+            <p className="mb-2">
               <b>End:</b>{" "}
               {new Date(result.data.end_datetime).toLocaleString([], {
                 month: "numeric",
@@ -113,6 +111,9 @@ const EventDetails = ({ event }) => {
                 minute: "numeric",
                 hour12: true,
               })}
+            </p>
+            <p className="mb-2">
+              <i>{result.data.event_description}</i>
             </p>
             <button
               type="submit"
