@@ -30,10 +30,11 @@ This application is designed for people who want to host or attend fitness event
 
 ## Project Images
 ![Landing Page (not logged in)](./readme_imgs/LandingPageNotLoggedIn.png "Landing Page (not logged in)")
-![Landing Page (logged in)](./readme_imgs/LandingPageLoggedIn.png "Landing Page (logged in)")
+![Event Detail Modal](./readme_imgs/EventDetailModal.png "Event Detail Modal")
 ![Login Modal](./readme_imgs/LoginModal.png "Login Modal")
 ![My Events Page Attending View](./readme_imgs/MyEventsPageAttending.png "My Events Page with Attending View")
 ![My Events Page Hosting View](./readme_imgs/MyEventsPageHosting.png "My Events Page with Hosting View")
+![Event Map Modal](./readme_imgs/EventMapModal.png "Map Modal of Event")
 
 
 ## Project Initialization
