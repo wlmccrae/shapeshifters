@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends, Response
+from fastapi import APIRouter, Depends
 from models.attendees import AttendeeIn, AttendeeOut
 from queries.attendees import AttendeesQueries
 from authenticator import authenticator

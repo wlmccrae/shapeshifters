@@ -69,3 +69,6 @@ Victoria and I worked on the update and delete event modals. We were able to get
 
 ### Day 3
 We worked on update as a group, and continued to run into issues. We sought help from Riley who advised us to deal with an 404 error message in our console related to an event being called when it did not have an id assigned yet. Since update is a stretch goal, we decided to focus on fixing this error. We got help from Candice and Ted to change this from a getEventQuery to a getLazyEventQuery. We made styling updates as a group and decided that we will present our project with Candice tomorrow.
+
+### Day 4
+Victoria and I worked on merging main into the maps-api branch. There were a lot of conflicts, so it was a difficult merge. We had our walk through with Candice. We added the footer element to main and debugged an issue with the footer displaying in the middle of the page. We found a small issue with the host name not displaying on the event details card. We agreed to fix this tomorrow.

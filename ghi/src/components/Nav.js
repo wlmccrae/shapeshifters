@@ -7,7 +7,6 @@ import { showSignupModal } from "../features/auth/signupSlice";
 import { showLoginModal } from "../features/auth/loginSlice";
 import { useLogoutMutation } from "../services/auth";
 import { showCreateEventModal } from "../features/events/newEventSlice";
-
 import Signup from "./Signup";
 import Login from "./Login";
 import EventForm from "./EventForm";
@@ -75,9 +74,9 @@ function Nav() {
     <>
       <nav className="flex items-center justify-between flex-wrap bg-jet-stream-500 p-2">
         <div className='"flex items-center flex-shrink-0 text-white mr-6"'>
-          <a href="/">
-            <img src={ss_logo} alt="logo" height="75" width="140" />
-          </a>
+          <NavLink to="/">
+            <img alt="logo" src={ss_logo} height="75" width="140" />
+          </NavLink>
         </div>
         {account ? loggedIn() : notLoggedIn()}
       </nav>

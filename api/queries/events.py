@@ -100,7 +100,9 @@ class EventQueries:
             with conn.cursor() as db:
                 db.execute(
                     """
-                    SELECT events.* FROM events
+                    SELECT events.*, users.first_name, users.last_name
+                    FROM events
+                    LEFT JOIN users ON events.host_id = users.id
                     WHERE host_id = %s
                     """,
                     [host_id],
@@ -117,9 +119,10 @@ class EventQueries:
             with conn.cursor() as db:
                 db.execute(
                     """
-                    SELECT events.*
+                    SELECT events.*, users.first_name, users.last_name
                     FROM events
                     JOIN attendees ON events.id = attendees.event_id
+                    LEFT JOIN users ON events.host_id = users.id
                     WHERE attendees.user_id = %s
                     """,
                     [user_id],
@@ -136,8 +139,10 @@ class EventQueries:
             with conn.cursor() as db:
                 db.execute(
                     """
-                    SELECT * FROM events
-                    WHERE id = %s
+                    SELECT events.*, users.first_name, users.last_name
+                    FROM events
+                    LEFT JOIN users ON events.host_id = users.id
+                    WHERE events.id = %s
                     """,
                     [event_id],
                 )
@@ -225,6 +230,7 @@ class EventQueries:
                     record = {}
                     for i, column in enumerate(db.description):
                         record[column.name] = row[i]
+
                 return record
 
     def event_record_to_dict(self, row, description):
