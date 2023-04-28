@@ -201,9 +201,11 @@ def test_get_event():
 
     # Act
     res = client.get("api/events/10")
+    data = res.json()
 
     # Assert
     assert res.status_code == 200
+    assert data['id'] == 10
 
 
 # Attending Events Test by Kane Rodriguez
