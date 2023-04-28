@@ -29,11 +29,12 @@ This application is designed for people who want to host or attend fitness event
 - Events under the "Hosting" tab will each display a "Delete" button that the host can click to delete the event.
 
 ## Project Images
-![Landing Page (not logged in)](./readme_imgs/LandingPage(NotLoggedIn).png "Landing Page (not logged in)")
-![Landing Page (logged in)](./readme_imgs/LandingPage(LoggedIn).png "Landing Page (logged in)")
+![Landing Page (not logged in)](./readme_imgs/LandingPageNotLoggedIn.png "Landing Page (not logged in)")
+![Landing Page (logged in)](./readme_imgs/LandingPageLoggedIn.png "Landing Page (logged in)")
 ![Login Modal](./readme_imgs/LoginModal.png "Login Modal")
-![My Events Page Attending View](./readme_imgs/MyEventsPage(Attending).png "My Events Page with Attending View")
-![My Events Page Hosting View](./readme_imgs/MyEventsPage(Hosting).png "My Events Page with Hosting View)
+![My Events Page Attending View](./readme_imgs/MyEventsPageAttending.png "My Events Page with Attending View")
+![My Events Page Hosting View](./readme_imgs/MyEventsPageHosting.png "My Events Page with Hosting View")
+
 
 ## Project Initialization
 
