@@ -34,7 +34,16 @@ How to use this application locally:
 
 1. Clone this repository to your local machine
 2. CD into the new directory
-3. Run `docker volume create shapeshifters-data`
-4. Run `docker-compose build`
-5. Run `docker-compose up`
-6. Run `docker exec -it module3-project-gamma-fastapi-1 bash`
+3. Obtain a Radar Api Key (https://radar.com/product/api)
+4. Obtain a Google Maps Api key (https://developers.google.com/maps/documentation/javascript/cloud-setup).
+5. Make Signing Key
+    - install openssl
+    - run openssl rand -hex 32
+6. Make a .env file with the following variables:
+    - SIGNING_KEY set to the random string generated when Signing Key is created
+    - RADAR_API_KEY set to the Radar Api Key
+    - REACT_APP_GOOGLE_API_KEY  set to Google Maps Api Key
+7. Run `docker volume create shapeshifters-data`
+8. Run `docker-compose build`
+9. Run `docker-compose up`
+10. Run `docker exec -it module3-project-gamma-fastapi-1 bash`

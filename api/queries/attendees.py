@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 from queries.pool import pool
-from models.attendees import AttendeeIn, AttendeeOut
+from models.attendees import AttendeeIn
 
 
 class AttendeesQueries:
@@ -47,7 +47,6 @@ class AttendeesQueries:
                         if column.name == "user_id":
                             attendees.append(row[i])
 
-
     def get_attendee(self, attendee_id):
         with pool.connection() as conn:
             with conn.cursor() as db:
@@ -61,7 +60,6 @@ class AttendeesQueries:
                 row = db.fetchone()
                 attendee_dict = self.attendee_record_to_dict(row, db.description)
                 return attendee_dict
-
 
     def delete_attendee(self, attendee_id):
         with pool.connection() as conn:

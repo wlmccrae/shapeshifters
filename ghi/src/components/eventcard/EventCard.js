@@ -26,11 +26,7 @@ const EventCard = ({
   const [deleteEvent] = useDeleteEventMutation();
 
   const { userRole } = useSelector((state) => state.eventsPage);
-  const [trigger, result] = useLazyGetEventQuery(id);
-  //Not sure we need these lines
-  // get the eventMap slice center
-  const { center } = useSelector((state) => state.eventMap);
-  const { showMapModal } = useSelector((state) => state.eventMap);
+  const [trigger] = useLazyGetEventQuery(id);
 
   const notHosting = () => (
     <div className="flex justify-center mr-3 items-baseline text-jet-stream-900">
@@ -69,8 +65,7 @@ const EventCard = ({
   const handleEventDetailClick = async (e) => {
     dispatch(getEventId(id));
     dispatch(showEventDetailModal());
-    const triggerInEventDetail = await trigger(id);
-    console.log("TRIGGER IN EVENT DETAIL", triggerInEventDetail);
+    await trigger(id);
   };
 
   const handleUpdate = (e) => {};
@@ -79,13 +74,6 @@ const EventCard = ({
     dispatch(getEventId(id));
     deleteEvent(id);
     dispatch(showHostingEvents());
-  };
-
-
-
-  const handleClick = (e) => {
-    dispatch(getEventId(id));
-    dispatch(showEventDetailModal());
   };
 
   const handleShowMap = async (e) => {

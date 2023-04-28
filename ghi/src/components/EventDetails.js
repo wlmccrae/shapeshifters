@@ -6,12 +6,10 @@ import { hideEventDetailModal } from '../features/events/eventDetailSlice';
 import { useLazyGetEventQuery } from "../services/events";
 
 import { hideEventMapModal } from '../features/events/eventMapSlice';
-import { useGetEventQuery } from "../services/events";
 
-import { useGetAccountQuery } from '../services/auth';
 import { useAddAttendeeMutation } from "../services/attendees";
 
-import { getAttendeeId, reset } from '../features/attendees/addAttendeeSlice';
+import { reset } from '../features/attendees/addAttendeeSlice';
 
 import Modal from './Modal';
 import EventMap from './EventMap'
@@ -29,6 +27,7 @@ const EventDetails = ({ event }) => {
   // Query /api/event/{event_id} using the LazyQuery so it does not
   // call when there is no event id
   const [ trigger, result ] = useLazyGetEventQuery(eventId.payload);
+
 
   // Get the center and the eventMapModal from eventMapSlice
   const { center, eventMapModal } = useSelector(state => state.eventMap);
@@ -87,11 +86,10 @@ const EventDetails = ({ event }) => {
             <p className="mb-2">
               <b>Event Type:</b> {result.data.event_type}
             </p>
-            {/* We need to change the query on the backend for hosting and attending events queries
             <p className="mb-2">
               <b>Host:</b> {result.data.host.first_name}{" "}
               {result.data.host.last_name}{" "}
-            </p> */}
+            </p>
             <p className="mb-2">
               <b>Start:</b>{" "}
               {new Date(result.data.start_datetime).toLocaleString([], {
