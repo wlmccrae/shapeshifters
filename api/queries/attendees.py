@@ -77,12 +77,6 @@ class AttendeesQueries:
         if row is not None:
             attendee = {}
             attendee_fields = ["id", "event_id", "user_id"]
-            # Can add dictionaries with host and event if we need information for stretch goals
-            # host = {}
-            # host_fields = ["id", "first_name", "last_name"]
-
-            # event = {}
-            # event_fields = ["id", "event_name"]
 
             for i, column in enumerate(description):
                 if column.name in attendee_fields:
