@@ -19,7 +19,7 @@ for user in users:
     )
     hashed_password = authenticator.hash_password(user_account.hashed_password)
     account = AccountQueries()
-    # Ask instructor for best practices using try/except.
+
     try:
         user_in = account.create(account=user_account, hashed_password=hashed_password)
         print("**************************USER_IN", user_in)
