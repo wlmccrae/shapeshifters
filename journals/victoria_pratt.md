@@ -104,7 +104,11 @@ Worked on the Your Events page to display events being attended and hosted depen
 ### Tuesday, 4/25/23
 Worked on adding functionality to update event and delete an event. When a user views their hosted events, the event cards have an "Update" button and a "Delete" button. Able to delete events now, but the update event modal doesn't work yet. The modal comes up but it doesn't actually update the event.
 
-### Tuesday, 4/26/23
+## Wednesday, 4/26/23
+Decided to hold off on implementing Update Events since it is a stretch goal and not a part of our MVP. Fixed console errors.
 
-### Friday, 4/25/23
-Changes to SQL tables to display host name for attending and hosting events, cleaned up code and remo
+### Thursday, 4/27/23
+Merged maps-api branch into main, spend quite a while handling the merge conficts but now the there are maps that display on clicking the "Show Map" button on an event card. Worked on unit tests. Fixed footer so it doesn't show up in the middle of the page anymore.
+
+### Friday, 4/28/23
+Changes to SQL tables to display host name for attending and hosting events, finished our unit tests, cleaned up code and removed unnecessary files.
