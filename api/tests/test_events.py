@@ -1,7 +1,7 @@
 from fastapi.testclient import TestClient
 from main import app
 from queries.events import EventQueries
-# from models.events import EventIn, EventOut
+from models.events import EventIn
 from authenticator import authenticator
 
 
@@ -94,6 +94,7 @@ class FakeEventQueries:
                 }
             },
         ]
+
     def get_attending_events(self, attendee_id):
         return [
             {
@@ -122,17 +123,11 @@ class FakeEventQueries:
             }
         ]
 
-    # def create_event(self, params: EventIn, host_id: int) -> EventOut:
-    #     event = params.dict()
-    #     event['id'] = 21
-    #     event['host_id'] = host_id
-    #     return EventOut(**event)
-
     def create_event(
             self,
-            # params: EventIn, 
-            # host_id: int
-        ):
+            params: EventIn,
+            host_id: int
+    ):
         return {
             "id": 21,
             "host_id": 4,
@@ -155,7 +150,7 @@ class FakeEventQueries:
                 "last_name": "Wheeler",
                 "host_id": 4
             }
-        },
+        }
 
 
 # Emily's Test
@@ -210,6 +205,7 @@ def test_get_event():
     # Assert
     assert res.status_code == 200
 
+
 # Attending Events Test by Kane Rodriguez
 def test_get_attending_events():
     # Arrange
@@ -228,44 +224,35 @@ def test_get_attending_events():
     # A Cleanup
     app.dependency_overrides = {}
 
+
 # Creating an Event: Victoria Pratt
 def test_create_event():
 
     # Arrange
     app.dependency_overrides[EventQueries] = FakeEventQueries
     app.dependency_overrides[authenticator.get_current_account_data] = fake_get_current_account_data
-    # event = {
-    #     "id": 21,
-    #     "host_id": 4,
-    #     "event_name": "Yoga at the Park",
-    #     "event_type": "yoga",
-    #     "address_line1": "109 Jacob Fontaine Ln",
-    #     "address_line2": "",
-    #     "city": "Austin",
-    #     "state": "TX",
-    #     "zip_code": "78752",
-    #     "country": "US",
-    #     "lat": 30.325148,
-    #     "lon": -97.715217,
-    #     "image_url": "https://s3.us-east-2.amazonaws.com/media.myelisting.com/listings/3/160120/jacob-fontaine-ln-3.jpg?tr=w-300",
-    #     "start_datetime": "2023-06-17T10:00:00",
-    #     "end_datetime": "2023-06-17T11:00:00",
-    #     "event_description": "Free yoga class at Jacob Fontaine Plaza Park.",
-    #     "host": {
-    #         "first_name": "Carmen",
-    #         "last_name": "Wheeler",
-    #         "host_id": 4
-    #     }
-    # },
+    event = {
+        "event_name": "Yoga at the Park",
+        "event_type": "yoga",
+        "address_line1": "109 Jacob Fontaine Ln",
+        "address_line2": "",
+        "city": "Austin",
+        "state": "TX",
+        "zip_code": "78752",
+        "country": "US",
+        "image_url": "https://s3.us-east-2.amazonaws.com/media.myelisting.com/listings/3/160120/jacob-fontaine-ln-3.jpg?tr=w-300",
+        "start_datetime": "2023-04-28T20:13:29.809Z",
+        "end_datetime": "2023-04-28T20:13:29.810Z",
+        "event_description": "Free yoga class at Jacob Fontaine Plaza Park.",
+    }
 
     # Act
     res = client.post(
         '/api/events',
-        # json=event
+        json=event
     )
     data = res.json()
 
-    print(data)
     # Assert
     assert res.status_code == 200
     assert data['id'] == 21
