@@ -4,7 +4,7 @@ from queries.events import EventQueries
 from authenticator import authenticator
 from datetime import datetime
 
-import traceback
+import traceback  # noqa:F401
 
 
 router = APIRouter()

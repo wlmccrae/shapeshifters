@@ -4,7 +4,8 @@
 ghi/src/keys.js
 
 # Database
-api/database.py
+# api/database.py
+# api/db_script.py
 
 # Images folder
 ghi/imgs

@@ -1,8 +1,15 @@
 from fastapi import APIRouter, Request, Response, Depends, status, HTTPException
-from models.accounts import AccountIn, AccountOut, AccountForm, HttpError, AccountToken, DuplicateAccountError
+from models.accounts import (
+    AccountIn,
+    AccountOut,
+    AccountForm,
+    AccountToken,
+    DuplicateAccountError
+)
+from models.accounts import HttpError  # noqa:F401
 from queries.accounts import AccountQueries
 from authenticator import authenticator
-import traceback
+import traceback  # noqa:F401
 
 router = APIRouter()
 

@@ -1,5 +1,5 @@
 steps = [
-    ############## USERS ##############
+    # ------------ USERS ------------
     [
         # "Up" SQL statement
         """
@@ -17,7 +17,7 @@ steps = [
         DROP TABLE users;
         """,
     ],
-    ############## EVENTS ##############
+    # ------------ EVENTS ------------
     [
         # "Up" SQL statement
         """
@@ -45,7 +45,7 @@ steps = [
         DROP TABLE events;
         """,
     ],
-    ############## ATTENDEES ##############
+    # ------------ ATTENDEES ------------
     [
         # "Up" SQL statement
         """

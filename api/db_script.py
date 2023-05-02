@@ -1,6 +1,6 @@
-import traceback
-from pydantic import BaseModel
-from queries.pool import pool
+import traceback  # noqa:F401
+from pydantic import BaseModel  # noqa:F401
+from queries.pool import pool  # noqa:F401
 from queries.accounts import AccountQueries
 from queries.events import EventQueries
 from models.accounts import AccountIn
@@ -23,8 +23,8 @@ for user in users:
     try:
         user_in = account.create(account=user_account, hashed_password=hashed_password)
         print("**************************USER_IN", user_in)
-    except:
-        print(f"*******Error*******User not created")
+    except:  # noqa:E722
+        print("*******Error*******User not created")
 
 for event in events:
     print(f"EVENT: {event}")
@@ -50,5 +50,5 @@ for event in events:
         event_in = new_event.create_event(event=event_row, host_id=event["host_id"])
         print("**************************EVENT_IN", event_in)
     except Exception as e:
-        print(f"*******Error*******Event not created")
+        print("*******Error*******Event not created")
         print(e)

@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel  # noqa:F401
 from queries.pool import pool
 from models.events import EventIn
 import requests
@@ -165,7 +165,6 @@ class EventQueries:
                     """,
                     [event_id],
                 )
-
 
     def update_event(self, event_id, event_data):
         with pool.connection() as conn:
