@@ -5,7 +5,6 @@ from authenticator import authenticator
 
 from routers import accounts, events, attendees
 
-# to commit
 
 app = FastAPI()
 app.include_router(authenticator.router, tags=["AUTH"])
