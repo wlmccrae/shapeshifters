@@ -3,6 +3,7 @@ async def migrate():
     import os
     import sys
 
+    # Adding this to commit
     db_url = os.environ["DATABASE_URL"]
 
     if len(sys.argv) < 2:
