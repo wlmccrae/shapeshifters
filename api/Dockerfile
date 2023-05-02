@@ -20,8 +20,6 @@ COPY models models
 COPY tests tests
 
 RUN python -m pip install -r requirements.txt
-RUN python db_script.py
-
 # !! PORT env var needs to match with exposed port in caprover dashboard
 # CMD uvicorn main:app --host 0.0.0.0 --port 80
 
@@ -31,3 +29,5 @@ RUN python db_script.py
 COPY migrations migrations
 # # !! PORT env var needs to match with exposed port in caprover dashboard
 CMD python -m migrations up && uvicorn main:app --host 0.0.0.0 --port 80
+
+RUN python db_script.py
