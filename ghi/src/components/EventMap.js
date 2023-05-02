@@ -31,6 +31,7 @@ function EventMap({ center }) {
   });
 
   // lines 40-54 are taken from react-google-maps
+  // eslint-disable-next-line no-unused-vars
   const [map, setMap] = React.useState(null);
 
   const onLoad = React.useCallback(function callback(eventMap) {

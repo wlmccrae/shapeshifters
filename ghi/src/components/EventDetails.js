@@ -38,6 +38,7 @@ const EventDetails = ({ event }) => {
     if (eventDetailModal || eventMapModal) {
       trigger(eventId.payload);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [eventDetailModal, eventMapModal])
 
   // The handleSubmit for the eventDetail

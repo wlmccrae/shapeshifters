@@ -42,12 +42,12 @@ function LandingPage() {
     const { data: account } = useGetAccountQuery();
 
     useEffect(() => {
-        const timer = setTimeout(() => {
-            nextSlide();
-        }, 5000);
+      const timer = setTimeout(() => {
+        nextSlide();
+      }, 5000);
 
-        return () => clearTimeout(timer);
-
+      return () => clearTimeout(timer);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [currentIndex]);
 
     const prevSlide = () => {

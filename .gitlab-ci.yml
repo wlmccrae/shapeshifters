@@ -18,7 +18,7 @@ api-unit-test-job:
   needs:
     - lint-test-job
   script:
-    - cd sample_service
+    - cd api
     - pip install -r requirements.txt
     - python -m pytest
 
@@ -33,7 +33,7 @@ build-front-end-job:
     # CI/CD variables, that value will override the value here.
     # You need to substitute in your real values for
     # GROUP_NAME, PROJECT_NAME, & WEBSERVICE_NAME below.
-    # PUBLIC_URL: https://GROUP_NAME.gitlab.io/PROJECT_NAME/  TODO: Ask Michael to change group name
+    PUBLIC_URL: https://512kma.gitlab.io/module3-project-gamma/
     REACT_APP_API_HOST: https://shapeshifters-api.dec-ct-10.mod3projects.com
   script:
     - cd ghi
