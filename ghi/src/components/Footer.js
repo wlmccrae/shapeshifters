@@ -6,7 +6,7 @@ import { NavLink } from 'react-router-dom';
 
 function Footer() {
     return (
-        <footer className="flex flex-col items-center justify-center mt-auto px-1 py-1 bg-jet-stream-500 z-1">
+        <footer className="flex flex-col items-center justify-center mt-auto px-1 py-6 bg-jet-stream-500 z-1">
             <div className="flex flex-row items-center w-full justify-center">
                 <span className="flex items-center text-sm text-gray-500 sm:text-center dark:text-gray-400 justify-center text-center">
                     <img src={ss_logo} alt="app-logo" height="75" width="140" className="mr-8" />
@@ -38,7 +38,7 @@ function Footer() {
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
-                                Lotus
+                                Wanda
                             </NavLink>
                         </li>
                         <li>
@@ -90,7 +90,7 @@ function Footer() {
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
-                                Lotus
+                                Wanda
                             </NavLink>
                         </li>
                         <li>

@@ -1,6 +1,7 @@
 from pydantic import BaseModel  # noqa:F401
 from queries.pool import pool
 from models.accounts import AccountIn, AccountOutWithPassword
+from models.accounts import AccountOut  # noqa:F401
 
 
 class AccountQueries:

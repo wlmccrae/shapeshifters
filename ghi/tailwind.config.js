@@ -93,9 +93,5 @@ module.exports = {
       },
     },
   },
-  // // this will get rid of unused CSS rules in production
-  // purge: [
-  //   "./scr/**/*.html", "./scr/**/*.js"
-  // ],
   plugins: [],
 };

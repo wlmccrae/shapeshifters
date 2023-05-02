@@ -31,13 +31,13 @@ const EventCard = ({
     <div className="flex justify-center mr-3 items-baseline text-jet-stream-900">
       <button
         onClick={handleEventDetailClick}
-        className="mr-8 bg-jet-stream-500 hover:bg-jet-stream-800 text-gun-powder-700 p-2 rounded mb-6 mt-4"
+        className="mr-8 bg-jet-stream-500 hover:bg-jet-stream-800 text-jet-stream-900  hover:text-jet-stream-100 p-2 rounded mb-6 mt-4"
       >
         Event Details
       </button>
       <button
         onClick={handleShowMap}
-        className="bg-jet-stream-500 hover:bg-jet-stream-800 text-gun-powder-700 p-2 rounded mb-6 mt-4"
+        className="bg-jet-stream-500 hover:bg-jet-stream-800 text-jet-stream-900 hover:text-jet-stream-100 p-2 rounded mb-6 mt-4"
       >
         Show Map
       </button>
@@ -86,7 +86,7 @@ const EventCard = ({
   };
 
   return (
-    <div className="max-w-lg max-h-fit rounded overflow-hidden shadow-lg ">
+    <div className="max-w-lg max-h-fit rounded overflow-hidden hover:scale-105 shadow-lg hover:shadow-2xl hover:bg-opacity-50 transition-all duration-300">
       <img
         className="h-56 w-full object-cover"
         alt="Event location"
