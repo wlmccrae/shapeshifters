@@ -63,6 +63,7 @@ async def read_migrations(dir: str) -> list[MigrationFile]:
 
 
 async def ensure_migrations_table(db_url: str):
+    print("DB_URL PARAMETER IN __INIT__", db_url)
     async with await AsyncConnection.connect(db_url) as conn:
         async with conn.cursor() as db:
             await db.execute(
