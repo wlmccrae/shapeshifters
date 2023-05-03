@@ -7,10 +7,11 @@ import Footer from './components/Footer';
 
 
 function App() {
-
+  const domain = /https:\/\/[^/]+/;
+  const basename = process.env.PUBLIC_URL.replace(domain, "");
   return (
     <>
-      <BrowserRouter>
+      <BrowserRouter basename={basename}>
           <Nav />
             <Routes>
               <Route path="/" element={<LandingPage />} />
