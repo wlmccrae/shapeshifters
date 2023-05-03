@@ -8,7 +8,6 @@ COPY requirements.txt requirements.txt
 COPY main.py main.py
 COPY requirements.txt requirements.txt
 COPY authenticator.py authenticator.py
-# ASK SOMEONE ABOUT THIS FOR SEEDING DATABASE IN PRODUCTION
 COPY database.py database.py
 COPY db_script.py db_script.py
 
@@ -29,6 +28,6 @@ RUN python -m pip install -r requirements.txt
 # uncomment the following COPY and CMD lines
 COPY migrations migrations
 # # !! PORT env var needs to match with exposed port in caprover dashboard
-CMD python -m migrations up && uvicorn main:app --host 0.0.0.0 --port 80
+RUN python -m migrations up && python db_script.py
 # Moved this to happen after migrations
-# RUN python db_script.py
+CMD uvicorn main:app --host 0.0.0.0 --port 80
