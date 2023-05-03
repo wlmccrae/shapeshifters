@@ -28,7 +28,6 @@ for user in users:
 
 for event in events:
     print(f"EVENT: {event}")
-    # print(f"HOST ID: {event["host_id"]}")
     event_row = EventIn(
         event_name=event["event_name"],
         event_type=event["event_type"],
