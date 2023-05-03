@@ -3,7 +3,7 @@ async def migrate():
     import os
     import sys
 
-    db_url = os.environ.get("DATABASE_URL", "postgresql://postgres:1475998467590045@srv-captain--shapeshifters-db")
+    db_url = os.environ.get("DATABASE_URL", "test")
 
     print("SYS.ARGV IN __MAIN__ MIGRATION", sys.argv)
     if len(sys.argv) < 2:
