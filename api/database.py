@@ -395,7 +395,7 @@ users = [
         "first_name": "Rusty",
         "last_name": "Bannister",
         "zip_code": "78725",
-        "email": "rusty.banniester@example.com",
+        "email": "rusty.bannister@example.com",
         "hashed_password": "ernest"
     },
     {
@@ -406,11 +406,11 @@ users = [
         "hashed_password": "llllll"
     },
     {
-        "first_name": "Yuri",
-        "last_name": "Nator",
+        "first_name": "Jamie",
+        "last_name": "Williams",
         "zip_code": "78717",
-        "email": "yurinator@email.com",
-        "hashed_password": "number1"
+        "email": "jamie.williams@example.com",
+        "hashed_password": "marissa"
     },
     {
         "first_name": "Brandy",
