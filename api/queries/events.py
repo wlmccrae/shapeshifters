@@ -6,7 +6,7 @@ import os
 import json
 
 
-RADAR_API_KEY = os.environ["RADAR_API_KEY"]
+RADAR_API_KEY = os.environ.get("RADAR_API_KEY", "test")
 
 
 class EventQueries:
