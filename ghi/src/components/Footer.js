@@ -24,9 +24,8 @@ function Footer() {
                     <ul className="flex space-x-4 ml-4">
                         <li>
                             <NavLink
-                                to="www.linkedin.com/in/emily-arai/"
+                                to="https://www.linkedin.com/in/emily-arai/"
                                 target="_blank"
-
                                 rel="noopener noreferrer"
                             >
                                 Emily
