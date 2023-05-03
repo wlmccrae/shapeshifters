@@ -3,7 +3,7 @@ async def migrate():
     import os
     import sys
 
-    db_url = os.environ["DATABASE_URL"]
+    db_url = os.environ.get("DATABASE_URL", "postgresql://postgres:1475998467590045@srv-captain--shapeshifters-db")
 
     if len(sys.argv) < 2:
         print("Command: up|down [amount]")
