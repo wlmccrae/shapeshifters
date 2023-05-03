@@ -1,6 +1,6 @@
 import traceback  # noqa:F401
 from pydantic import BaseModel  # noqa:F401
-# from queries.pool import pool  # noqa:F401
+from queries.pool import pool  # noqa:F401
 from queries.accounts import AccountQueries
 from queries.events import EventQueries
 from models.accounts import AccountIn
