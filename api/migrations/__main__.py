@@ -5,6 +5,7 @@ async def migrate():
 
     db_url = os.environ.get("DATABASE_URL", "postgresql://postgres:1475998467590045@srv-captain--shapeshifters-db")
 
+    print("SYS.ARGV IN __MAIN__ MIGRATION", sys.argv)
     if len(sys.argv) < 2:
         print("Command: up|down [amount]")
         exit(1)
