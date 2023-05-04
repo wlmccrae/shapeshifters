@@ -11,15 +11,10 @@ app.include_router(accounts.router, tags=["ACCOUNTS"])
 app.include_router(events.router, tags=["EVENTS"])
 app.include_router(attendees.router, tags=["ATTENDEES"])
 
-origins = [
-    "http://localhost:3000",
-    "https://512kma.gitlab.io",
-    os.environ.get("CORS_HOST", None),
-]
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=[os.environ.get("CORS_HOST", "http://localhost:3000")],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
