@@ -23,7 +23,8 @@ for user in users:
     try:
         user_in = account.create(account=user_account, hashed_password=hashed_password)
         print("**************************USER_IN", user_in)
-    except:  # noqa:E722
+    except Exception as e:  # noqa:E722
+        print(e)
         print("*******Error*******User not created")
 
 for event in events:
