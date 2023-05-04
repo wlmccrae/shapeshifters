@@ -135,11 +135,11 @@ function LandingPage() {
                 Want to host a hiking trip, find a new spotter, or join a group
                 fitness class?
               </h2>
-              <p>
+              <h3>
                 ShapeShifters makes it easy to find ShapeMates to help you make
                 the next step in your journey. Reach a wider audience and bring
                 people together around a shared passion for fitness today.
-              </p>
+              </h3>
             </div>
           </div>
         </div>
