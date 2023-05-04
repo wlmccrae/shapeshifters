@@ -5,7 +5,6 @@ from authenticator import authenticator
 
 from routers import accounts, events, attendees
 
-
 app = FastAPI()
 app.include_router(authenticator.router, tags=["AUTH"])
 app.include_router(accounts.router, tags=["ACCOUNTS"])
@@ -14,6 +13,7 @@ app.include_router(attendees.router, tags=["ATTENDEES"])
 
 origins = [
     "http://localhost:3000",
+    "https://512kma.gitlab.io",
     os.environ.get("CORS_HOST", None),
 ]
 
