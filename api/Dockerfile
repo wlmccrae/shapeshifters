@@ -8,8 +8,6 @@ COPY requirements.txt requirements.txt
 COPY main.py main.py
 COPY requirements.txt requirements.txt
 COPY authenticator.py authenticator.py
-COPY database.py database.py
-COPY db_script.py db_script.py
 
 # Copy all of the subdirectories in your service's directory
 # Modify these instructions to do that
