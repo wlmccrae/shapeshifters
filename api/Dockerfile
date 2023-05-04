@@ -29,4 +29,4 @@ RUN python -m pip install -r requirements.txt
 COPY migrations migrations
 # # !! PORT env var needs to match with exposed port in caprover dashboard
 # Moved this to happen after migrations
-CMD /wait python -m migrations up && python -m db_script.py && uvicorn main:app --host 0.0.0.0 --port 80
+CMD python -m migrations up && uvicorn main:app --host 0.0.0.0 --port 80
