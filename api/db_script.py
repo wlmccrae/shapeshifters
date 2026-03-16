@@ -22,13 +22,13 @@ for user in users:
 
     try:
         user_in = account.create(account=user_account, hashed_password=hashed_password)
-        print("**************************USER_IN", user_in)
+        print("*Sample User", user_in)
     except Exception as e:  # noqa:E722
         print(e)
         print("*******Error*******User not created")
 
 for event in events:
-    print(f"EVENT: {event}")
+    # print(f"EVENT: {event}")
     event_row = EventIn(
         event_name=event["event_name"],
         event_type=event["event_type"],
@@ -44,11 +44,11 @@ for event in events:
         event_description=event["event_description"]
     )
     new_event = EventQueries()
-    print(f"New Event: {event_row}")
+    print(f"New Event: {event_row.event_name}")
     # Ask instructor for best practices using try/except.
     try:
         event_in = new_event.create_event(event=event_row, host_id=event["host_id"])
-        print("**************************EVENT_IN", event_in)
+        # print("**************************EVENT_IN", event_in)
     except Exception as e:
         print("*******Error*******Event not created")
         print(e)
