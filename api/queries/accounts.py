@@ -34,11 +34,10 @@ class AccountQueries:
                     [email],
                 )
 
-                record = None
                 row = db.fetchone()
-                if row is not None:
-                    record = {}
-                    for i, column in enumerate(db.description):
-                        record[column.name] = row[i]
-
+                if row is None:
+                    return None
+                record = {}
+                for i, column in enumerate(db.description):
+                    record[column.name] = row[i]
                 return AccountOutWithPassword(**record)

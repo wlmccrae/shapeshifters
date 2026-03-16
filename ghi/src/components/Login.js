@@ -6,13 +6,15 @@ import Modal from "./Modal";
 
 const Login = () => {
     const dispatch = useDispatch()
-    const [login] = useLoginMutation()
+    const [login, { isError }] = useLoginMutation()
     const { fields, loginModal } = useSelector(state => state.login)
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        login({fields});
-        dispatch(reset());
+        const result = await login({fields});
+        if (!result.error) {
+            dispatch(reset());
+        }
     }
 
     return (
@@ -50,6 +52,11 @@ const Login = () => {
                     dispatch(handlePasswordChange(e.target.value))
                   }
                 ></input>
+                {isError && (
+                  <p className="mt-3 text-red-600 text-sm">
+                    Invalid email or password. Please try again.
+                  </p>
+                )}
                 <div className="flex justify-between items-baseline">
                   <button
                     type="submit"
