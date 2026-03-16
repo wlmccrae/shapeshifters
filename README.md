@@ -53,6 +53,8 @@ How to use this application locally:
     - RADAR_API_KEY set to the Radar Api Key
     - REACT_APP_GOOGLE_API_KEY  set to Google Maps Api Key
 7. Run `docker volume create shapeshifters-data`
-8. Run `docker-compose build`
-9. Run `docker-compose up`
-10. Run `docker exec -it module3-project-gamma-fastapi-1 bash`
+8. Run `docker compose -f docker-compose-dev.yaml up --build`
+9. Run `docker exec -it shapeshifters-fastapi-1 bash`
+10. To end, run `docker compose -f docker-compose.dev.yml down`
+
+If you want to remove all named volumes declared in the compose file along with anonymous volumes attached to containers, run `docker compose -f docker-compose.dev.yml down -v`. You will have to rerun Step 7 the next time you wish to use this application locally.

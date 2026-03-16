@@ -1,6 +1,7 @@
 fastapi[all]==0.90.0
 python-jose[cryptography]>=3.3.0,<4.0.0
 passlib[bcrypt]>=1.7.4,<2.0.0
+bcrypt==4.0.1
 uvicorn[standard]>=0.17.6,<0.18.0 ## ask about this
 python-multipart==0.0.5
 aiofiles>=0.8.0,<0.9.0
