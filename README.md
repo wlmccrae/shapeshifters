@@ -36,7 +36,7 @@ ShapeShifters is designed for people who want to host or attend fitness events �
 | Backend | FastAPI, Python 3.10, jwtdown-fastapi |
 | Database | PostgreSQL 15 |
 | Auth | JWT (cookie-based) via jwtdown-fastapi |
-| Geocoding | Radar API |
+| Geocoding | Nominatim (OpenStreetMap) |
 | Maps | Google Maps API |
 | Containerization | Docker, Docker Compose |
 
@@ -68,13 +68,18 @@ ShapeShifters is designed for people who want to host or attend fitness events �
 
 ## Getting Started
 
+There are two compose files:
+- **`docker-compose.yml`** — Production build. Uses an external PostgreSQL database (e.g. [Neon](https://neon.tech)).
+- **`docker-compose-dev.yml`** — Local development. Spins up a local PostgreSQL container.
+
 ### Prerequisites
 
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/)
 - [OpenSSL](https://www.openssl.org/) (for generating a signing key)
 - A [Google Maps API key](https://developers.google.com/maps/documentation/javascript/cloud-setup)
+- A [Neon](https://neon.tech) account and project (production only)
 
-### Setup
+### Production Setup
 
 1. **Clone the repository**
 
@@ -93,16 +98,37 @@ ShapeShifters is designed for people who want to host or attend fitness events �
 
 4. **Open Docker Desktop**
 
-5. **Create the database volume**
+5. **Build and start the application**
+
+   ```bash
+   docker compose -f docker-compose.yml up --build
+   ```
+
+   Services will be available at:
+   - Frontend: http://localhost:3000
+   - Backend API: http://localhost:8000
+   - API docs (Swagger): http://localhost:8000/docs
+
+6. **Stop the application**
+
+   ```bash
+   docker compose -f docker-compose.yml down
+   ```
+
+### Local Development Setup
+
+1. Follow steps 1–4 above
+
+2. **Create the database volume**
 
    ```bash
    docker volume create shapeshifters-data
    ```
 
-6. **Build and start the application**
+3. **Build and start the application**
 
    ```bash
-   docker compose -f docker-compose-dev.yaml up --build
+   docker compose -f docker-compose-dev.yml up --build
    ```
 
    Services will be available at:
@@ -111,7 +137,7 @@ ShapeShifters is designed for people who want to host or attend fitness events �
    - API docs (Swagger): http://localhost:8000/docs
    - PostgreSQL: localhost:15432
 
-7. **Seed the database with sample data**
+4. **Seed the database with sample data**
 
    In a separate terminal, open a shell inside the FastAPI container:
 
@@ -131,10 +157,10 @@ ShapeShifters is designed for people who want to host or attend fitness events �
    exit
    ```
 
-8. **Stop the application**
+5. **Stop the application**
 
    ```bash
-   docker compose -f docker-compose-dev.yaml down
+   docker compose -f docker-compose-dev.yml down
    ```
 
 ---
@@ -146,27 +172,39 @@ Create a `.env` file in the project root with the following variables:
 ```env
 SIGNING_KEY=<output of: openssl rand -hex 32>
 REACT_APP_GOOGLE_API_KEY=<your Google Maps API key>
+DATABASE_URL=<your Neon connection string>  # production only
 ```
 
-| Variable | Description |
-|---|---|
-| `SIGNING_KEY` | 64-character hex string used to sign JWTs |
-| `REACT_APP_GOOGLE_API_KEY` | Google Maps key used for the event map modal |
+| Variable | Description | Required |
+|---|---|---|
+| `SIGNING_KEY` | 64-character hex string used to sign JWTs | Both |
+| `REACT_APP_GOOGLE_API_KEY` | Google Maps key used for the event map modal | Both |
+| `DATABASE_URL` | Neon PostgreSQL connection string (e.g. `postgresql://user:pass@host/db?sslmode=require`) | Production only |
 
 ---
 
 ## Docker Commands Reference
 
+### Production (`docker-compose.yml`)
+
 | Task | Command |
 |---|---|
-| Start the app | `docker compose -f docker-compose-dev.yaml up --build` |
-| Stop the app | `docker compose -f docker-compose-dev.yaml down` |
-| Stop and delete database | `docker compose -f docker-compose-dev.yaml down` then `docker volume rm shapeshifters-data` |
+| Start the app | `docker compose -f docker-compose.yml up --build` |
+| Stop the app | `docker compose -f docker-compose.yml down` |
+| Open a shell in the API container | `docker exec -it shapeshifters-fastapi-1 bash` |
+
+### Local Development (`docker-compose-dev.yml`)
+
+| Task | Command |
+|---|---|
+| Start the app | `docker compose -f docker-compose-dev.yml up --build` |
+| Stop the app | `docker compose -f docker-compose-dev.yml down` |
+| Stop and delete database | `docker compose -f docker-compose-dev.yml down` then `docker volume rm shapeshifters-data` |
 | Open a shell in the API container | `docker exec -it shapeshifters-fastapi-1 bash` |
 | Seed the database | (inside container) `python db_script.py` |
 | Recreate the database volume | `docker volume create shapeshifters-data` |
 
-> **Note:** The database volume is declared `external: true` in the compose file. Using `docker compose down -v` will **not** remove it. You must run `docker volume rm shapeshifters-data` manually to delete the database.
+> **Note:** The local database volume is declared `external: true`. Using `docker compose down -v` will **not** remove it. You must run `docker volume rm shapeshifters-data` manually to delete the database.
 
 ---
 
@@ -229,7 +267,7 @@ The FastAPI backend auto-generates interactive documentation at **http://localho
 }
 ```
 
-> Latitude and longitude are resolved automatically from the address via the Radar API.
+> Latitude and longitude are resolved automatically from the address via the Nominatim (OpenStreetMap) geocoding API.
 
 ### Attendees
 
@@ -299,8 +337,8 @@ shapeshifters/
 ├── docs/
 │   └── RestfulAPIs.md            # API design documentation
 ├── readme_imgs/                  # Screenshots used in this README
-├── docker-compose.yaml
-├── docker-compose-dev.yaml
+├── docker-compose.yml          # Production (uses external DB e.g. Neon)
+├── docker-compose-dev.yml      # Local development (uses local PostgreSQL container)
 └── .env                          # Local environment variables (do not commit)
 ```
 
@@ -334,8 +372,8 @@ shapeshifters/
 | state | VARCHAR(100) | |
 | zip_code | VARCHAR(100) | |
 | country | VARCHAR(100) | |
-| lat | DECIMAL(9,6) | Resolved via Radar API |
-| lon | DECIMAL(9,6) | Resolved via Radar API |
+| lat | DECIMAL(9,6) | Resolved via Nominatim |
+| lon | DECIMAL(9,6) | Resolved via Nominatim |
 | event_description | TEXT | |
 
 ### `attendees`
