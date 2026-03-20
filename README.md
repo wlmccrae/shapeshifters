@@ -72,7 +72,6 @@ ShapeShifters is designed for people who want to host or attend fitness events â
 
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/)
 - [OpenSSL](https://www.openssl.org/) (for generating a signing key)
-- A [Radar API key](https://radar.com/product/api)
 - A [Google Maps API key](https://developers.google.com/maps/documentation/javascript/cloud-setup)
 
 ### Setup
@@ -146,14 +145,12 @@ Create a `.env` file in the project root with the following variables:
 
 ```env
 SIGNING_KEY=<output of: openssl rand -hex 32>
-RADAR_API_KEY=<your Radar API key>
 REACT_APP_GOOGLE_API_KEY=<your Google Maps API key>
 ```
 
 | Variable | Description |
 |---|---|
 | `SIGNING_KEY` | 64-character hex string used to sign JWTs |
-| `RADAR_API_KEY` | Radar.com key used to geocode event addresses |
 | `REACT_APP_GOOGLE_API_KEY` | Google Maps key used for the event map modal |
 
 ---

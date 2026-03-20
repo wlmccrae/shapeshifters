@@ -2,11 +2,7 @@ from pydantic import BaseModel  # noqa:F401
 from queries.pool import pool
 from models.events import EventIn
 import requests
-import os
 import json
-
-
-RADAR_API_KEY = os.environ.get("RADAR_API_KEY", "test")
 
 
 class EventQueries:
@@ -15,15 +11,16 @@ class EventQueries:
         city = event.city
         state = event.state
 
-        url = f'https://api.radar.io/v1/geocode/forward?query="{address}",{city},{state}'
-        headers = {"Authorization": RADAR_API_KEY}
+        url = "https://nominatim.openstreetmap.org/search"
+        params = {"q": f"{address}, {city}, {state}", "format": "json", "limit": 1}
+        headers = {"User-Agent": "Shapeshifters/1.0"}
 
-        resp = requests.get(url, headers=headers)
+        resp = requests.get(url, params=params, headers=headers)
         content = json.loads(resp.content)
 
         try:
-            lat = content["addresses"][0]["latitude"]
-            lon = content["addresses"][0]["longitude"]
+            lat = content[0]["lat"]
+            lon = content[0]["lon"]
 
         except Exception:
             print("Fetching lat and lon failed")
