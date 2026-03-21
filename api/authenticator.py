@@ -6,6 +6,7 @@ from queries.accounts import AccountQueries, AccountOut, AccountOutWithPassword
 
 class ShapeShiftersAuthenticator(Authenticator):
     cookie_samesite = "none"
+    cookie_secure = True
 
     async def get_account_data(
         self,
