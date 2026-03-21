@@ -7,6 +7,7 @@ pool = ConnectionPool(
     conninfo=os.environ.get("DATABASE_URL", "postgresql://postgres:1475998467590045@srv-captain--shapeshifters-db"),
     kwargs={"autocommit": True},
     min_size=0,
+    max_size=10,
     max_waiting=10,
     reconnect_timeout=30,
     max_lifetime=300,
