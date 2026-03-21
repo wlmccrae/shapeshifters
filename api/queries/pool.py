@@ -8,4 +8,6 @@ pool = ConnectionPool(
     kwargs={"autocommit": True},
     max_waiting=10,
     reconnect_timeout=30,
+    max_lifetime=300,
+    max_idle=60,
 )
