@@ -14,6 +14,7 @@ Want to host a hiking trip, find a new spotter, or join a group fitness class? S
 - [Project Screenshots](#project-screenshots)
 - [Getting Started](#getting-started)
 - [Environment Variables](#environment-variables)
+- [Deployment](#deployment)
 - [Docker Commands Reference](#docker-commands-reference)
 - [API Reference](#api-reference)
 - [Project Structure](#project-structure)
@@ -171,6 +172,7 @@ Create a `.env` file in the project root with the following variables:
 
 ```env
 SIGNING_KEY=<output of: openssl rand -hex 32>
+REACT_APP_API_HOST=https://<your-api-domain>
 REACT_APP_GOOGLE_API_KEY=<your Google Maps API key>
 DATABASE_URL=<your Neon connection string>  # production only
 ```
@@ -178,8 +180,35 @@ DATABASE_URL=<your Neon connection string>  # production only
 | Variable | Description | Required |
 |---|---|---|
 | `SIGNING_KEY` | 64-character hex string used to sign JWTs | Both |
+| `REACT_APP_API_HOST` | Base URL of the backend API (must use `https://` for auth cookies to work) | Both |
 | `REACT_APP_GOOGLE_API_KEY` | Google Maps key used for the event map modal | Both |
 | `DATABASE_URL` | Neon PostgreSQL connection string (e.g. `postgresql://user:pass@host/db?sslmode=require`) | Production only |
+
+---
+
+## Deployment
+
+The backend is deployed on [Railway](https://railway.app). Railway auto-deploys when changes are pushed to the `main` branch on GitHub.
+
+### Push to GitHub (triggers Railway deployment)
+
+```bash
+git push github main
+```
+
+### Push to GitLab
+
+```bash
+git push origin main
+```
+
+### Push to both remotes at once
+
+```bash
+git push github main && git push origin main
+```
+
+> **Note:** After pushing, allow Railway ~1 minute to rebuild and redeploy the API. The frontend at `http://localhost:3000` (or wherever it is hosted) will pick up the new backend automatically.
 
 ---
 
