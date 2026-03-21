@@ -1,16 +1,4 @@
 services:
-  fastapi:
-    build:
-      context: ./api
-      dockerfile: Dockerfile.dev
-    environment:
-      DATABASE_URL: ${DATABASE_URL}
-      PORT: 8000
-      SIGNING_KEY: ${SIGNING_KEY}
-    ports:
-      - "8000:8000"
-    volumes:
-      - ./api:/app
   ghi:
     image: node:lts-bullseye
     command: /bin/bash run.sh
