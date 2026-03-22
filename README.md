@@ -50,7 +50,7 @@ ShapeShifters is designed for people who want to host or attend fitness events �
 - **Browse events** — Logged-in users see a list of events in their geographic area.
 - **Event detail** — Click any event to open a detail modal. Join with a single click.
 - **Event map** — View the exact event location on an embedded Google Map.
-- **Create event** — Fill in a form with event name, type, address, image URL, start/end dates, and a description. The address is geocoded automatically via the Radar API.
+- **Create event** — Fill in a form with event name, type, address, image URL, start/end dates, and a description. The address is geocoded automatically via the Nominatim (OpenStreetMap) API.
 - **Your Events** — A tabbed page showing events the user is attending and events they are hosting.
 - **Delete event** — Hosts can delete their own events from the "Hosting" tab.
 
@@ -69,18 +69,15 @@ ShapeShifters is designed for people who want to host or attend fitness events �
 
 ## Getting Started
 
-There are two compose files:
-- **`docker-compose.yml`** — Production build. Uses an external PostgreSQL database (e.g. [Neon](https://neon.tech)).
-- **`docker-compose-dev.yml`** — Local development. Spins up a local PostgreSQL container.
+This section covers running the project locally. For the live deployment, see [Deployment](#deployment).
 
 ### Prerequisites
 
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/)
 - [OpenSSL](https://www.openssl.org/) (for generating a signing key)
 - A [Google Maps API key](https://developers.google.com/maps/documentation/javascript/cloud-setup)
-- A [Neon](https://neon.tech) account and project (production only)
 
-### Production Setup
+### Local Development Setup
 
 1. **Clone the repository**
 
@@ -99,34 +96,13 @@ There are two compose files:
 
 4. **Open Docker Desktop**
 
-5. **Build and start the application**
-
-   ```bash
-   docker compose -f docker-compose.yml up --build
-   ```
-
-   Services will be available at:
-   - Frontend: http://localhost:3000
-   - Backend API: http://localhost:8000
-   - API docs (Swagger): http://localhost:8000/docs
-
-6. **Stop the application**
-
-   ```bash
-   docker compose -f docker-compose.yml down
-   ```
-
-### Local Development Setup
-
-1. Follow steps 1–4 above
-
-2. **Create the database volume**
+5. **Create the database volume**
 
    ```bash
    docker volume create shapeshifters-data
    ```
 
-3. **Build and start the application**
+6. **Build and start the application**
 
    ```bash
    docker compose -f docker-compose-dev.yml up --build
@@ -138,7 +114,7 @@ There are two compose files:
    - API docs (Swagger): http://localhost:8000/docs
    - PostgreSQL: localhost:15432
 
-4. **Seed the database with sample data**
+7. **Seed the database with sample data**
 
    In a separate terminal, open a shell inside the FastAPI container:
 
@@ -158,7 +134,7 @@ There are two compose files:
    exit
    ```
 
-5. **Stop the application**
+8. **Stop the application**
 
    ```bash
    docker compose -f docker-compose-dev.yml down
@@ -168,21 +144,36 @@ There are two compose files:
 
 ## Environment Variables
 
-Create a `.env` file in the project root with the following variables:
+Variables are configured in three places depending on the environment.
+
+### Local `.env` file
+
+Create a `.env` file in the project root for local development:
 
 ```env
 SIGNING_KEY=<output of: openssl rand -hex 32>
-REACT_APP_API_HOST=https://<your-api-domain>
+REACT_APP_API_HOST=http://localhost:8000
 REACT_APP_GOOGLE_API_KEY=<your Google Maps API key>
-DATABASE_URL=<your Neon connection string>  # production only
 ```
 
-| Variable | Description | Required |
-|---|---|---|
-| `SIGNING_KEY` | 64-character hex string used to sign JWTs | Both |
-| `REACT_APP_API_HOST` | Base URL of the backend API (must use `https://` for auth cookies to work) | Both |
-| `REACT_APP_GOOGLE_API_KEY` | Google Maps key used for the event map modal | Both |
-| `DATABASE_URL` | Neon PostgreSQL connection string (e.g. `postgresql://user:pass@host/db?sslmode=require`) | Production only |
+### Railway (backend)
+
+Set these in **Railway → your service → Variables**:
+
+| Variable | Description |
+|---|---|
+| `SIGNING_KEY` | 64-character hex string used to sign JWTs — must match the value used when tokens were issued |
+| `DATABASE_URL` | Neon PostgreSQL connection string (e.g. `postgresql://user:pass@host/db?sslmode=require`) |
+| `CORS_HOST` | Comma-separated list of allowed CORS origins (e.g. `https://wmccrae.gitlab.io`) |
+
+### GitLab CI/CD (frontend)
+
+Set these in **GitLab → Settings → CI/CD → Variables**:
+
+| Variable | Description |
+|---|---|
+| `REACT_APP_API_HOST` | Base URL of the Railway API (e.g. `https://shapeshifters-production.up.railway.app`) — must use `https://` for auth cookies to work |
+| `REACT_APP_GOOGLE_API_KEY` | Google Maps API key used for the event map modal |
 
 ---
 
@@ -203,7 +194,9 @@ The pipeline:
 
 ### Backend — Railway
 
-The backend is deployed on [Railway](https://railway.app). Railway auto-deploys when changes are pushed to the `main` branch on GitHub.
+The `api/` directory is deployed on [Railway](https://railway.app). Railway auto-deploys when changes are pushed to the `main` branch on GitHub. The database is hosted on [Neon](https://neon.tech) and connected via the `DATABASE_URL` environment variable.
+
+Required Railway environment variables: `SIGNING_KEY`, `DATABASE_URL`, `CORS_HOST` — see [Environment Variables](#environment-variables).
 
 ### Pushing to remotes
 
@@ -224,7 +217,7 @@ git push github main && git push origin main
 
 ## Docker Commands Reference
 
-### Production (`docker-compose.yml`)
+### With external database (`docker-compose.yml`)
 
 | Task | Command |
 |---|---|
