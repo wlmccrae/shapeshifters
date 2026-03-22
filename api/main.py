@@ -13,7 +13,7 @@ app.include_router(attendees.router, tags=["ATTENDEES"])
 
 origins = [
     "http://localhost:3000",
-    os.environ.get("CORS_HOST", None),
+    *[h for h in os.environ.get("CORS_HOST", "").split(",") if h],
 ]
 
 app.add_middleware(
