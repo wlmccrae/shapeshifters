@@ -188,27 +188,37 @@ DATABASE_URL=<your Neon connection string>  # production only
 
 ## Deployment
 
+### Frontend — GitLab Pages
+
+The frontend is automatically built and deployed to **GitLab Pages** by the CI/CD pipeline whenever changes are pushed to `main` on GitLab.
+
+Live URL: `https://wmccrae.gitlab.io/shapeshifters/`
+
+The pipeline:
+1. Builds the React app (`npm run build`) with `REACT_APP_API_HOST` injected from GitLab CI/CD variables.
+2. Copies `build/index.html` → `build/404.html` for client-side routing support.
+3. Publishes the build artifacts as the GitLab Pages site.
+
+> **Setup:** Set `REACT_APP_API_HOST` in **GitLab → Settings → CI/CD → Variables** so the frontend build points at the correct API URL.
+
+### Backend — Railway
+
 The backend is deployed on [Railway](https://railway.app). Railway auto-deploys when changes are pushed to the `main` branch on GitHub.
 
-### Push to GitHub (triggers Railway deployment)
+### Pushing to remotes
 
 ```bash
+# GitHub only (triggers Railway deployment)
 git push github main
-```
 
-### Push to GitLab
-
-```bash
+# GitLab only (triggers GitLab Pages deployment)
 git push origin main
-```
 
-### Push to both remotes at once
-
-```bash
+# Both at once
 git push github main && git push origin main
 ```
 
-> **Note:** After pushing, allow Railway ~1 minute to rebuild and redeploy the API. The frontend at `http://localhost:3000` (or wherever it is hosted) will pick up the new backend automatically.
+> **Note:** After pushing, allow Railway ~1 minute to rebuild and redeploy the API.
 
 ---
 
