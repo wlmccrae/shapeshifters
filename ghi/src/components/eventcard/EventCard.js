@@ -20,6 +20,8 @@ const EventCard = ({
     end_datetime,
     image_url,
     host,
+    lat,
+    lon,
 }) => {
   const dispatch = useDispatch();
   const [deleteEvent] = useDeleteEventMutation();
@@ -37,7 +39,8 @@ const EventCard = ({
       </button>
       <button
         onClick={handleShowMap}
-        className="bg-jet-stream-500 hover:bg-jet-stream-800 text-jet-stream-900 hover:text-jet-stream-100 p-2 rounded mb-6 mt-4"
+        disabled={lat == null || lon == null}
+        className={`p-2 rounded mb-6 mt-4 ${lat == null || lon == null ? "bg-gray-300 text-gray-500 cursor-not-allowed" : "bg-jet-stream-500 hover:bg-jet-stream-800 text-jet-stream-900 hover:text-jet-stream-100"}`}
       >
         Show Map
       </button>
