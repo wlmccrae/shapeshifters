@@ -1,11 +1,12 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { showEventDetailModal, getEventId } from "../../features/events/eventDetailSlice";
 import { useDeleteEventMutation } from "../../services/events";
 import { showHostingEvents } from "../../features/events/eventsPageSlice";
 import { useLazyGetEventQuery } from "../../services/events";
 import { showEventMapModal, setLat, setLng } from "../../features/events/eventMapSlice";
 import { loadEvent } from "../../features/events/editEventSlice";
+import { useGetAccountQuery } from "../../services/auth";
 
 
 const EventCard = ({
@@ -28,9 +29,10 @@ const EventCard = ({
 }) => {
   const dispatch = useDispatch();
   const [deleteEvent] = useDeleteEventMutation();
-
-  const { userRole } = useSelector((state) => state.eventsPage);
+  const { data: account } = useGetAccountQuery();
   const [trigger] = useLazyGetEventQuery(id);
+
+  const isOwner = account?.account?.id === host?.host_id;
 
   const notHosting = () => (
     <div className="flex justify-center mr-3 items-baseline text-jet-stream-900">
@@ -156,7 +158,7 @@ const EventCard = ({
         </p>
       </div>
 
-      {userRole === "hosting" ? hosting() : notHosting()}
+      {isOwner ? hosting() : notHosting()}
     </div>
   );
 }
