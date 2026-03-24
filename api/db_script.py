@@ -1,4 +1,5 @@
 import traceback  # noqa:F401
+import time
 from pydantic import BaseModel  # noqa:F401
 from queries.pool import pool  # noqa:F401
 from queries.accounts import AccountQueries
@@ -22,7 +23,7 @@ for user in users:
     print(f"New User: {user_account.first_name} {user_account.last_name}")
     try:
         user_in = account.create(account=user_account, hashed_password=hashed_password)
-        print("*Sample User", user_in)
+        print("* User account created.")
     except Exception as e:  # noqa:E722
         print(e)
         print("*******Error*******User not created")
@@ -47,7 +48,11 @@ for event in events:
     # Ask instructor for best practices using try/except.
     try:
         event_in = new_event.create_event(event=event_row, host_id=event["host_id"])
-        # print("**************************EVENT_IN", event_in)
+        if event_in is None:
+            print("*******Error*******Event not created")
+        else:
+            print("* Event created.")
+        time.sleep(1)
     except Exception as e:
         print("*******Error*******Event not created")
         print(e)

@@ -16,15 +16,15 @@ class EventQueries:
         headers = {"User-Agent": "Shapeshifters/1.0"}
 
         resp = requests.get(url, params=params, headers=headers)
-        content = json.loads(resp.content)
 
         try:
+            content = json.loads(resp.content)
             lat = content[0]["lat"]
             lon = content[0]["lon"]
 
         except Exception:
-            print("Fetching lat and lon failed")
-            return None
+            print("Fetching lat and lon failed, inserting with NULL lat/lon")
+            lat, lon = None, None
 
         with pool.connection() as conn:
             with conn.cursor() as db:

@@ -1,5 +1,6 @@
 from pydantic import BaseModel
 from datetime import datetime
+from typing import Optional
 
 
 class EventIn(BaseModel):
@@ -28,8 +29,8 @@ class EventOut(BaseModel):
     state: str
     zip_code: str
     country: str
-    lat: float
-    lon: float
+    lat: Optional[float]
+    lon: Optional[float]
     image_url: str
     start_datetime: datetime
     end_datetime: datetime
