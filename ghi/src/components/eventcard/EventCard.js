@@ -5,6 +5,7 @@ import { useDeleteEventMutation } from "../../services/events";
 import { showHostingEvents } from "../../features/events/eventsPageSlice";
 import { useLazyGetEventQuery } from "../../services/events";
 import { showEventMapModal, setLat, setLng } from "../../features/events/eventMapSlice";
+import { loadEvent } from "../../features/events/editEventSlice";
 
 
 const EventCard = ({
@@ -16,9 +17,11 @@ const EventCard = ({
     city,
     state,
     zip_code,
+    country,
+    image_url,
     start_datetime,
     end_datetime,
-    image_url,
+    event_description,
     host,
     lat,
     lon,
@@ -70,7 +73,25 @@ const EventCard = ({
     await trigger(id);
   };
 
-  const handleUpdate = (e) => {};
+  const handleUpdate = (e) => {
+    dispatch(loadEvent({
+      id,
+      fields: {
+        event_name,
+        event_type,
+        address_line1,
+        address_line2: address_line2 || "",
+        city,
+        state,
+        zip_code,
+        country: country || "",
+        image_url,
+        start_datetime: start_datetime ? start_datetime.slice(0, 16) : "",
+        end_datetime: end_datetime ? end_datetime.slice(0, 16) : "",
+        event_description: event_description || "",
+      },
+    }));
+  };
 
   const handleDelete = (e) => {
     dispatch(getEventId(id));

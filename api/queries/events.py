@@ -168,7 +168,6 @@ class EventQueries:
             with conn.cursor() as db:
                 params = [
                     event_data.event_name,
-                    event_data.host_id,
                     event_data.event_type,
                     event_data.address_line1,
                     event_data.address_line2,
@@ -186,7 +185,6 @@ class EventQueries:
                     """
                     UPDATE events
                     SET event_name = %s
-                    , host_id = %s
                     , event_type = %s
                     , address_line1 = %s
                     , address_line2 = %s

@@ -60,6 +60,18 @@ export const eventsApi = createApi({
         { type: "Events", id }
       ],
     }),
+    updateEvent: builder.mutation({
+      query: ({ id, fields }) => ({
+        url: `api/events/${id}`,
+        method: "PUT",
+        body: fields,
+        credentials: "include",
+      }),
+      invalidatesTags: (result, error, { id }) => [
+        { type: "Events", id },
+        { type: "Events", id: "LIST" },
+      ],
+    }),
   }),
 });
 
@@ -71,4 +83,5 @@ export const {
     useGetAttendingEventsQuery,
     useGetHostingEventsQuery,
     useDeleteEventMutation,
+    useUpdateEventMutation,
 } = eventsApi;
