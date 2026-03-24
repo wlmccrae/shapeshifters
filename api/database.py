@@ -378,6 +378,13 @@ events = [
 
 users = [
     {
+        "first_name": "Wanda",
+        "last_name": "McCrae",
+        "zip_code": "10462",
+        "email": "wanda.mccrae@gmail.com",
+        "hashed_password": "m1laGr0s"
+    },
+    {
         "first_name": "Carmen",
         "last_name": "Wheeler",
         "zip_code": "78750",

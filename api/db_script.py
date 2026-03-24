@@ -19,7 +19,7 @@ for user in users:
     )
     hashed_password = authenticator.hash_password(user_account.hashed_password)
     account = AccountQueries()
-
+    print(f"New User: {user_account.first_name} {user_account.last_name}")
     try:
         user_in = account.create(account=user_account, hashed_password=hashed_password)
         print("*Sample User", user_in)
@@ -28,7 +28,6 @@ for user in users:
         print("*******Error*******User not created")
 
 for event in events:
-    # print(f"EVENT: {event}")
     event_row = EventIn(
         event_name=event["event_name"],
         event_type=event["event_type"],
